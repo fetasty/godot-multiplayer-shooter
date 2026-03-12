@@ -1,6 +1,14 @@
 [gd_scene format=3 uid="uid://yubvfldj7w73"]
 
 [ext_resource type="Script" uid="uid://dhhqh2jhxgeag" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://cs6mguapgbjft" path="res://assets/background.png" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://lfrnuc5iv0jl" path="res://components/enemy_spawn_component.tscn" id="3_h2yge"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
+size = Vector2(32, 300)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
+size = Vector2(500, 32)
 
 [node name="Main" type="Node" unique_id=1056906370]
 script = ExtResource("1_0xm2m")
@@ -9,5 +17,60 @@ script = ExtResource("1_0xm2m")
 unique_name_in_owner = true
 _spawnable_scenes = PackedStringArray("uid://clvtit5mibwed", "uid://pu2c45uixpy0")
 spawn_path = NodePath("../Level")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1570274783]
+position = Vector2(320, 180)
+texture = ExtResource("2_0xm2m")
+
+[node name="Static" type="Node2D" parent="." unique_id=737235782]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Static" unique_id=1416058182]
+position = Vector2(95, 162)
+collision_mask = 0
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Static/StaticBody2D" unique_id=1810118465]
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Static" unique_id=2068740689]
+position = Vector2(545, 164)
+collision_mask = 0
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Static/StaticBody2D2" unique_id=852209843]
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Static" unique_id=42209704]
+position = Vector2(325, 45)
+collision_mask = 0
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Static/StaticBody2D3" unique_id=171008005]
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Static" unique_id=1035532054]
+position = Vector2(326, 288)
+collision_mask = 0
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Static/StaticBody2D4" unique_id=63399873]
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="PlayerSpawnMarker" type="Marker2D" parent="." unique_id=478673854]
+position = Vector2(320, 180)
+metadata/_edit_lock_ = true
+
+[node name="EnemySpawnComponent" parent="." unique_id=1168245383 node_paths=PackedStringArray("spawn_root", "spawn_rect") instance=ExtResource("3_h2yge")]
+spawn_root = NodePath("../Level")
+spawn_rect = NodePath("../ReferenceRect")
+
+[node name="ReferenceRect" type="ReferenceRect" parent="." unique_id=1251462368]
+custom_minimum_size = Vector2(380, 180)
+offset_left = 130.0
+offset_top = 75.0
+offset_right = 510.0
+offset_bottom = 255.0
+border_width = 2.0
+metadata/_edit_lock_ = true
 
 [node name="Level" type="Node2D" parent="." unique_id=216170404]

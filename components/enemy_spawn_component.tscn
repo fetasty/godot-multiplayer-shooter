@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://lfrnuc5iv0jl"]
+
+[ext_resource type="Script" uid="uid://cehb1osnrkm8b" path="res://components/enemy_spawn_component.gd" id="1_nj5q5"]
+
+[node name="EnemySpawnComponent" type="Node" unique_id=1168245383]
+script = ExtResource("1_nj5q5")
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=1019343935]
+one_shot = true
+autostart = true

@@ -12,7 +12,7 @@ radius = 12.0
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_im2q6"]
 properties/0/path = NodePath(".:global_position")
 properties/0/spawn = true
-properties/0/replication_mode = 0
+properties/0/replication_mode = 2
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1435173822 groups=["enemy"]]
 script = ExtResource("1_im2q6")
@@ -37,3 +37,7 @@ debug_color = Color(0.65105337, 0.41757444, 0.8009966, 0.41960785)
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=2049813085]
 replication_config = SubResource("SceneReplicationConfig_im2q6")
+
+[node name="TrackTimer" type="Timer" parent="." unique_id=1052182996]
+wait_time = 0.2
+autostart = true

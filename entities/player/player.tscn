@@ -13,8 +13,8 @@ properties/0/replication_mode = 2
 [sub_resource type="CircleShape2D" id="CircleShape2D_symyc"]
 radius = 9.0
 
-[node name="Player" type="CharacterBody2D" unique_id=443941569]
-collision_mask = 0
+[node name="Player" type="CharacterBody2D" unique_id=443941569 groups=["player"]]
+collision_layer = 0
 script = ExtResource("1_abrql")
 
 [node name="PlayerInputMultiplayerSynchronizerComponent" parent="." unique_id=914505172 node_paths=PackedStringArray("aim_root") instance=ExtResource("3_sglur")]
