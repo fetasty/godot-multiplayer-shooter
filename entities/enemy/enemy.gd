@@ -11,7 +11,7 @@ func _ready() -> void:
 	if is_multiplayer_authority():
 		area_2d.area_entered.connect(_on_area_entered)
 		track_timer.timeout.connect(_on_track_timer_timeout)
-		health_component.health_ended.connect(_on_health_ended)
+		health_component.health_depleted.connect(_on_health_depleted)
 		_update_track_target()
 	else:
 		track_timer.process_mode = Node.PROCESS_MODE_DISABLED
@@ -55,6 +55,6 @@ func _on_track_timer_timeout() -> void:
 	_update_track_target()
 
 
-func _on_health_ended() -> void:
+func _on_health_depleted() -> void:
 	GameEvents.emit_enemy_died()
 	queue_free()
