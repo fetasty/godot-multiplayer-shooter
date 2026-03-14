@@ -3,7 +3,6 @@ extends Node
 const PLAYER = preload("uid://dgstmloeo60yy")
 const ENEMY = preload("uid://pu2c45uixpy0")
 
-@onready var level: Node2D = $Level
 @onready var multiplayer_spawner: MultiplayerSpawner = %MultiplayerSpawner
 @onready var player_spawn_marker: Marker2D = $PlayerSpawnMarker
 

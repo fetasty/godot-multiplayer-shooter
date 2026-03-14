@@ -10,10 +10,13 @@ var move_speed: float = 100.0
 @onready var player_input_multiplayer_synchronizer_component: PlayerInputMultiplayerSynchronizerComponent = $PlayerInputMultiplayerSynchronizerComponent
 @onready var weapon_root: Node2D = $WeaponRoot
 @onready var attack_timer: Timer = $AttackTimer
+@onready var health_component: HealthComponent = $HealthComponent
 
 func _ready() -> void:
 	print("[peer %s] Set player(%s) input authroity %s" % [multiplayer.get_unique_id(), name, input_peer_id])
 	player_input_multiplayer_synchronizer_component.set_multiplayer_authority(input_peer_id)
+	if is_multiplayer_authority():
+		health_component.health_depleted.connect(_on_health_depleted)
 
 
 func _process(_delta: float) -> void:
@@ -36,3 +39,7 @@ func _try_to_attack() -> void:
 	bullet.direction = player_input_multiplayer_synchronizer_component.aim_vector
 	bullet.rotation = bullet.direction.angle()
 	get_parent().add_child(bullet, true)
+
+
+func _on_health_depleted() -> void:
+	print("[peer %s] Player %s died!" % [multiplayer.get_unique_id(), input_peer_id])

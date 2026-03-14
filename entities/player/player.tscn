@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bqqkssof5ynqj" path="res://entities/player/player.png" id="2_sglur"]
 [ext_resource type="PackedScene" uid="uid://bo6navv8i0m7l" path="res://components/player_input_multiplayer_synchronizer_component.tscn" id="3_sglur"]
 [ext_resource type="Texture2D" uid="uid://2kssud5dpd6d" path="res://entities/player/weapon.png" id="4_bls4j"]
+[ext_resource type="PackedScene" uid="uid://cjdfv3bck20to" path="res://components/hurtbox_component.tscn" id="5_8fjmc"]
+[ext_resource type="PackedScene" uid="uid://d4dbjbld66ye3" path="res://components/health_component.tscn" id="6_qiwj3"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_sglur"]
 properties/0/path = NodePath(".:global_position")
@@ -11,7 +13,10 @@ properties/0/spawn = true
 properties/0/replication_mode = 2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_symyc"]
-radius = 9.0
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8fjmc"]
+radius = 8.0
 
 [node name="Player" type="CharacterBody2D" unique_id=443941569 groups=["player"]]
 collision_layer = 0
@@ -22,10 +27,6 @@ aim_root = NodePath("../WeaponRoot")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=313846396]
 replication_config = SubResource("SceneReplicationConfig_sglur")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=767223298]
-position = Vector2(0, -7)
-shape = SubResource("CircleShape2D_symyc")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=650770162]
 texture = ExtResource("2_sglur")
@@ -44,3 +45,19 @@ offset = Vector2(-34, -15)
 [node name="AttackTimer" type="Timer" parent="." unique_id=618798759]
 wait_time = 0.25
 one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=767223298]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_symyc")
+
+[node name="HurtboxComponent" parent="." unique_id=981055533 node_paths=PackedStringArray("health_component") instance=ExtResource("5_8fjmc")]
+position = Vector2(0, -7)
+collision_mask = 4
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=693809133]
+shape = SubResource("CircleShape2D_8fjmc")
+debug_color = Color(0.6330674, 0.52867836, 0, 0.41960785)
+
+[node name="HealthComponent" parent="." unique_id=390402674 instance=ExtResource("6_qiwj3")]
+max_health = 5

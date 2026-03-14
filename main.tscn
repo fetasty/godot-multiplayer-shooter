@@ -16,7 +16,7 @@ script = ExtResource("1_0xm2m")
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=147750579]
 unique_name_in_owner = true
 _spawnable_scenes = PackedStringArray("uid://clvtit5mibwed", "uid://pu2c45uixpy0")
-spawn_path = NodePath("../Level")
+spawn_path = NodePath("../YSortRoot")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1570274783]
 position = Vector2(320, 180)
@@ -61,7 +61,7 @@ position = Vector2(320, 180)
 metadata/_edit_lock_ = true
 
 [node name="EnemySpawnComponent" parent="." unique_id=1168245383 node_paths=PackedStringArray("spawn_root", "spawn_rect") instance=ExtResource("3_h2yge")]
-spawn_root = NodePath("../Level")
+spawn_root = NodePath("../YSortRoot")
 spawn_rect = NodePath("../ReferenceRect")
 
 [node name="ReferenceRect" type="ReferenceRect" parent="." unique_id=1251462368]
@@ -73,4 +73,5 @@ offset_bottom = 255.0
 border_width = 2.0
 metadata/_edit_lock_ = true
 
-[node name="Level" type="Node2D" parent="." unique_id=216170404]
+[node name="YSortRoot" type="Node2D" parent="." unique_id=216170404]
+y_sort_enabled = true

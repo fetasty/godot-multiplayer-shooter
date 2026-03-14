@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-@onready var area_2d: Area2D = $Area2D
 @onready var track_timer: Timer = $TrackTimer
 @onready var health_component: HealthComponent = $HealthComponent
 
@@ -9,7 +8,6 @@ var has_track_target: bool = false
 
 func _ready() -> void:
 	if is_multiplayer_authority():
-		area_2d.area_entered.connect(_on_area_entered)
 		track_timer.timeout.connect(_on_track_timer_timeout)
 		health_component.health_depleted.connect(_on_health_depleted)
 		_update_track_target()
@@ -41,14 +39,6 @@ func _update_track_target() -> void:
 		has_track_target = true
 	else:
 		has_track_target = false
-
-
-func _on_area_entered(area: Area2D) -> void:
-	if not area.owner is Bullet:
-		return
-	var bullet := area.owner as Bullet
-	bullet.register_collision()
-	health_component.take_damage(1)
 
 
 func _on_track_timer_timeout() -> void:

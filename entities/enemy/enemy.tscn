@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://c7lobg8xpka2u" path="res://entities/enemy/enemy.gd" id="1_im2q6"]
 [ext_resource type="Texture2D" uid="uid://cpl7g0kbq3wh4" path="res://entities/enemy/enemy.png" id="2_3fvr7"]
 [ext_resource type="PackedScene" uid="uid://d4dbjbld66ye3" path="res://components/health_component.tscn" id="3_3fvr7"]
+[ext_resource type="PackedScene" uid="uid://cjdfv3bck20to" path="res://components/hurtbox_component.tscn" id="4_dt443"]
+[ext_resource type="PackedScene" uid="uid://c8mojkcl4ky3a" path="res://components/hitbox_component.tscn" id="5_4wwj3"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_im2q6"]
 properties/0/path = NodePath(".:global_position")
@@ -10,10 +12,13 @@ properties/0/spawn = true
 properties/0/replication_mode = 2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dt443"]
-radius = 7.0
+radius = 6.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_im2q6"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_4wwj3"]
 radius = 12.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d50e0"]
+radius = 8.0
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1435173822 groups=["enemy"]]
 script = ExtResource("1_im2q6")
@@ -36,11 +41,19 @@ offset = Vector2(-16, -28)
 position = Vector2(0, -9)
 shape = SubResource("CircleShape2D_dt443")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1803973472]
+[node name="HurtboxComponent" parent="." unique_id=981055533 node_paths=PackedStringArray("health_component") instance=ExtResource("4_dt443")]
 position = Vector2(0, -9)
-collision_layer = 0
 collision_mask = 256
+health_component = NodePath("../HealthComponent")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1875354202]
-shape = SubResource("CircleShape2D_im2q6")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=866805600]
+shape = SubResource("CircleShape2D_4wwj3")
 debug_color = Color(0.65105337, 0.41757444, 0.8009966, 0.41960785)
+
+[node name="HitboxComponent" parent="." unique_id=206202765 instance=ExtResource("5_4wwj3")]
+position = Vector2(0, -9)
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=967221577]
+shape = SubResource("CircleShape2D_d50e0")
+debug_color = Color(0.99893695, 0, 0.14098063, 0.41960785)
