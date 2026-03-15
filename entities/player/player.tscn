@@ -24,20 +24,23 @@ motion_mode = 1
 script = ExtResource("1_abrql")
 
 [node name="PlayerInputMultiplayerSynchronizerComponent" parent="." unique_id=914505172 node_paths=PackedStringArray("aim_root") instance=ExtResource("3_sglur")]
-aim_root = NodePath("../WeaponRoot")
+aim_root = NodePath("../VisualRoot/WeaponRoot")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=313846396]
 replication_config = SubResource("SceneReplicationConfig_sglur")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=650770162]
+[node name="VisualRoot" type="Node2D" parent="." unique_id=1130646804]
+
+[node name="Sprite2D" type="Sprite2D" parent="VisualRoot" unique_id=650770162]
 texture = ExtResource("2_sglur")
 centered = false
 offset = Vector2(-13, -32)
 
-[node name="WeaponRoot" type="Node2D" parent="." unique_id=1092641407]
+[node name="WeaponRoot" type="Node2D" parent="VisualRoot" unique_id=1092641407]
+unique_name_in_owner = true
 position = Vector2(0, -2)
 
-[node name="Sprite2D" type="Sprite2D" parent="WeaponRoot" unique_id=1456967505]
+[node name="Sprite2D" type="Sprite2D" parent="VisualRoot/WeaponRoot" unique_id=1456967505]
 position = Vector2(6, 0)
 texture = ExtResource("4_bls4j")
 centered = false

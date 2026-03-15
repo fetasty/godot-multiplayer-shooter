@@ -8,9 +8,10 @@ var move_vector: Vector2 = Vector2.ZERO
 var move_speed: float = 100.0
 
 @onready var player_input_multiplayer_synchronizer_component: PlayerInputMultiplayerSynchronizerComponent = $PlayerInputMultiplayerSynchronizerComponent
-@onready var weapon_root: Node2D = $WeaponRoot
+@onready var weapon_root: Node2D = %WeaponRoot
 @onready var attack_timer: Timer = $AttackTimer
 @onready var health_component: HealthComponent = $HealthComponent
+@onready var visual_root: Node2D = $VisualRoot
 
 func _ready() -> void:
 	print("[peer %s] Set player(%s) input authroity %s" % [multiplayer.get_unique_id(), name, input_peer_id])
@@ -20,14 +21,19 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	var aim_vector := player_input_multiplayer_synchronizer_component.aim_vector
-	weapon_root.look_at(weapon_root.global_position + aim_vector)
+	_update_aim_direction()
 	if is_multiplayer_authority():
 		var input := player_input_multiplayer_synchronizer_component.move_vector
 		velocity = input * move_speed
 		move_and_slide()
 		if player_input_multiplayer_synchronizer_component.is_attack_pressing:
 			_try_to_attack()
+
+
+func _update_aim_direction() -> void:
+	var aim_vector := player_input_multiplayer_synchronizer_component.aim_vector
+	visual_root.scale = Vector2.ONE if aim_vector.x >= 0 else Vector2(-1.0, 1.0)
+	weapon_root.look_at(weapon_root.global_position + aim_vector)
 
 
 func _try_to_attack() -> void:
