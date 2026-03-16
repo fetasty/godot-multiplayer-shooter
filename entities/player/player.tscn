@@ -18,6 +18,68 @@ radius = 6.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_8fjmc"]
 radius = 8.0
 
+[sub_resource type="Animation" id="Animation_8fjmc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VisualRoot/WeaponRoot/WeaponAnimationRoot:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VisualRoot/WeaponRoot/WeaponAnimationRoot:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_qiwj3"]
+resource_name = "attack"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VisualRoot/WeaponRoot/WeaponAnimationRoot:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.7, 1.5), Vector2(1.2, 0.7), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VisualRoot/WeaponRoot/WeaponAnimationRoot:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.2617993877991494, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_26q78"]
+_data = {
+&"RESET": SubResource("Animation_8fjmc"),
+&"attack": SubResource("Animation_qiwj3")
+}
+
 [node name="Player" type="CharacterBody2D" unique_id=443941569 groups=["player"]]
 collision_layer = 0
 motion_mode = 1
@@ -40,8 +102,10 @@ offset = Vector2(-13, -32)
 unique_name_in_owner = true
 position = Vector2(0, -2)
 
-[node name="Sprite2D" type="Sprite2D" parent="VisualRoot/WeaponRoot" unique_id=1456967505]
+[node name="WeaponAnimationRoot" type="Node2D" parent="VisualRoot/WeaponRoot" unique_id=103219749]
 position = Vector2(6, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="VisualRoot/WeaponRoot/WeaponAnimationRoot" unique_id=1456967505]
 texture = ExtResource("4_bls4j")
 centered = false
 offset = Vector2(-34, -15)
@@ -65,3 +129,6 @@ debug_color = Color(0.6330674, 0.52867836, 0, 0.41960785)
 
 [node name="HealthComponent" parent="." unique_id=390402674 instance=ExtResource("6_qiwj3")]
 max_health = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=212079387]
+libraries/ = SubResource("AnimationLibrary_26q78")

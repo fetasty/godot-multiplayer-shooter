@@ -12,6 +12,7 @@ var move_speed: float = 100.0
 @onready var attack_timer: Timer = $AttackTimer
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var visual_root: Node2D = $VisualRoot
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
 	print("[peer %s] Set player(%s) input authroity %s" % [multiplayer.get_unique_id(), name, input_peer_id])
@@ -45,6 +46,14 @@ func _try_to_attack() -> void:
 	bullet.direction = player_input_multiplayer_synchronizer_component.aim_vector
 	bullet.rotation = bullet.direction.angle()
 	get_parent().add_child(bullet, true)
+	_play_attack_effect.rpc()
+
+
+@rpc("authority", "call_local", "unreliable")
+func _play_attack_effect() -> void:
+	if animation_player.is_playing():
+		animation_player.stop()
+	animation_player.play("attack")
 
 
 func _on_health_depleted() -> void:
