@@ -2,6 +2,7 @@ class_name Player
 extends CharacterBody2D
 
 const BULLET = preload("uid://clvtit5mibwed")
+const MUZZLE_FLASH_EFFECT = preload("uid://ckgdgjh2c5e2s")
 
 var input_peer_id : int
 var move_vector: Vector2 = Vector2.ZERO
@@ -13,6 +14,7 @@ var move_speed: float = 100.0
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var visual_root: Node2D = $VisualRoot
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var attack_point: Marker2D = %AttackPoint
 
 func _ready() -> void:
 	print("[peer %s] Set player(%s) input authroity %s" % [multiplayer.get_unique_id(), name, input_peer_id])
@@ -42,7 +44,7 @@ func _try_to_attack() -> void:
 		return
 	attack_timer.start()
 	var bullet := BULLET.instantiate() as Bullet
-	bullet.global_position = weapon_root.global_position
+	bullet.global_position = attack_point.global_position
 	bullet.direction = player_input_multiplayer_synchronizer_component.aim_vector
 	bullet.rotation = bullet.direction.angle()
 	get_parent().add_child(bullet, true)
@@ -54,6 +56,10 @@ func _play_attack_effect() -> void:
 	if animation_player.is_playing():
 		animation_player.stop()
 	animation_player.play("attack")
+	var effect: Node2D = MUZZLE_FLASH_EFFECT.instantiate()
+	effect.global_position = attack_point.global_position
+	effect.global_rotation = attack_point.global_rotation
+	get_parent().add_child(effect)
 
 
 func _on_health_depleted() -> void:

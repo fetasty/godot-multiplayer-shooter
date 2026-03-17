@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://ckgdgjh2c5e2s"]
+
+[ext_resource type="Texture2D" uid="uid://bar74ipwo7sqk" path="res://assets/muzzle_flash.png" id="1_l2b3n"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_l2b3n"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_l2b3n"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.3447099, 0.668942, 1)
+colors = PackedColorArray(0.92156863, 0.6901961, 0.08627451, 1, 0.9026023, 0.46408343, 0.13280767, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_b0f4r"]
+gradient = SubResource("Gradient_l2b3n")
+
+[sub_resource type="Curve" id="Curve_l2b3n"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1640625, 1), 0.0, 0.0, 0, 0, Vector2(0.5859375, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.32002634), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_b0f4r"]
+curve = SubResource("Curve_l2b3n")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b0f4r"]
+particle_flag_disable_z = true
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+spread = 10.0
+initial_velocity_min = 150.0
+initial_velocity_max = 300.0
+gravity = Vector3(0, 0, 0)
+damping_min = 700.00006
+damping_max = 900.00006
+scale_curve = SubResource("CurveTexture_b0f4r")
+color_initial_ramp = SubResource("GradientTexture1D_b0f4r")
+anim_offset_max = 1.0
+
+[sub_resource type="Animation" id="Animation_l2b3n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_b0f4r"]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_srv3k"]
+_data = {
+&"RESET": SubResource("Animation_l2b3n"),
+&"default": SubResource("Animation_b0f4r")
+}
+
+[node name="MuzzleFlashEffect" type="GPUParticles2D" unique_id=2123514730]
+material = SubResource("CanvasItemMaterial_l2b3n")
+emitting = false
+amount = 5
+texture = ExtResource("1_l2b3n")
+lifetime = 0.2
+one_shot = true
+explosiveness = 0.8
+process_material = SubResource("ParticleProcessMaterial_b0f4r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1541849901]
+libraries/ = SubResource("AnimationLibrary_srv3k")
+autoplay = &"default"
