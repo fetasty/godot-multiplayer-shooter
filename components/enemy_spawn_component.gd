@@ -2,6 +2,7 @@ class_name EnemySpawnComponent
 extends Node
 
 signal round_changed(round_count: int)
+signal round_completed
 
 const ENEMY = preload("uid://pu2c45uixpy0")
 
@@ -52,6 +53,7 @@ func _check_round_completed() -> void:
 		return
 	if enemy_count == 0:
 		print("Round %s completed!" % round_count)
+		round_completed.emit()
 		_start_round()
 
 

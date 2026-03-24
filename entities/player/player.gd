@@ -1,6 +1,8 @@
 class_name Player
 extends CharacterBody2D
 
+signal died
+
 const BULLET = preload("uid://clvtit5mibwed")
 const MUZZLE_FLASH_EFFECT = preload("uid://ckgdgjh2c5e2s")
 
@@ -64,3 +66,5 @@ func _play_attack_effect() -> void:
 
 func _on_health_depleted() -> void:
 	print("[peer %s] Player %s died!" % [multiplayer.get_unique_id(), input_peer_id])
+	died.emit()
+	queue_free()
