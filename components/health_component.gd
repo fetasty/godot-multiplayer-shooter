@@ -13,3 +13,7 @@ func take_damage(damage: int) -> void:
 	current_health = clamp(current_health - damage, 0, max_health)
 	if current_health == 0:
 		health_depleted.emit()
+
+
+func reset(health: int = max_health) -> void:
+	current_health = health

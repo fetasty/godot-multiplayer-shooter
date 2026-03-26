@@ -5,7 +5,7 @@ const ENEMY = preload("uid://pu2c45uixpy0")
 const MAIN_MENU = preload("uid://dkve68vq7kmiw")
 
 
-var died_peers: Array[int] = []
+var died_peers: Dictionary[int, Player] = {}
 
 @onready var multiplayer_spawner: MultiplayerSpawner = %MultiplayerSpawner
 @onready var player_spawn_marker: Marker2D = $PlayerSpawnMarker
@@ -19,7 +19,7 @@ func _ready() -> void:
 		player.input_peer_id = data.peer_id
 		player.global_position = player_spawn_marker.global_position
 		if is_multiplayer_authority():
-			player.died.connect(_on_player_died.bind(data.peer_id))
+			player.died.connect(_on_player_died.bind(data.peer_id, player))
 		return player
 	_peer_ready.rpc_id(1)
 	if is_multiplayer_authority():
@@ -53,14 +53,15 @@ func _check_game_over() -> void:
 		_end_game()
 
 
-func _on_player_died(peer_id: int) -> void:
-	died_peers.append(peer_id)
+func _on_player_died(peer_id: int, player: Player) -> void:
+	died_peers.set(peer_id, player)
 	_check_game_over()
 
 
 func _on_round_completed() -> void:
 	for peer_id in died_peers:
-		multiplayer_spawner.spawn({ "peer_id": peer_id })
+		var player := died_peers[peer_id]
+		player.revive(player_spawn_marker.global_position)
 	died_peers.clear()
 
 

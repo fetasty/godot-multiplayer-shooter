@@ -9,6 +9,7 @@ const MUZZLE_FLASH_EFFECT = preload("uid://ckgdgjh2c5e2s")
 var input_peer_id : int
 var move_vector: Vector2 = Vector2.ZERO
 var move_speed: float = 100.0
+var is_dead: bool = false
 
 @onready var player_input_multiplayer_synchronizer_component: PlayerInputMultiplayerSynchronizerComponent = $PlayerInputMultiplayerSynchronizerComponent
 @onready var weapon_root: Node2D = %WeaponRoot
@@ -64,7 +65,29 @@ func _play_attack_effect() -> void:
 	get_parent().add_child(effect)
 
 
-func _on_health_depleted() -> void:
+func _player_died() -> void:
 	print("[peer %s] Player %s died!" % [multiplayer.get_unique_id(), input_peer_id])
+	velocity = Vector2.ZERO
+	process_mode = Node.PROCESS_MODE_DISABLED
+	is_dead = true
+	set_player_visible.rpc(false)
 	died.emit()
-	queue_free()
+
+
+func revive(pos: Vector2) -> void:
+	print("[peer %s] Player %s revive!" % [multiplayer.get_unique_id(), input_peer_id])
+	global_position = pos
+	velocity = Vector2.ZERO
+	process_mode = Node.PROCESS_MODE_INHERIT
+	health_component.reset()
+	set_player_visible.rpc(true)
+	is_dead = false
+
+
+@rpc("authority", "call_local", "reliable")
+func set_player_visible(enabled: bool) -> void:
+	visible = enabled
+
+
+func _on_health_depleted() -> void:
+	_player_died()

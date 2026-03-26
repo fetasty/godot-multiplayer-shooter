@@ -77,6 +77,8 @@ func update_track_target() -> void:
 	var min_squared_distance: float
 	var track_player: Node2D = null
 	for player in players:
+		if player.is_dead:
+			continue
 		if track_player == null:
 			track_player = player
 			min_squared_distance = track_player.global_position.distance_squared_to(global_position)
