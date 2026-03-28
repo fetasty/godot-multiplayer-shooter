@@ -63,6 +63,8 @@ func _play_attack_effect() -> void:
 	effect.global_position = attack_point.global_position
 	effect.global_rotation = attack_point.global_rotation
 	get_parent().add_child(effect)
+	if player_input_multiplayer_synchronizer_component.is_multiplayer_authority():
+		GameCamera.shake()
 
 
 func _player_died() -> void:

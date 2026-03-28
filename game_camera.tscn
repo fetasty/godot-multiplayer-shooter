@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bxysm2rs6t7no"]
+
+[ext_resource type="Script" uid="uid://dvijnsqdk10vg" path="res://game_camera.gd" id="1_a63qp"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_a63qp"]
+
+[node name="GameCamera" type="Camera2D" unique_id=903918361]
+script = ExtResource("1_a63qp")
+noise = SubResource("FastNoiseLite_a63qp")
