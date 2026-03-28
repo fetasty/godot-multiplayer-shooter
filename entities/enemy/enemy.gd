@@ -1,6 +1,9 @@
 class_name Enemy
 extends CharacterBody2D
 
+const HIT_EFFECT = preload("uid://da0onk1mh08tv")
+const ENEMY_DIED_EFFECT = preload("uid://dv1y8ri1kqvnf")
+
 @onready var track_timer: Timer = $TrackTimer
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var visual: Node2D = $Visual
@@ -9,6 +12,7 @@ extends CharacterBody2D
 @onready var attack_cool_down_timer: Timer = $AttackCoolDownTimer
 @onready var charge_timer: Timer = $ChargeTimer
 @onready var hit_collision_shape_2d: CollisionShape2D = %HitCollisionShape2D
+@onready var hurtbox_component: HurtboxComponent = $HurtboxComponent
 
 var track_target: Vector2
 var has_track_target: bool = false
@@ -20,6 +24,7 @@ func _ready() -> void:
 	if is_multiplayer_authority():
 		track_timer.timeout.connect(_on_track_timer_timeout)
 		health_component.health_depleted.connect(_on_health_depleted)
+		hurtbox_component.hit.connect(_on_hit)
 		state_machine.current_state = "spawn"
 	else:
 		track_timer.process_mode = Node.PROCESS_MODE_DISABLED
@@ -93,9 +98,28 @@ func update_track_target() -> void:
 		has_track_target = false
 
 
+@rpc("authority", "call_local")
+func _play_hit_effect() -> void:
+	var effect := HIT_EFFECT.instantiate() as Node2D
+	get_parent().add_child(effect)
+	effect.global_position = hurtbox_component.global_position
+
+
+@rpc("authority", "call_local")
+func _play_died_effect() -> void:
+	var effect := ENEMY_DIED_EFFECT.instantiate() as Node2D
+	Main.backgound_effect.add_child(effect)
+	effect.global_position = global_position
+
+
 func _on_track_timer_timeout() -> void:
 	update_track_target()
 
 
 func _on_health_depleted() -> void:
 	state_machine.current_state = "died"
+	_play_died_effect.rpc()
+
+
+func _on_hit() -> void:
+	_play_hit_effect.rpc()
