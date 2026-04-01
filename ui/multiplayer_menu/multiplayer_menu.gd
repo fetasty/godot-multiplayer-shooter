@@ -3,11 +3,6 @@ extends Control
 const MAIN = preload("uid://yubvfldj7w73")
 const CONFIRM_DIALOG = preload("uid://ch32vetv5hls8")
 
-var player_name: String
-var host_ip: String
-var host_port: int
-var join_ip: String
-var join_port: int
 
 var is_connecting: bool = false
 
@@ -37,21 +32,21 @@ func _ready() -> void:
 
 
 func _validate() -> void:
-	player_name = player_name_text_edit.text.strip_edges()
-	host_ip = host_ip_text_edit.text
-	join_ip = join_ip_text_edit.text
-	var is_player_name_valid := not player_name.is_empty()
-	var is_host_ip_valid := host_ip.is_valid_ip_address() or host_ip == "*"
+	MultiplayerConfig.display_name = player_name_text_edit.text.strip_edges()
+	MultiplayerConfig.host_ip = host_ip_text_edit.text
+	MultiplayerConfig.join_ip = join_ip_text_edit.text
+	var is_player_name_valid := not MultiplayerConfig.display_name.is_empty()
+	var is_host_ip_valid := MultiplayerConfig.host_ip.is_valid_ip_address() or MultiplayerConfig.host_ip == "*"
 	var is_host_port_valid := host_port_text_edit.text.is_valid_int()
-	var is_join_ip_valid := join_ip.is_valid_ip_address()
+	var is_join_ip_valid := MultiplayerConfig.join_ip.is_valid_ip_address()
 	var is_join_port_valid := join_port_text_edit.text.is_valid_int()
 	if is_host_port_valid:
-		host_port = int(host_port_text_edit.text)
-		if not (host_port > 0 and host_port < 65535):
+		MultiplayerConfig.host_port = int(host_port_text_edit.text)
+		if not (MultiplayerConfig.host_port > 0 and MultiplayerConfig.host_port < 65535):
 			is_host_port_valid = false
 	if is_join_port_valid:
-		join_port = int(join_port_text_edit.text)
-		if not (join_port > 0 and join_port < 65535):
+		MultiplayerConfig.join_port = int(join_port_text_edit.text)
+		if not (MultiplayerConfig.join_port > 0 and MultiplayerConfig.join_port < 65535):
 			is_join_port_valid = false
 	host_button.disabled = is_connecting or (not is_player_name_valid) or (not is_host_ip_valid) or (not is_host_port_valid)
 	join_button.disabled = is_connecting or (not is_player_name_valid) or (not is_join_ip_valid) or (not is_join_port_valid)
@@ -71,9 +66,9 @@ func _on_text_changed() -> void:
 
 func _on_host_button_pressed() -> void:
 	var server_peer := ENetMultiplayerPeer.new()
-	if host_ip != "*":
-		server_peer.set_bind_ip(host_ip)
-	var err := server_peer.create_server(host_port)
+	if MultiplayerConfig.host_ip != "*":
+		server_peer.set_bind_ip(MultiplayerConfig.host_ip)
+	var err := server_peer.create_server(MultiplayerConfig.host_port)
 	if err != OK:
 		_show_error_dialog("Error",
 			"Creating server error: %s" % [error_string(err)])
@@ -84,7 +79,7 @@ func _on_host_button_pressed() -> void:
 
 func _on_join_button_pressed() -> void:
 	var client_peer := ENetMultiplayerPeer.new()
-	var err := client_peer.create_client(join_ip, join_port)
+	var err := client_peer.create_client(MultiplayerConfig.join_ip, MultiplayerConfig.join_port)
 	if err != OK:
 		_show_error_dialog("Error",
 			"Creating client error: %s" % [error_string(err)])

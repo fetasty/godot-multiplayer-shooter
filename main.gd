@@ -28,6 +28,7 @@ func _ready() -> void:
 		player.name = "Player%s" % [data.peer_id]
 		player.input_peer_id = data.peer_id
 		player.global_position = player_spawn_marker.global_position
+		player.input_display_name = data.display_name
 		if is_multiplayer_authority():
 			player.died.connect(_on_player_died.bind(data.peer_id))
 			player_dict[data.peer_id] = player
@@ -37,13 +38,13 @@ func _ready() -> void:
 		multiplayer.peer_disconnected.connect(_on_peer_disconnected)
 	else:
 		multiplayer.server_disconnected.connect(_on_server_disconnected)
-	_peer_ready.rpc_id(1)
+	_peer_ready.rpc_id(1, { "display_name": MultiplayerConfig.display_name })
 
 
 @rpc("any_peer", "call_local", "reliable")
-func _peer_ready() -> void:
+func _peer_ready(player_data: Dictionary) -> void:
 	var sender_id := multiplayer.get_remote_sender_id()
-	multiplayer_spawner.spawn({ "peer_id": sender_id })
+	multiplayer_spawner.spawn({ "peer_id": sender_id, "display_name": player_data.display_name })
 	enemy_spawn_component.synchronize(sender_id)
 
 

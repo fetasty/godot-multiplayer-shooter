@@ -6,7 +6,9 @@ signal died
 const BULLET = preload("uid://clvtit5mibwed")
 const MUZZLE_FLASH_EFFECT = preload("uid://ckgdgjh2c5e2s")
 
-var input_peer_id : int
+var input_peer_id: int
+var input_display_name: String
+
 var move_vector: Vector2 = Vector2.ZERO
 var move_speed: float = 100.0
 var is_dead: bool = false
@@ -18,12 +20,16 @@ var is_dead: bool = false
 @onready var visual_root: Node2D = $VisualRoot
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var attack_point: Marker2D = %AttackPoint
+@onready var display_name_label: Label = $DisplayNameLabel
+@onready var texture_progress_bar: TextureProgressBar = $TextureProgressBar
 
 func _ready() -> void:
 	print("[peer %s] Set player(%s) input authroity %s" % [multiplayer.get_unique_id(), name, input_peer_id])
 	player_input_multiplayer_synchronizer_component.set_multiplayer_authority(input_peer_id)
+	display_name_label.text = input_display_name
 	if is_multiplayer_authority():
 		health_component.health_depleted.connect(_on_health_depleted)
+		health_component.health_changed.connect(_on_health_changed)
 
 
 func _process(_delta: float) -> void:
@@ -90,6 +96,17 @@ func revive(pos: Vector2) -> void:
 func set_player_visible(enabled: bool) -> void:
 	visible = enabled
 
+@rpc("authority", "call_local", "reliable")
+func set_player_health_bar(rate: float) -> void:
+	texture_progress_bar.value = rate
+
 
 func _on_health_depleted() -> void:
 	_player_died()
+
+
+func _on_health_changed(max_value: int, current_value: int) -> void:
+	print("[peer %s] Player %s health change: %s / %s" % [
+		multiplayer.get_unique_id(), input_peer_id, current_value, max_value
+	])
+	set_player_health_bar.rpc(current_value * 1.0 / max_value)
