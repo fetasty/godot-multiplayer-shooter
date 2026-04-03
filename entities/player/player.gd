@@ -20,13 +20,16 @@ var is_dead: bool = false
 @onready var visual_root: Node2D = $VisualRoot
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var attack_point: Marker2D = %AttackPoint
-@onready var display_name_label: Label = $DisplayNameLabel
-@onready var texture_progress_bar: TextureProgressBar = $TextureProgressBar
+@onready var display_name_label: Label = %DisplayNameLabel
+@onready var health_progress_bar: TextureProgressBar = %TextureProgressBar
 
 func _ready() -> void:
 	print("[peer %s] Set player(%s) input authroity %s" % [multiplayer.get_unique_id(), name, input_peer_id])
 	player_input_multiplayer_synchronizer_component.set_multiplayer_authority(input_peer_id)
-	display_name_label.text = input_display_name
+	if multiplayer.multiplayer_peer is OfflineMultiplayerPeer:
+		display_name_label.visible = false
+	else:
+		display_name_label.text = input_display_name
 	if is_multiplayer_authority():
 		health_component.health_depleted.connect(_on_health_depleted)
 		health_component.health_changed.connect(_on_health_changed)
@@ -98,7 +101,9 @@ func set_player_visible(enabled: bool) -> void:
 
 @rpc("authority", "call_local", "reliable")
 func set_player_health_bar(rate: float) -> void:
-	texture_progress_bar.value = rate
+	health_progress_bar.value = rate
+	if multiplayer.get_unique_id() == input_peer_id:
+		GameEvents.emit_local_player_health_changed(rate)
 
 
 func _on_health_depleted() -> void:

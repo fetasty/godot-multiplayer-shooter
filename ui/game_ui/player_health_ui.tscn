@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://b065rp6pymopv"]
+
+[ext_resource type="Script" uid="uid://cxv6ne37giwca" path="res://ui/game_ui/player_health_ui.gd" id="1_a7v8s"]
+[ext_resource type="Texture2D" uid="uid://vnntbbwfapbr" path="res://assets/avatar_back.png" id="1_setyc"]
+[ext_resource type="Texture2D" uid="uid://baw77sr0v72ar" path="res://assets/avatar_mask.png" id="2_a7v8s"]
+[ext_resource type="Texture2D" uid="uid://bqqkssof5ynqj" path="res://entities/player/player.png" id="3_1e60i"]
+
+[node name="PlayerHealthUi" type="Control" unique_id=1293726692]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_a7v8s")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1726771119]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 10.0
+offset_right = 140.0
+offset_bottom = 50.0
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1461911144]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=202898884]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+mouse_filter = 2
+texture = ExtResource("1_setyc")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/TextureRect" unique_id=347887066]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_a7v8s")
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/HBoxContainer/TextureRect/TextureRect" unique_id=806688063]
+position = Vector2(10, 3)
+texture = ExtResource("3_1e60i")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=2136844131]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 2
+
+[node name="PlayerNameLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1532650875]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Player 1 "
+
+[node name="HealthBar" type="ProgressBar" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1575224566]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 8)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 2
+theme_type_variation = &"HealthBar"
+max_value = 1.0
+value = 0.3
+show_percentage = false

@@ -2,35 +2,41 @@
 
 [ext_resource type="Script" uid="uid://d2rvbxne6j42c" path="res://ui/game_ui/round_timer_ui.gd" id="1_r25p4"]
 
-[node name="RoundTimerUI" type="CanvasLayer" unique_id=106671089]
+[node name="RoundTimerUI" type="MarginContainer" unique_id=448344478]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_right = 35.0
+offset_bottom = 40.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 15
 script = ExtResource("1_r25p4")
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=576699368]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_top = 15
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=102290584]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=102290584]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
+mouse_filter = 2
 theme_override_constants/separation = 0
 
-[node name="RoundLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=348109773]
+[node name="RoundLabel" type="Label" parent="VBoxContainer" unique_id=348109773]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.8901961, 0.5294118, 0.22352941, 1)
+theme_override_colors/font_outline_color = Color(0.15127608, 0.15127608, 0.15127608, 1)
+theme_override_constants/outline_size = 5
 text = "Round 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TimerLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1770404699]
+[node name="TimerLabel" type="Label" parent="VBoxContainer" unique_id=1770404699]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.8901961, 0.5294118, 0.22352941, 1)
+theme_override_colors/font_outline_color = Color(0.15127608, 0.15127608, 0.15127608, 1)
+theme_override_constants/outline_size = 5
 text = "30"
 horizontal_alignment = 1
 vertical_alignment = 1

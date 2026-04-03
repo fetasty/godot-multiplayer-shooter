@@ -49,7 +49,7 @@ func _peer_ready(player_data: Dictionary) -> void:
 
 
 func _end_game() -> void:
-	multiplayer.multiplayer_peer = null
+	multiplayer.multiplayer_peer = OfflineMultiplayerPeer.new()
 	get_tree().change_scene_to_file("res://ui/menu/main_menu.tscn")
 
 

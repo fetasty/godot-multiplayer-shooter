@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://biirhbv3815k7" path="res://ui/game_ui/round_timer_ui.tscn" id="4_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://bsribtxmknyhs" path="res://assets/arena_mask.png" id="4_lquwl"]
 [ext_resource type="PackedScene" uid="uid://bxysm2rs6t7no" path="res://game_camera.tscn" id="6_7mycd"]
+[ext_resource type="PackedScene" uid="uid://b065rp6pymopv" path="res://ui/game_ui/player_health_ui.tscn" id="6_272bh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
 size = Vector2(32, 300)
@@ -88,8 +89,13 @@ texture = ExtResource("4_lquwl")
 [node name="YSortRoot" type="Node2D" parent="." unique_id=216170404]
 y_sort_enabled = true
 
-[node name="RoundTimerUI" parent="." unique_id=106671089 node_paths=PackedStringArray("enemy_spawn_component") instance=ExtResource("4_1bvp3")]
-enemy_spawn_component = NodePath("../EnemySpawnComponent")
+[node name="GameUILayer" type="CanvasLayer" parent="." unique_id=641521172]
+
+[node name="RoundTimerUI" parent="GameUILayer" unique_id=106671089 node_paths=PackedStringArray("enemy_spawn_component") instance=ExtResource("4_1bvp3")]
+offset_bottom = 55.0
+enemy_spawn_component = NodePath("../../EnemySpawnComponent")
+
+[node name="PlayerHealthUi" parent="GameUILayer" unique_id=1293726692 instance=ExtResource("6_272bh")]
 
 [node name="GameCamera" parent="." unique_id=903918361 instance=ExtResource("6_7mycd")]
 position = Vector2(320, 180)

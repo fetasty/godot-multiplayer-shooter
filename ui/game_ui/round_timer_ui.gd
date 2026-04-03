@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Control
 
 @export var enemy_spawn_component: EnemySpawnComponent
 
