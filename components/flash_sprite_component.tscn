@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bckrnncvijtky"]
 
-[ext_resource type="Shader" uid="uid://cmi5pwj65438r" path="res://shader/flash_sprite_component.gdshader" id="1_ryou0"]
+[ext_resource type="Shader" uid="uid://cmi5pwj65438r" path="res://resources/shader/flash_sprite_component.gdshader" id="1_ryou0"]
 [ext_resource type="Script" uid="uid://dhg42jwm4ir5w" path="res://components/flash_sprite_component.gd" id="3_t8ywv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c101w"]

@@ -17,6 +17,9 @@ var died_peers: Array[int] = []
 @onready var _background_effect: Node2D = $BackgroundEffect
 @onready var _background_effect_clip: Sprite2D = %BackgroundEffectClip
 @onready var pause_menu: PauseMenu = $PauseMenu
+@onready var round_timer_ui: MarginContainer = %RoundTimerUI
+@onready var ready_state_ui: ReadyStateUI = %ReadyStateUI
+@onready var lobby_component: LobbyComponent = %LobbyComponent
 
 
 
@@ -35,16 +38,22 @@ func _ready() -> void:
 			player_dict[data.peer_id] = player
 		return player
 	pause_menu.quit_requested.connect(_on_quit_requested)
+	lobby_component.all_peers_ready_checked.connect(_on_all_peers_ready_checked)
 	if is_multiplayer_authority():
 		enemy_spawn_component.round_completed.connect(_on_round_completed)
 		multiplayer.peer_disconnected.connect(_on_peer_disconnected)
 	else:
 		multiplayer.server_disconnected.connect(_on_server_disconnected)
-	_peer_ready.rpc_id(1, { "display_name": MultiplayerConfig.display_name })
+	_create_player.rpc_id(1, { "display_name": MultiplayerConfig.display_name })
+	var is_single_player := multiplayer.multiplayer_peer is OfflineMultiplayerPeer
+	round_timer_ui.visible = is_single_player
+	ready_state_ui.visible = not is_single_player
+	if is_single_player:
+		enemy_spawn_component.start()
 
 
 @rpc("any_peer", "call_local", "reliable")
-func _peer_ready(player_data: Dictionary) -> void:
+func _create_player(player_data: Dictionary) -> void:
 	var sender_id := multiplayer.get_remote_sender_id()
 	multiplayer_spawner.spawn({ "peer_id": sender_id, "display_name": player_data.display_name })
 	enemy_spawn_component.synchronize(sender_id)
@@ -96,3 +105,11 @@ func _on_peer_disconnected(peer_id: int) -> void:
 
 func _on_quit_requested() -> void:
 	_end_game()
+
+
+func _on_all_peers_ready_checked() -> void:
+	round_timer_ui.visible = true
+	ready_state_ui.visible = false
+	if is_multiplayer_authority():
+		lobby_component.close_lobby()
+		enemy_spawn_component.start()

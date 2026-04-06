@@ -33,6 +33,10 @@ func _ready() -> void:
 		spawn_timer.timeout.connect(_on_spawn_timer_timeout)
 		round_timer.timeout.connect(_on_round_timer_timeout)
 		GameEvents.enemy_died.connect(_on_enemy_died)
+
+
+func start() -> void:
+	if is_multiplayer_authority():
 		_start_round()
 
 

@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://cye7nu53lap8o" path="res://entities/enemy/state_attack.gd" id="7_4ohlc"]
 [ext_resource type="Script" uid="uid://bi7p04bjs17sk" path="res://entities/enemy/state_died.gd" id="8_4ohlc"]
 [ext_resource type="Texture2D" uid="uid://dlib4ff7bbyjk" path="res://entities/enemy/Sprite-0008.png" id="9_7vrfk"]
-[ext_resource type="Shader" uid="uid://cmi5pwj65438r" path="res://shader/flash_sprite_component.gdshader" id="10_jfjhj"]
+[ext_resource type="Shader" uid="uid://cmi5pwj65438r" path="res://resources/shader/flash_sprite_component.gdshader" id="10_jfjhj"]
 [ext_resource type="PackedScene" uid="uid://bckrnncvijtky" path="res://components/flash_sprite_component.tscn" id="10_ogeq8"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_im2q6"]

@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://bxysm2rs6t7no" path="res://game_camera.tscn" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://b065rp6pymopv" path="res://ui/game_ui/player_health_ui.tscn" id="6_272bh"]
 [ext_resource type="PackedScene" uid="uid://cnuvaijhay34l" path="res://ui/pause_menu/pause_menu.tscn" id="7_5vw27"]
+[ext_resource type="PackedScene" uid="uid://7ekdi6cfbyw3" path="res://ui/game_ui/ready_state_ui.tscn" id="7_kek77"]
+[ext_resource type="PackedScene" uid="uid://bae6wkegs6yiv" path="res://components/lobby_component.tscn" id="8_4c57u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
 size = Vector2(32, 300)
@@ -22,6 +24,13 @@ script = ExtResource("1_0xm2m")
 unique_name_in_owner = true
 _spawnable_scenes = PackedStringArray("uid://clvtit5mibwed", "uid://pu2c45uixpy0")
 spawn_path = NodePath("../YSortRoot")
+
+[node name="EnemySpawnComponent" parent="." unique_id=1168245383 node_paths=PackedStringArray("spawn_root", "spawn_rect") instance=ExtResource("3_h2yge")]
+spawn_root = NodePath("../YSortRoot")
+spawn_rect = NodePath("../ReferenceRect")
+
+[node name="LobbyComponent" parent="." unique_id=2002126853 instance=ExtResource("8_4c57u")]
+unique_name_in_owner = true
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1570274783]
 position = Vector2(320, 180)
@@ -66,10 +75,6 @@ shape = SubResource("RectangleShape2D_h2yge")
 position = Vector2(320, 180)
 metadata/_edit_lock_ = true
 
-[node name="EnemySpawnComponent" parent="." unique_id=1168245383 node_paths=PackedStringArray("spawn_root", "spawn_rect") instance=ExtResource("3_h2yge")]
-spawn_root = NodePath("../YSortRoot")
-spawn_rect = NodePath("../ReferenceRect")
-
 [node name="ReferenceRect" type="ReferenceRect" parent="." unique_id=1251462368]
 custom_minimum_size = Vector2(380, 180)
 offset_left = 130.0
@@ -93,10 +98,15 @@ y_sort_enabled = true
 [node name="GameUILayer" type="CanvasLayer" parent="." unique_id=641521172]
 
 [node name="RoundTimerUI" parent="GameUILayer" unique_id=106671089 node_paths=PackedStringArray("enemy_spawn_component") instance=ExtResource("4_1bvp3")]
+unique_name_in_owner = true
 offset_bottom = 55.0
 enemy_spawn_component = NodePath("../../EnemySpawnComponent")
 
-[node name="PlayerHealthUi" parent="GameUILayer" unique_id=1293726692 instance=ExtResource("6_272bh")]
+[node name="PlayerHealthUI" parent="GameUILayer" unique_id=1293726692 instance=ExtResource("6_272bh")]
+
+[node name="ReadyStateUI" parent="GameUILayer" unique_id=456381446 node_paths=PackedStringArray("lobby_component") instance=ExtResource("7_kek77")]
+unique_name_in_owner = true
+lobby_component = NodePath("../../LobbyComponent")
 
 [node name="PauseMenu" parent="." unique_id=1544799969 instance=ExtResource("7_5vw27")]
 visible = false

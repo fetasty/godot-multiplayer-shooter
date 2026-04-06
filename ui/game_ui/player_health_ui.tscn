@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://baw77sr0v72ar" path="res://assets/avatar_mask.png" id="2_a7v8s"]
 [ext_resource type="Texture2D" uid="uid://bqqkssof5ynqj" path="res://entities/player/player.png" id="3_1e60i"]
 
-[node name="PlayerHealthUi" type="Control" unique_id=1293726692]
+[node name="PlayerHealthUI" type="Control" unique_id=1293726692]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -63,6 +63,7 @@ mouse_filter = 2
 [node name="PlayerNameLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1532650875]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_constants/outline_size = 5
 text = "Player 1 "
 
 [node name="HealthBar" type="ProgressBar" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1575224566]

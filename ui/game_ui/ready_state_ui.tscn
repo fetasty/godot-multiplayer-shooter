@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://7ekdi6cfbyw3"]
+
+[ext_resource type="Script" uid="uid://dtf1xdpk472hk" path="res://ui/game_ui/ready_state_ui.gd" id="1_2t25n"]
+
+[node name="ReadyStateUI" type="Control" unique_id=456381446]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2t25n")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=47890942]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -116.0
+offset_top = 5.0
+offset_right = 116.0
+offset_bottom = 59.0
+grow_horizontal = 2
+theme_override_constants/separation = 0
+
+[node name="ReadyLabel" type="Label" parent="VBoxContainer" unique_id=983179923]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.12800002, 0.8, 0.68799996, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "READY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NotReadyContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1128018629]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="NotReadyLabel" type="Label" parent="VBoxContainer/NotReadyContainer" unique_id=1844637326]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "PRESS R TO READY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ReadyButton" type="Button" parent="VBoxContainer/NotReadyContainer" unique_id=1641046847]
+unique_name_in_owner = true
+layout_mode = 2
+text = "READY"
+
+[node name="ReadyStatusLabel" type="Label" parent="VBoxContainer" unique_id=2125501983]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "1/4 READY"
+horizontal_alignment = 1
+vertical_alignment = 1
