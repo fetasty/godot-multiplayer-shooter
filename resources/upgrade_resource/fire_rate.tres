@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="UpgradeResource" format=3 uid="uid://5owbwm45ykr8"]
+
+[ext_resource type="Script" uid="uid://dxyttex512alu" path="res://resources/upgrade_resource/upgrade_resource.gd" id="1_i1pog"]
+
+[resource]
+script = ExtResource("1_i1pog")
+id = "fire_rate"
+option = "fire_rate"
+description = "提升攻击速度"
+metadata/_custom_type_script = "uid://dxyttex512alu"

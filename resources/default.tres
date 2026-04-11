@@ -64,6 +64,13 @@ texture_margin_bottom = 2.0
 region_rect = Rect2(0, 0, 8, 8)
 modulate_color = Color(0.53279996, 0.72, 0.288, 1)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eqc3b"]
+texture = ExtResource("2_jsgte")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ir6w1"]
 texture = ExtResource("2_jsgte")
 texture_margin_left = 7.0
@@ -82,5 +89,7 @@ Button/styles/pressed = SubResource("StyleBoxTexture_dqhm0")
 HealthBar/base_type = &"ProgressBar"
 HealthBar/styles/background = SubResource("StyleBoxTexture_mb6pw")
 HealthBar/styles/fill = SubResource("StyleBoxTexture_cw4kx")
-TexturePanelContainer/base_type = &"PanelContainer"
+SelectablePanelContainer/base_type = &"PanelContainer"
+SelectablePanelContainer/styles/panel = SubResource("StyleBoxTexture_eqc3b")
+TexturePanelContainer/base_type = &"SelectablePanelContainer"
 TexturePanelContainer/styles/panel = SubResource("StyleBoxTexture_ir6w1")

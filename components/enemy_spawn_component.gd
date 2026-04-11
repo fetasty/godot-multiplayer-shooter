@@ -58,7 +58,7 @@ func _check_round_completed() -> void:
 	if enemy_count == 0:
 		print("Round %s completed!" % round_count)
 		round_completed.emit()
-		_start_round()
+		#_start_round()
 
 
 func _get_random_position() -> Vector2:

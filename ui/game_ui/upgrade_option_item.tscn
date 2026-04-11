@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bokjg66q10lcd"]
+
+[ext_resource type="Script" uid="uid://bjxhyl5apxtcf" path="res://ui/game_ui/upgrade_option_item.gd" id="1_lp0tm"]
+
+[node name="UpgradeOptionItem" type="PanelContainer" unique_id=303070691]
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("1_lp0tm")
+
+[node name="SelectButton" type="Button" parent="." unique_id=2005475259]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1727084564]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=856791650]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1929155066]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Fire Rate"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer" unique_id=2129674756]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=617370968]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "this is just a fox jump through a dog."
+autowrap_mode = 3

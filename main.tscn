@@ -4,12 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://cs6mguapgbjft" path="res://assets/arena.png" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://lfrnuc5iv0jl" path="res://components/enemy_spawn_component.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://biirhbv3815k7" path="res://ui/game_ui/round_timer_ui.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://pj5pj8ibjhgi" path="res://components/upgrade_component.tscn" id="4_efxa6"]
 [ext_resource type="Texture2D" uid="uid://bsribtxmknyhs" path="res://assets/arena_mask.png" id="4_lquwl"]
 [ext_resource type="PackedScene" uid="uid://bxysm2rs6t7no" path="res://game_camera.tscn" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://b065rp6pymopv" path="res://ui/game_ui/player_health_ui.tscn" id="6_272bh"]
 [ext_resource type="PackedScene" uid="uid://cnuvaijhay34l" path="res://ui/pause_menu/pause_menu.tscn" id="7_5vw27"]
 [ext_resource type="PackedScene" uid="uid://7ekdi6cfbyw3" path="res://ui/game_ui/ready_state_ui.tscn" id="7_kek77"]
 [ext_resource type="PackedScene" uid="uid://bae6wkegs6yiv" path="res://components/lobby_component.tscn" id="8_4c57u"]
+[ext_resource type="PackedScene" uid="uid://by08acufa0y3u" path="res://ui/game_ui/upgrade_options_ui.tscn" id="10_dg77c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
 size = Vector2(32, 300)
@@ -31,6 +33,10 @@ spawn_rect = NodePath("../ReferenceRect")
 
 [node name="LobbyComponent" parent="." unique_id=2002126853 instance=ExtResource("8_4c57u")]
 unique_name_in_owner = true
+
+[node name="UpgradeComponent" parent="." unique_id=1374266706 node_paths=PackedStringArray("enemy_spawn_component", "upgrade_options_ui") instance=ExtResource("4_efxa6")]
+enemy_spawn_component = NodePath("../EnemySpawnComponent")
+upgrade_options_ui = NodePath("../GameUILayer/UpgradeOptionsUI")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1570274783]
 position = Vector2(320, 180)
@@ -107,6 +113,8 @@ enemy_spawn_component = NodePath("../../EnemySpawnComponent")
 [node name="ReadyStateUI" parent="GameUILayer" unique_id=456381446 node_paths=PackedStringArray("lobby_component") instance=ExtResource("7_kek77")]
 unique_name_in_owner = true
 lobby_component = NodePath("../../LobbyComponent")
+
+[node name="UpgradeOptionsUI" parent="GameUILayer" unique_id=109763391 instance=ExtResource("10_dg77c")]
 
 [node name="PauseMenu" parent="." unique_id=1544799969 instance=ExtResource("7_5vw27")]
 visible = false
