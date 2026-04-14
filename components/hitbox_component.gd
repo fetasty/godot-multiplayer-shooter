@@ -4,7 +4,8 @@ extends Area2D
 signal hit(hurtbox: HurtboxComponent)
 
 var damage: int = 1
-
+var is_single_hit: bool = false
+var hit_count: int = 0
 
 func _ready() -> void:
 	if not is_multiplayer_authority():
@@ -12,4 +13,5 @@ func _ready() -> void:
 
 
 func register_hit(hurtbox: HurtboxComponent) -> void:
+	hit_count += 1
 	hit.emit(hurtbox)

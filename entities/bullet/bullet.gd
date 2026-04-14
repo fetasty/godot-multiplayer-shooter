@@ -15,6 +15,7 @@ func _ready() -> void:
 	if is_multiplayer_authority():
 		timer.timeout.connect(_on_life_timer_timeout)
 		hitbox_component.damage = damage
+		hitbox_component.is_single_hit = true
 		hitbox_component.hit.connect(_on_hit)
 	else:
 		timer.process_mode = Node.PROCESS_MODE_DISABLED
