@@ -3,6 +3,7 @@ extends Node
 
 signal round_changed(round_count: int)
 signal round_completed
+signal max_round_end
 
 const ENEMY = preload("uid://pu2c45uixpy0")
 
@@ -11,6 +12,7 @@ const ROUND_TIME_GROWTH: float = 5
 const BASE_MIN_SPAWN_INTERVAL: float = 2.0
 const BASE_MAX_SPAWN_INTERVAL: float = 5.0
 const SPAWN_INTERVAL_GROWTH: float = -0.2
+const MAX_ROUND: int = 5
 
 @export var spawn_root: Node2D
 @export var spawn_rect: ReferenceRect
@@ -59,7 +61,11 @@ func _check_round_completed() -> void:
 		return
 	if enemy_count == 0:
 		print("Round %s completed!" % round_count)
-		round_completed.emit()
+		if round_count < MAX_ROUND:
+			round_completed.emit()
+		else:
+			await get_tree().create_timer(1.0).timeout
+			max_round_end.emit()
 		#_start_round()
 
 

@@ -4,6 +4,7 @@ extends Node
 const PLAYER = preload("uid://dgstmloeo60yy")
 const ENEMY = preload("uid://pu2c45uixpy0")
 const MAIN_MENU = preload("uid://dkve68vq7kmiw")
+const GAME_END_MENU = preload("uid://b0vdjj5stvrav")
 
 static var background_effect: Node
 static var background_effect_clip: Node
@@ -41,6 +42,7 @@ func _ready() -> void:
 	lobby_component.all_peers_ready_checked.connect(_on_all_peers_ready_checked)
 	if is_multiplayer_authority():
 		enemy_spawn_component.round_completed.connect(_on_round_completed)
+		enemy_spawn_component.max_round_end.connect(_on_max_round_end)
 		multiplayer.peer_disconnected.connect(_on_peer_disconnected)
 		GameEvents.enemy_died.connect(_on_enemy_died)
 	else:
@@ -66,6 +68,14 @@ func _end_game() -> void:
 	get_tree().change_scene_to_file("res://ui/menu/main_menu.tscn")
 
 
+@rpc("authority", "call_local", "reliable")
+func _game_completed(win: bool) -> void:
+	GameState.game_win = win
+	get_tree().paused = false
+	multiplayer.multiplayer_peer = OfflineMultiplayerPeer.new()
+	get_tree().change_scene_to_packed(GAME_END_MENU)
+
+
 func _check_game_over() -> void:
 	# multiplayer.get_peers 返回所有已连接的peer,不包含自身
 	var all_peers := multiplayer.get_peers()
@@ -76,7 +86,7 @@ func _check_game_over() -> void:
 			is_game_over = false
 			break
 	if is_game_over:
-		_end_game()
+		_game_completed.rpc(false)
 
 
 @rpc("authority", "call_local")
@@ -94,6 +104,10 @@ func _on_round_completed() -> void:
 		var player := player_dict[peer_id]
 		player.revive(player_spawn_marker.global_position)
 	died_peers.clear()
+
+
+func _on_max_round_end() -> void:
+	_game_completed.rpc(true)
 
 
 func _on_server_disconnected() -> void:

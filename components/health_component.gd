@@ -4,7 +4,7 @@ extends Node
 signal health_changed(max_value: int, current_value: int)
 signal health_depleted
 
-@export var max_health: int = 3
+@export var max_health: int = 5
 
 var current_health: int = max_health:
 	get:
@@ -13,6 +13,11 @@ var current_health: int = max_health:
 		if value != current_health:
 			current_health = value
 			health_changed.emit(max_health, current_health)
+
+
+func _ready() -> void:
+	if is_multiplayer_authority():
+		current_health = max_health
 
 
 func take_damage(damage: int) -> void:
