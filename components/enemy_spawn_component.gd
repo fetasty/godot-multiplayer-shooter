@@ -12,7 +12,7 @@ const ROUND_TIME_GROWTH: float = 5
 const BASE_MIN_SPAWN_INTERVAL: float = 2.0
 const BASE_MAX_SPAWN_INTERVAL: float = 5.0
 const SPAWN_INTERVAL_GROWTH: float = -0.2
-const MAX_ROUND: int = 5
+const MAX_ROUND: int = 10
 
 @export var spawn_root: Node2D
 @export var spawn_rect: ReferenceRect
@@ -107,11 +107,16 @@ func _synchronize(data: Dictionary) -> void:
 
 
 func _on_spawn_timer_timeout() -> void:
-	var enemy := ENEMY.instantiate() as Node2D
-	enemy.global_position = _get_random_position()
-	#print("[peer %s] enemy spawn pos: %s" % [multiplayer.get_unique_id(), enemy.global_position])
-	spawn_root.add_child(enemy, true)
-	enemy_count += 1
+	var peers := multiplayer.get_peers().size() + 1
+	var multi_enemy_rate := randf_range(0.0, 0.1 * peers + 0.05 * round_count)
+	var is_multi_enemy_spawn := randf() < multi_enemy_rate
+	var spawn_count := randi_range(1, (peers + round_count) * 1.5) if is_multi_enemy_spawn else 1
+	for i in spawn_count:
+		var enemy := ENEMY.instantiate() as Node2D
+		enemy.global_position = _get_random_position()
+		#print("[peer %s] enemy spawn pos: %s" % [multiplayer.get_unique_id(), enemy.global_position])
+		spawn_root.add_child(enemy, true)
+		enemy_count += 1
 	spawn_timer.start(randf_range(round_min_spawn_interval, round_max_spawn_interval))
 
 
