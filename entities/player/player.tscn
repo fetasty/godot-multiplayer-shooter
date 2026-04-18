@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://lraujmjs4n3w" path="res://assets/health_bar_progress.tres" id="4_bectd"]
 [ext_resource type="Texture2D" uid="uid://2kssud5dpd6d" path="res://entities/player/weapon.png" id="4_bls4j"]
 [ext_resource type="PackedScene" uid="uid://cjdfv3bck20to" path="res://components/hurtbox_component.tscn" id="5_8fjmc"]
+[ext_resource type="Texture2D" uid="uid://cbqlwutkg8y67" path="res://assets/shadow.png" id="5_j3ovn"]
 [ext_resource type="PackedScene" uid="uid://d4dbjbld66ye3" path="res://components/health_component.tscn" id="6_qiwj3"]
 [ext_resource type="PackedScene" uid="uid://bckrnncvijtky" path="res://components/flash_sprite_component.tscn" id="7_wvtmh"]
 [ext_resource type="Shader" uid="uid://cmi5pwj65438r" path="res://resources/shader/flash_sprite_component.gdshader" id="8_7thud"]
@@ -120,7 +121,7 @@ _data = {
 }
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3wlsy"]
-random_pitch = 1.0656005
+random_pitch = 1.1892071
 random_volume_offset_db = 2.0
 streams_count = 2
 stream_0/stream = ExtResource("11_j3ovn")
@@ -180,6 +181,11 @@ texture_under = ExtResource("3_26q78")
 texture_progress = ExtResource("4_bectd")
 
 [node name="VisualRoot" type="Node2D" parent="." unique_id=1130646804]
+
+[node name="Shadow" type="Sprite2D" parent="VisualRoot" unique_id=1301032834]
+position = Vector2(0, 1)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("5_j3ovn")
 
 [node name="FlashSpriteComponent" parent="VisualRoot" unique_id=1374404885 instance=ExtResource("7_wvtmh")]
 material = SubResource("ShaderMaterial_a1qjk")

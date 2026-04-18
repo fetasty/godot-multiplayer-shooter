@@ -110,7 +110,7 @@ func _on_spawn_timer_timeout() -> void:
 	var peers := multiplayer.get_peers().size() + 1
 	var multi_enemy_rate := randf_range(0.0, 0.1 * peers + 0.05 * round_count)
 	var is_multi_enemy_spawn := randf() < multi_enemy_rate
-	var spawn_count := randi_range(1, (peers + round_count) * 1.5) if is_multi_enemy_spawn else 1
+	var spawn_count := randi_range(1, int((peers + round_count) * 1.5)) if is_multi_enemy_spawn else 1
 	for i in spawn_count:
 		var enemy := ENEMY.instantiate() as Node2D
 		enemy.global_position = _get_random_position()
