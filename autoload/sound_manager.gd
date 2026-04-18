@@ -24,13 +24,25 @@ func register_select(btns: Array[Button]) -> void:
 		btn.pressed.connect(_on_play_select_sfx)
 
 
-func _on_play_hover_sfx() -> void:
+func play_hover() -> void:
 	hover_audio_stream_player.play()
 
 
-func _on_play_click_sfx() -> void:
+func play_click() -> void:
 	click_audio_stream_player.play()
 
 
-func _on_play_select_sfx() -> void:
+func play_select() -> void:
 	select_audio_stream_player.play()
+
+
+func _on_play_hover_sfx() -> void:
+	play_hover()
+
+
+func _on_play_click_sfx() -> void:
+	play_click()
+
+
+func _on_play_select_sfx() -> void:
+	play_select()

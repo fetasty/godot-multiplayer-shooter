@@ -27,12 +27,13 @@ func _ready() -> void:
 		multiplayer.peer_disconnected.connect(_on_peer_disconnected)
 
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
 		if get_tree().paused:
 			request_resume.rpc_id(1)
 		else:
 			request_pause.rpc_id(1)
+		get_viewport().set_input_as_handled()
 
 
 @rpc("any_peer", "call_local", "reliable")

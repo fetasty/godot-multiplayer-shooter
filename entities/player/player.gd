@@ -13,6 +13,8 @@ const BASE_BULLET_DAMAGE: int = 1
 var input_peer_id: int
 var input_display_name: String
 
+var player_look_index: int = 0
+
 var move_vector: Vector2 = Vector2.ZERO
 var is_dead: bool = false
 
@@ -28,15 +30,18 @@ var is_dead: bool = false
 @onready var player_info: VBoxContainer = %PlayerInfo
 @onready var move_animation_player: AnimationPlayer = %MoveAnimationPlayer
 @onready var hurtbox_component: HurtboxComponent = $HurtboxComponent
-@onready var flash_sprite_component: FlashSpriteComponent = $VisualRoot/FlashSpriteComponent
+@onready var flash_sprite_component: FlashSpriteComponent = %FlashSpriteComponent
 @onready var collision_shape_2d: CollisionShape2D = $HurtboxComponent/CollisionShape2D
 @onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
+
 
 func _ready() -> void:
 	print("[peer %s] Set player(%s) input authroity %s" % [multiplayer.get_unique_id(), name, input_peer_id])
 	player_input_multiplayer_synchronizer_component.set_multiplayer_authority(input_peer_id)
 	var is_peer_authority = multiplayer.get_unique_id() == input_peer_id
 	player_info.visible = not is_peer_authority
+	flash_sprite_component.frame = player_look_index
+	GameEvents.player_look_changed.connect(_on_player_look_changed)
 	if not is_peer_authority:
 		display_name_label.text = input_display_name
 	if is_multiplayer_authority():
@@ -179,3 +184,15 @@ func _on_health_changed(max_value: int, current_value: int) -> void:
 func _on_hit() -> void:
 	if not is_dead:
 		play_hit_effects.rpc()
+
+
+func _on_player_look_changed(peer_id: int, index: int) -> void:
+	if peer_id != input_peer_id:
+		return
+	print("[peer %s] player %s change look to %s" % [
+		multiplayer.get_unique_id(),
+		input_peer_id,
+		index,
+	])
+	player_look_index = index
+	flash_sprite_component.frame = index

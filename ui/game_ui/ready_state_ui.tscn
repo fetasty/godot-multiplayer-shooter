@@ -9,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_2t25n")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=47890942]
@@ -21,6 +22,7 @@ offset_top = 5.0
 offset_right = 116.0
 offset_bottom = 59.0
 grow_horizontal = 2
+mouse_filter = 2
 theme_override_constants/separation = 0
 
 [node name="ReadyLabel" type="Label" parent="VBoxContainer" unique_id=983179923]
@@ -37,6 +39,7 @@ vertical_alignment = 1
 [node name="NotReadyContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1128018629]
 unique_name_in_owner = true
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 10
 
 [node name="NotReadyLabel" type="Label" parent="VBoxContainer/NotReadyContainer" unique_id=1844637326]
@@ -51,6 +54,11 @@ vertical_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 text = "READY"
+
+[node name="SkinButton" type="Button" parent="VBoxContainer/NotReadyContainer" unique_id=1682689440]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Skin"
 
 [node name="ReadyStatusLabel" type="Label" parent="VBoxContainer" unique_id=2125501983]
 unique_name_in_owner = true

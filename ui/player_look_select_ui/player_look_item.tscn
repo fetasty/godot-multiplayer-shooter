@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://061gn8pmi477"]
+
+[ext_resource type="Texture2D" uid="uid://dnrhxo7viwn0f" path="res://ui/player_look_select_ui/player1.tres" id="1_ucmne"]
+[ext_resource type="Texture2D" uid="uid://c0sinegsi6b5m" path="res://assets/avatar_box.png" id="2_4w311"]
+[ext_resource type="Script" uid="uid://gnokiel47727" path="res://ui/player_look_select_ui/player_look_item.gd" id="2_qdlkl"]
+[ext_resource type="Texture2D" uid="uid://c7wnfvre36c5h" path="res://assets/indicator.png" id="3_qdlkl"]
+
+[node name="PlayerLookItem" type="TextureRect" unique_id=443562653]
+custom_minimum_size = Vector2(64, 64)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 0
+texture = ExtResource("1_ucmne")
+script = ExtResource("2_qdlkl")
+
+[node name="SelectBox" type="NinePatchRect" parent="." unique_id=910102408]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_4w311")
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Indicator" type="TextureRect" parent="." unique_id=1132273860]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("3_qdlkl")

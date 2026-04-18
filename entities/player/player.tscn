@@ -18,6 +18,9 @@
 properties/0/path = NodePath(".:global_position")
 properties/0/spawn = true
 properties/0/replication_mode = 2
+properties/1/path = NodePath(".:player_look_index")
+properties/1/spawn = true
+properties/1/replication_mode = 0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a1qjk"]
 resource_local_to_scene = true
@@ -188,10 +191,13 @@ scale = Vector2(0.9, 0.9)
 texture = ExtResource("5_j3ovn")
 
 [node name="FlashSpriteComponent" parent="VisualRoot" unique_id=1374404885 instance=ExtResource("7_wvtmh")]
+unique_name_in_owner = true
 material = SubResource("ShaderMaterial_a1qjk")
 texture = ExtResource("2_sglur")
 centered = false
 offset = Vector2(-13, -32)
+hframes = 2
+vframes = 2
 
 [node name="WeaponRoot" type="Node2D" parent="VisualRoot" unique_id=1092641407]
 unique_name_in_owner = true

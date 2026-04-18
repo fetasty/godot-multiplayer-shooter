@@ -22,6 +22,7 @@ var died_peers: Array[int] = []
 @onready var ready_state_ui: ReadyStateUI = %ReadyStateUI
 @onready var lobby_component: LobbyComponent = %LobbyComponent
 @onready var enemy_died_audio_stream_player: AudioStreamPlayer = %EnemyDiedAudioStreamPlayer
+@onready var player_look_select_ui: PlayerLookSelectUI = %PlayerLookSelectUI
 
 
 func _ready() -> void:
@@ -34,12 +35,16 @@ func _ready() -> void:
 		player.input_peer_id = data.peer_id
 		player.global_position = player_spawn_marker.global_position
 		player.input_display_name = data.display_name
+		player.player_look_index = randi_range(0, 3)
 		if is_multiplayer_authority():
+			_peer_look_changed.rpc(data.peer_id, player.player_look_index)
 			player.died.connect(_on_player_died.bind(data.peer_id))
 			player_dict[data.peer_id] = player
 		return player
 	pause_menu.quit_requested.connect(_on_quit_requested)
 	lobby_component.all_peers_ready_checked.connect(_on_all_peers_ready_checked)
+	player_look_select_ui.player_look_selected.connect(_on_player_look_selected)
+	ready_state_ui.player_look_button_pressed.connect(_on_player_look_button_pressed)
 	if is_multiplayer_authority():
 		enemy_spawn_component.round_completed.connect(_on_round_completed)
 		enemy_spawn_component.max_round_end.connect(_on_max_round_end)
@@ -48,11 +53,13 @@ func _ready() -> void:
 	else:
 		multiplayer.server_disconnected.connect(_on_server_disconnected)
 	_create_player.rpc_id(1, { "display_name": MultiplayerConfig.display_name })
-	var is_single_player := multiplayer.multiplayer_peer is OfflineMultiplayerPeer
-	round_timer_ui.visible = is_single_player
-	ready_state_ui.visible = not is_single_player
-	if is_single_player:
-		enemy_spawn_component.start()
+	round_timer_ui.visible = false
+	ready_state_ui.visible = true
+	#var is_single_player := multiplayer.multiplayer_peer is OfflineMultiplayerPeer
+	#round_timer_ui.visible = is_single_player
+	#ready_state_ui.visible = not is_single_player
+	#if is_single_player:
+		#enemy_spawn_component.start()
 
 
 @rpc("any_peer", "call_local", "reliable")
@@ -92,6 +99,21 @@ func _check_game_over() -> void:
 @rpc("authority", "call_local")
 func _play_enemy_died_effects() -> void:
 	enemy_died_audio_stream_player.play()
+
+
+@rpc("any_peer", "call_local", "reliable")
+func _peer_select_look_request(index: int) -> void:
+	if not is_multiplayer_authority():
+		return
+	var peer_id := multiplayer.get_remote_sender_id()
+	if index >= 0 and index < 4:
+		_peer_look_changed.rpc(peer_id, index)
+
+
+@rpc("authority", "call_local", "reliable")
+func _peer_look_changed(peer_id: int, index: int) -> void:
+	print("[peer %s] peer %s look changed to: %s" % [multiplayer.get_unique_id(), peer_id, index])
+	GameEvents.emit_player_look_changed(peer_id, index)
 
 
 func _on_player_died(peer_id: int) -> void:
@@ -137,3 +159,12 @@ func _on_all_peers_ready_checked() -> void:
 
 func _on_enemy_died() -> void:
 	_play_enemy_died_effects.rpc()
+
+
+func _on_player_look_selected(index: int) -> void:
+	print("[peer %s] look selected: %s" % [multiplayer.get_unique_id(), index])
+	_peer_select_look_request.rpc_id(1, index)
+
+
+func _on_player_look_button_pressed() -> void:
+	player_look_select_ui.visible = true

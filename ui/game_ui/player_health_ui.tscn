@@ -28,6 +28,7 @@ layout_mode = 2
 mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=202898884]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
@@ -42,17 +43,21 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -8.0
-offset_top = -8.0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = -14.0
+offset_top = -14.0
+offset_right = 14.0
+offset_bottom = 14.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("2_a7v8s")
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/HBoxContainer/TextureRect/TextureRect" unique_id=806688063]
-position = Vector2(10, 3)
+[node name="PlayerSprite" type="Sprite2D" parent="MarginContainer/HBoxContainer/TextureRect/TextureRect" unique_id=806688063]
+unique_name_in_owner = true
+position = Vector2(16, 16)
 texture = ExtResource("3_1e60i")
+hframes = 2
+vframes = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=2136844131]
 custom_minimum_size = Vector2(80, 0)

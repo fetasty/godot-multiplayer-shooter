@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://by50ne11du40u"]
+
+[ext_resource type="Script" uid="uid://bpweujhyni2qw" path="res://ui/player_look_select_ui/player_look_select_ui.gd" id="1_hej1f"]
+
+[node name="PlayerLookSelectUI" type="Control" unique_id=1783750997]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hej1f")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=608592042]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5882353)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=384762202]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1364544528]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1794315786]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 30
+text = "Choose Your Look"
+
+[node name="ItemsContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1751880008]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ConfirmButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=491081034]
+unique_name_in_owner = true
+layout_mode = 2
+text = "OK"
