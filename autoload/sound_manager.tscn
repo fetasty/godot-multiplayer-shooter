@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://c858blmsaevh1" path="res://assets/audio/hurt2.mp3" id="6_r8tf1"]
 [ext_resource type="AudioStream" uid="uid://b2d6es6yrp1vg" path="res://assets/audio/hurt3.mp3" id="7_ekme8"]
 [ext_resource type="AudioStream" uid="uid://co675ic7rom1m" path="res://assets/audio/hurt4.mp3" id="8_tfrwk"]
+[ext_resource type="AudioStream" uid="uid://bubj65sk6sh8u" path="res://assets/audio/died1.mp3" id="9_r8tf1"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_p7ier"]
 random_pitch = 1.1892071
@@ -17,6 +18,13 @@ stream_0/stream = ExtResource("5_culwi")
 stream_1/stream = ExtResource("6_r8tf1")
 stream_2/stream = ExtResource("7_ekme8")
 stream_3/stream = ExtResource("8_tfrwk")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ekme8"]
+random_pitch = 1.1892071
+random_volume_offset_db = 2.0
+streams_count = 2
+stream_0/stream = ExtResource("9_r8tf1")
+stream_1/stream = ExtResource("8_tfrwk")
 
 [node name="SoundManager" type="Node" unique_id=567059942]
 script = ExtResource("1_i3yra")
@@ -39,4 +47,9 @@ bus = &"sfx"
 stream = SubResource("AudioStreamRandomizer_p7ier")
 volume_db = -2.0
 max_polyphony = 2
+bus = &"sfx"
+
+[node name="DiedAudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1296546585]
+stream = SubResource("AudioStreamRandomizer_ekme8")
+volume_db = -2.0
 bus = &"sfx"

@@ -25,6 +25,7 @@ var is_game_over: bool = false
 @onready var enemy_died_audio_stream_player: AudioStreamPlayer = %EnemyDiedAudioStreamPlayer
 @onready var player_look_select_ui: PlayerLookSelectUI = %PlayerLookSelectUI
 @onready var hurt_notify_ui: HurtNotifyUI = %HurtNotifyUI
+@onready var player_died_ui: PlayerDiedUI = %PlayerDiedUI
 
 
 func _ready() -> void:
@@ -83,13 +84,14 @@ func _game_completed(win: bool) -> void:
 	is_game_over = true
 	GameState.game_win = win
 	get_tree().paused = false
-	get_tree().change_scene_to_packed(GAME_END_MENU)
 	# 服务端立即断开会导致客户端回到主界面
 	if not is_multiplayer_authority():
 		multiplayer.multiplayer_peer = OfflineMultiplayerPeer.new()
 	else:
 		await get_tree().create_timer(1.0).timeout
 		multiplayer.multiplayer_peer = OfflineMultiplayerPeer.new()
+	await get_tree().create_timer(4.0).timeout
+	get_tree().change_scene_to_packed(GAME_END_MENU)
 
 
 func _check_game_over() -> void:
@@ -131,11 +133,18 @@ func _play_player_hurt_effect() -> void:
 	SoundManager.play_hurt()
 
 
+@rpc("authority", "call_local")
+func _play_player_died_effect() -> void:
+	player_died_ui.show_died_tip()
+	SoundManager.play_died()
+
+
 func _on_player_hurt(peer_id: int) -> void:
 	_play_player_hurt_effect.rpc_id(peer_id)
 
 
 func _on_player_died(peer_id: int) -> void:
+	_play_player_died_effect.rpc_id(peer_id)
 	died_peers.append(peer_id)
 	_check_game_over()
 

@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://bxarvf8ogscvs"]
+
+[ext_resource type="Script" uid="uid://bs1v2rhx2yxm8" path="res://ui/game_ui/player_died_ui.gd" id="1_1jfph"]
+
+[node name="PlayerDiedUI" type="Control" unique_id=842013290]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_1jfph")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1819947062]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 0, 0, 0.19607843)
+
+[node name="TipLabel" type="Label" parent="." unique_id=828656858]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -20.0
+offset_right = 260.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.34963566
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(0.8794742, 0.606886, 0.16739902, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 40
+text = "Returning to the stars."
+horizontal_alignment = 1
+vertical_alignment = 1
