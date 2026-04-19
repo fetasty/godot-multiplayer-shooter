@@ -16,6 +16,7 @@ const CURSOR = preload("uid://bf4bnwundf36w")
 
 func _ready() -> void:
 	Input.set_custom_mouse_cursor(CURSOR)
+	multiplayer.multiplayer_peer = OfflineMultiplayerPeer.new()
 	single_player_button.pressed.connect(_on_single_player_button_pressed)
 	multiplayer_button.pressed.connect(_on_multiplayer_button_pressed)
 	quit_button.pressed.connect(_on_quit_button_pressed)

@@ -4,6 +4,19 @@
 [ext_resource type="AudioStream" uid="uid://die14160gs36b" path="res://assets/audio/btn_hover.mp3" id="2_vmyfj"]
 [ext_resource type="AudioStream" uid="uid://2ndgxpoiedc" path="res://assets/audio/btn_click.mp3" id="3_5qmgl"]
 [ext_resource type="AudioStream" uid="uid://ch7aw32nyqs4b" path="res://assets/audio/btn_select.mp3" id="4_clwvi"]
+[ext_resource type="AudioStream" uid="uid://dglxrvek0jrd3" path="res://assets/audio/hurt1.mp3" id="5_culwi"]
+[ext_resource type="AudioStream" uid="uid://c858blmsaevh1" path="res://assets/audio/hurt2.mp3" id="6_r8tf1"]
+[ext_resource type="AudioStream" uid="uid://b2d6es6yrp1vg" path="res://assets/audio/hurt3.mp3" id="7_ekme8"]
+[ext_resource type="AudioStream" uid="uid://co675ic7rom1m" path="res://assets/audio/hurt4.mp3" id="8_tfrwk"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_p7ier"]
+random_pitch = 1.1892071
+random_volume_offset_db = 2.0
+streams_count = 4
+stream_0/stream = ExtResource("5_culwi")
+stream_1/stream = ExtResource("6_r8tf1")
+stream_2/stream = ExtResource("7_ekme8")
+stream_3/stream = ExtResource("8_tfrwk")
 
 [node name="SoundManager" type="Node" unique_id=567059942]
 script = ExtResource("1_i3yra")
@@ -20,4 +33,10 @@ bus = &"sfx"
 
 [node name="SelectAudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2116450665]
 stream = ExtResource("4_clwvi")
+bus = &"sfx"
+
+[node name="HurtAudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1319240056]
+stream = SubResource("AudioStreamRandomizer_p7ier")
+volume_db = -2.0
+max_polyphony = 2
 bus = &"sfx"

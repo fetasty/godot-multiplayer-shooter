@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cmdyhkfjb0l2u"]
+
+[ext_resource type="Shader" uid="uid://dhif5qxit2juk" path="res://ui/game_ui/hurt_notify_ui.gdshader" id="1_3v6wf"]
+[ext_resource type="Script" uid="uid://cav127prgfuyv" path="res://ui/game_ui/hurt_notify_ui.gd" id="2_vi4bk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vi4bk"]
+shader = ExtResource("1_3v6wf")
+shader_parameter/flash_color = Color(1, 0, 0, 1)
+shader_parameter/intensity = 0.0
+shader_parameter/edge_power = 2.5
+shader_parameter/inner_ratio = 0.75
+shader_parameter/feather = 0.4
+
+[node name="HurtNotifyUI" type="ColorRect" unique_id=357510433]
+material = SubResource("ShaderMaterial_vi4bk")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+script = ExtResource("2_vi4bk")

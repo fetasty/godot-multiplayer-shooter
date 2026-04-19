@@ -22,7 +22,7 @@ properties/1/path = NodePath(".:player_look_index")
 properties/1/spawn = true
 properties/1/replication_mode = 0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_a1qjk"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j3ovn"]
 resource_local_to_scene = true
 shader = ExtResource("8_7thud")
 shader_parameter/input_color = Color(0.84, 0.21839999, 0.21839999, 1)
@@ -192,7 +192,7 @@ texture = ExtResource("5_j3ovn")
 
 [node name="FlashSpriteComponent" parent="VisualRoot" unique_id=1374404885 instance=ExtResource("7_wvtmh")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_a1qjk")
+material = SubResource("ShaderMaterial_j3ovn")
 texture = ExtResource("2_sglur")
 centered = false
 offset = Vector2(-13, -32)

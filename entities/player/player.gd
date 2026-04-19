@@ -2,6 +2,7 @@ class_name Player
 extends CharacterBody2D
 
 signal died
+signal player_hurt
 
 const BULLET = preload("uid://clvtit5mibwed")
 const MUZZLE_FLASH_EFFECT = preload("uid://ckgdgjh2c5e2s")
@@ -146,6 +147,7 @@ func revive(pos: Vector2) -> void:
 func set_player_visible(enabled: bool) -> void:
 	visible = enabled
 
+
 @rpc("authority", "call_local", "reliable")
 func set_player_health_bar(rate: float) -> void:
 	health_progress_bar.value = rate
@@ -184,6 +186,7 @@ func _on_health_changed(max_value: int, current_value: int) -> void:
 func _on_hit() -> void:
 	if not is_dead:
 		play_hit_effects.rpc()
+		player_hurt.emit()
 
 
 func _on_player_look_changed(peer_id: int, index: int) -> void:

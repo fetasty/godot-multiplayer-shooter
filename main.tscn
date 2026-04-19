@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bae6wkegs6yiv" path="res://components/lobby_component.tscn" id="8_4c57u"]
 [ext_resource type="PackedScene" uid="uid://by08acufa0y3u" path="res://ui/game_ui/upgrade_options_ui.tscn" id="10_dg77c"]
 [ext_resource type="PackedScene" uid="uid://by50ne11du40u" path="res://ui/player_look_select_ui/player_look_select_ui.tscn" id="11_w48qg"]
+[ext_resource type="PackedScene" uid="uid://cmdyhkfjb0l2u" path="res://ui/game_ui/hurt_notify_ui.tscn" id="12_vivmo"]
 [ext_resource type="AudioStream" uid="uid://tchnd21la6eh" path="res://assets/audio/burst.mp3" id="13_ycdy4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
@@ -128,6 +129,9 @@ lobby_component = NodePath("../../LobbyComponent")
 [node name="UpgradeOptionsUI" parent="GameUILayer" unique_id=109763391 instance=ExtResource("10_dg77c")]
 
 [node name="PlayerLookSelectUI" parent="GameUILayer" unique_id=1783750997 instance=ExtResource("11_w48qg")]
+unique_name_in_owner = true
+
+[node name="HurtNotifyUI" parent="GameUILayer" unique_id=357510433 instance=ExtResource("12_vivmo")]
 unique_name_in_owner = true
 
 [node name="PauseMenu" parent="." unique_id=1544799969 instance=ExtResource("7_5vw27")]

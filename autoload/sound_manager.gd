@@ -7,6 +7,7 @@ const BTN_SELECT = preload("uid://ch7aw32nyqs4b")
 @onready var hover_audio_stream_player: AudioStreamPlayer = $HoverAudioStreamPlayer
 @onready var click_audio_stream_player: AudioStreamPlayer = $ClickAudioStreamPlayer
 @onready var select_audio_stream_player: AudioStreamPlayer = $SelectAudioStreamPlayer
+@onready var hurt_audio_stream_player: AudioStreamPlayer = $HurtAudioStreamPlayer
 
 
 func register_hover(btns: Array[Button]) -> void:
@@ -34,6 +35,10 @@ func play_click() -> void:
 
 func play_select() -> void:
 	select_audio_stream_player.play()
+
+
+func play_hurt() -> void:
+	hurt_audio_stream_player.play()
 
 
 func _on_play_hover_sfx() -> void:

@@ -11,6 +11,7 @@ static var background_effect_clip: Node
 
 var player_dict: Dictionary[int, Player] = {}
 var died_peers: Array[int] = []
+var is_game_over: bool = false
 
 @onready var multiplayer_spawner: MultiplayerSpawner = %MultiplayerSpawner
 @onready var player_spawn_marker: Marker2D = $PlayerSpawnMarker
@@ -23,6 +24,7 @@ var died_peers: Array[int] = []
 @onready var lobby_component: LobbyComponent = %LobbyComponent
 @onready var enemy_died_audio_stream_player: AudioStreamPlayer = %EnemyDiedAudioStreamPlayer
 @onready var player_look_select_ui: PlayerLookSelectUI = %PlayerLookSelectUI
+@onready var hurt_notify_ui: HurtNotifyUI = %HurtNotifyUI
 
 
 func _ready() -> void:
@@ -38,6 +40,7 @@ func _ready() -> void:
 		player.player_look_index = randi_range(0, 3)
 		if is_multiplayer_authority():
 			_peer_look_changed.rpc(data.peer_id, player.player_look_index)
+			player.player_hurt.connect(_on_player_hurt.bind(data.peer_id))
 			player.died.connect(_on_player_died.bind(data.peer_id))
 			player_dict[data.peer_id] = player
 		return player
@@ -71,23 +74,29 @@ func _create_player(player_data: Dictionary) -> void:
 
 func _end_game() -> void:
 	get_tree().paused = false
-	multiplayer.multiplayer_peer = OfflineMultiplayerPeer.new()
 	get_tree().change_scene_to_file("res://ui/menu/main_menu.tscn")
+	multiplayer.multiplayer_peer = OfflineMultiplayerPeer.new()
 
 
 @rpc("authority", "call_local", "reliable")
 func _game_completed(win: bool) -> void:
+	is_game_over = true
 	GameState.game_win = win
 	get_tree().paused = false
-	multiplayer.multiplayer_peer = OfflineMultiplayerPeer.new()
 	get_tree().change_scene_to_packed(GAME_END_MENU)
+	# 服务端立即断开会导致客户端回到主界面
+	if not is_multiplayer_authority():
+		multiplayer.multiplayer_peer = OfflineMultiplayerPeer.new()
+	else:
+		await get_tree().create_timer(1.0).timeout
+		multiplayer.multiplayer_peer = OfflineMultiplayerPeer.new()
 
 
 func _check_game_over() -> void:
 	# multiplayer.get_peers 返回所有已连接的peer,不包含自身
 	var all_peers := multiplayer.get_peers()
 	all_peers.append(multiplayer.get_unique_id())
-	var is_game_over := true
+	is_game_over = true
 	for peer_id in all_peers:
 		if not died_peers.has(peer_id):
 			is_game_over = false
@@ -116,6 +125,16 @@ func _peer_look_changed(peer_id: int, index: int) -> void:
 	GameEvents.emit_player_look_changed(peer_id, index)
 
 
+@rpc("authority", "call_local")
+func _play_player_hurt_effect() -> void:
+	hurt_notify_ui.play_hurt_notify()
+	SoundManager.play_hurt()
+
+
+func _on_player_hurt(peer_id: int) -> void:
+	_play_player_hurt_effect.rpc_id(peer_id)
+
+
 func _on_player_died(peer_id: int) -> void:
 	died_peers.append(peer_id)
 	_check_game_over()
@@ -133,7 +152,8 @@ func _on_max_round_end() -> void:
 
 
 func _on_server_disconnected() -> void:
-	_end_game()
+	if not is_game_over:
+		_end_game()
 
 
 func _on_peer_disconnected(peer_id: int) -> void:
