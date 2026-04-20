@@ -1,6 +1,8 @@
 shader_type canvas_item;
-// [修改1] 开启 Add (相加) 混合模式，非常适合烟花这种发光特效
-render_mode blend_add;
+// 开启 Add (相加) 混合模式，非常适合烟花这种发光特效
+//render_mode blend_add;
+// 改为预乘 Alpha 模式, 在完全不透明的地方（中心点）覆盖背景，在半透明的地方（光晕边缘）融入背景
+render_mode blend_premul_alpha;
 
 uniform vec2 resolution = vec2(620.0, 360.0);
 uniform float firework_count: hint_range(1.0, 50.0, 1.0) = 5.0;

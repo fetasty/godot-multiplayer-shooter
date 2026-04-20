@@ -94,10 +94,10 @@ func _game_completed(win: bool) -> void:
 	else:
 		await get_tree().create_timer(1.0).timeout
 		multiplayer.multiplayer_peer = OfflineMultiplayerPeer.new()
+	SoundManager.play_game_end(win)
 	if win:
 		game_win_ui.visible = true
 		await get_tree().create_timer(5.0).timeout
-	SoundManager.play_game_end(win)
 	await get_tree().create_timer(5.0).timeout
 	get_tree().change_scene_to_file("res://ui/game_end/game_end_menu.tscn")
 
