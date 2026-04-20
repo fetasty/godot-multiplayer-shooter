@@ -175,10 +175,15 @@ func _on_player_died(peer_id: int) -> void:
 
 
 func _on_round_completed() -> void:
-	for peer_id in died_peers:
+	var all_peers := multiplayer.get_peers()
+	all_peers.append(1)
+	for peer_id in all_peers:
 		var player := player_dict[peer_id]
-		_hide_player_died_effect.rpc_id(peer_id)
-		player.revive(player_spawn_marker.global_position)
+		if peer_id in died_peers:
+			_hide_player_died_effect.rpc_id(peer_id)
+			player.revive(player_spawn_marker.global_position)
+		else:
+			player.healing(1)
 	died_peers.clear()
 	await get_tree().create_timer(1.0).timeout
 	_play_round_completed_effect.rpc()

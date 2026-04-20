@@ -6,6 +6,9 @@ signal player_hurt
 
 const BULLET = preload("uid://clvtit5mibwed")
 const MUZZLE_FLASH_EFFECT = preload("uid://ckgdgjh2c5e2s")
+const HEALING_EFFECT = preload("uid://di1t1xvv6tgy7")
+
+
 const REVIVE_HEALTH: int = 1
 const BASE_MOVE_SPEED: float = 100
 const BASE_FIRE_RATE: float = 0.5
@@ -34,6 +37,7 @@ var is_dead: bool = false
 @onready var flash_sprite_component: FlashSpriteComponent = %FlashSpriteComponent
 @onready var collision_shape_2d: CollisionShape2D = $HurtboxComponent/CollisionShape2D
 @onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
+@onready var healing_effect: HealingEffect = %HealingEffect
 
 
 func _ready() -> void:
@@ -138,9 +142,23 @@ func revive(pos: Vector2) -> void:
 	global_position = pos
 	velocity = Vector2.ZERO
 	process_mode = Node.PROCESS_MODE_INHERIT
-	health_component.reset(REVIVE_HEALTH)
+	healing(REVIVE_HEALTH)
 	set_player_visible.rpc(true)
 	is_dead = false
+
+
+func healing(value: int) -> void:
+	if not is_multiplayer_authority():
+		return
+	health_component.healing(value)
+	play_player_healing_effect.rpc()
+
+
+@rpc("authority", "call_local")
+func play_player_healing_effect() -> void:
+	healing_effect.play()
+	if multiplayer.get_unique_id() == input_peer_id:
+		SoundManager.play_healing()
 
 
 @rpc("authority", "call_local", "reliable")

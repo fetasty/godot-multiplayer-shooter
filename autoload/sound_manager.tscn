@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://bubj65sk6sh8u" path="res://assets/audio/died1.mp3" id="9_r8tf1"]
 [ext_resource type="AudioStream" uid="uid://137hvg7b0aph" path="res://assets/audio/music.mp3" id="10_ekme8"]
 [ext_resource type="AudioStream" uid="uid://crqbnc53gmmfd" path="res://assets/audio/round_win_cheer.mp3" id="11_tfrwk"]
+[ext_resource type="AudioStream" uid="uid://dt13nlmfsn8d6" path="res://assets/audio/healing.mp3" id="12_p7ier"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_p7ier"]
 random_pitch = 1.1892071
@@ -64,3 +65,8 @@ bus = &"music"
 
 [node name="RoundAudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=775100583]
 stream = ExtResource("11_tfrwk")
+
+[node name="HealingAudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=124063273]
+stream = ExtResource("12_p7ier")
+max_polyphony = 3
+bus = &"sfx"

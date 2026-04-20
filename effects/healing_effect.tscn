@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://di1t1xvv6tgy7"]
+
+[ext_resource type="Texture2D" uid="uid://b8h4wsh21aatv" path="res://assets/healing.tres" id="1_iw0jj"]
+[ext_resource type="Script" uid="uid://ci027yf0mlyhg" path="res://effects/healing_effect.gd" id="2_f4di7"]
+
+[sub_resource type="Gradient" id="Gradient_iw0jj"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 0.5882353)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_f4di7"]
+gradient = SubResource("Gradient_iw0jj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ru72n"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(15, 1, 0)
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 10.0
+initial_velocity_max = 30.0
+gravity = Vector3(0, 0, 0)
+damping_min = 10.0
+damping_max = 30.000002
+scale_min = 0.29999998
+color_initial_ramp = SubResource("GradientTexture1D_f4di7")
+
+[node name="HealingEffect" type="GPUParticles2D" unique_id=1320950043]
+emitting = false
+amount = 12
+texture = ExtResource("1_iw0jj")
+one_shot = true
+explosiveness = 0.5
+fixed_fps = 0
+interpolate = false
+fract_delta = false
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_ru72n")
+script = ExtResource("2_f4di7")

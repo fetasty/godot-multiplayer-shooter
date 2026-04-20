@@ -26,6 +26,10 @@ func take_damage(damage: int) -> void:
 		health_depleted.emit()
 
 
+func healing(value: int) -> void:
+	current_health = clamp(current_health + value, 0, max_health)
+
+
 func reset(health: int = -1) -> void:
 	if health < 0:
 		current_health = max_health
