@@ -98,6 +98,7 @@ func _game_completed(win: bool) -> void:
 	if win:
 		game_win_ui.visible = true
 		await get_tree().create_timer(5.0).timeout
+	# TODO game over ui展示,并且需要等待玩家死亡UI显示一小会
 	await get_tree().create_timer(5.0).timeout
 	get_tree().change_scene_to_file("res://ui/game_end/game_end_menu.tscn")
 
