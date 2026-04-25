@@ -16,6 +16,7 @@ const ENEMY_DIED_EFFECT = preload("uid://dv1y8ri1kqvnf")
 @onready var flash_sprite_component: FlashSpriteComponent = $Visual/FlashSpriteComponent
 @onready var move_animation_player: AnimationPlayer = %MoveAnimationPlayer
 @onready var hit_audio_stream_player: AudioStreamPlayer = %HitAudioStreamPlayer
+@onready var hurt_collision_shape_2d: CollisionShape2D = $HurtboxComponent/HurtCollisionShape2D
 
 var track_target: Vector2
 var has_track_target: bool = false
@@ -24,6 +25,7 @@ var charge_tip_tween: Tween
 
 func _ready() -> void:
 	warning_icon.scale = Vector2.ZERO
+	hurt_collision_shape_2d.disabled = true
 	if is_multiplayer_authority():
 		track_timer.timeout.connect(_on_track_timer_timeout)
 		health_component.health_depleted.connect(_on_health_depleted)

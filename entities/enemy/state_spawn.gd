@@ -9,3 +9,8 @@ func enter() -> void:
 	enemy.play_spawn_animation()
 	if is_multiplayer_authority():
 		enemy.velocity = Vector2.ZERO
+
+
+func exit() -> void:
+	if is_multiplayer_authority():
+		enemy.hurt_collision_shape_2d.disabled = false
