@@ -27,7 +27,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.8901961, 0.5294118, 0.22352941, 1)
 theme_override_colors/font_outline_color = Color(0.15127608, 0.15127608, 0.15127608, 1)
 theme_override_constants/outline_size = 5
-text = "Round 1"
+text = "DEFAULT_ROUND_NUMBER_TIP"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -37,6 +37,6 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.8901961, 0.5294118, 0.22352941, 1)
 theme_override_colors/font_outline_color = Color(0.15127608, 0.15127608, 0.15127608, 1)
 theme_override_constants/outline_size = 5
-text = "30"
+text = "DEFAULT_ROUND_TIMER_TIP"
 horizontal_alignment = 1
 vertical_alignment = 1

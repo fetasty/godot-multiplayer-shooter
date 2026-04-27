@@ -15,4 +15,4 @@ func _process(_delta: float) -> void:
 
 
 func _on_round_changed(round_count: int) -> void:
-	round_label.text = "Round %s" % round_count
+	round_label.text = tr("ROUND_COUNT_INFO") % round_count

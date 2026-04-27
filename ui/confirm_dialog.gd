@@ -4,8 +4,8 @@ extends Control
 
 signal confirmd
 
-var title: String = "Error"
-var message: String = "There is something happend"
+var title: String = tr("DEFAULT_CONFIRM_DIALOG_TITLE")
+var message: String = tr("DEFAULT_CONFIRM_DIALOG_MESSAGE")
 
 @onready var title_label: Label = %TitleLabel
 @onready var message_label: Label = %MessageLabel

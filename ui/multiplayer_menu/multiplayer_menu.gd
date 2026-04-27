@@ -82,8 +82,8 @@ func _on_host_button_pressed() -> void:
 		server_peer.set_bind_ip(MultiplayerConfig.host_ip)
 	var err := server_peer.create_server(MultiplayerConfig.host_port)
 	if err != OK:
-		_show_error_dialog("Error",
-			"Creating server error: %s" % [error_string(err)])
+		_show_error_dialog(tr("ERROR_DIALOG_TITLE"),
+			tr("CREATE_SERVER_ERROR_MESSAGE") % [error_string(err)])
 		return
 	multiplayer.multiplayer_peer = server_peer
 	get_tree().change_scene_to_packed(MAIN)
@@ -93,8 +93,8 @@ func _on_join_button_pressed() -> void:
 	var client_peer := ENetMultiplayerPeer.new()
 	var err := client_peer.create_client(MultiplayerConfig.join_ip, MultiplayerConfig.join_port)
 	if err != OK:
-		_show_error_dialog("Error",
-			"Creating client error: %s" % [error_string(err)])
+		_show_error_dialog(tr("ERROR_DIALOG_TITLE"),
+			tr("CREATE_CLIENT_ERROR_MESSAGE") % [error_string(err)])
 		return
 	is_connecting = true
 	multiplayer.multiplayer_peer = client_peer
@@ -111,4 +111,4 @@ func _on_connected_to_server() -> void:
 
 func _on_connection_failed() -> void:
 	is_connecting = false
-	_show_error_dialog("Error", "Connection to server failed!")
+	_show_error_dialog(tr("ERROR_DIALOG_TITLE"), tr("CONNECTION_TO_SERVER_FAILED_MESSAGE"))

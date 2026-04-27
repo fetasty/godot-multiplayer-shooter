@@ -14,6 +14,7 @@ const OPTION_MENU = preload("uid://g2x3v6dbpxfa")
 @onready var options_button: Button = $VBoxContainer/OptionsButton
 @onready var quit_button: Button = $VBoxContainer/QuitButton
 @onready var online_game_button: Button = $VBoxContainer/OnlineGameButton
+@onready var language_button: Button = $LanguageButton
 
 
 func _ready() -> void:
@@ -27,12 +28,14 @@ func _ready() -> void:
 	quit_button.pressed.connect(_on_quit_button_pressed)
 	options_button.pressed.connect(_on_options_button_pressed)
 	online_game_button.pressed.connect(_on_online_game_button_pressed)
+	language_button.pressed.connect(_on_language_button_pressed)
 	var btns: Array[Button] = [
 		single_player_button,
 		multiplayer_button,
 		options_button,
 		quit_button,
 		online_game_button,
+		language_button,
 	]
 	SoundManager.register_hover(btns)
 	SoundManager.register_click(btns)
@@ -70,3 +73,13 @@ func _on_options_button_pressed() -> void:
 
 func _on_online_game_button_pressed() -> void:
 	get_tree().change_scene_to_packed(ONLINE_GAME_MENU)
+
+
+func _on_language_button_pressed() -> void:
+	var current_locale := TranslationServer.get_locale()
+	match current_locale:
+		"zh_CN":
+			TranslationServer.set_locale("en_US")
+		_:
+			TranslationServer.set_locale("zh_CN")
+	# Godot 会自动通知所有 UI 控件更新文本，无需重启场景

@@ -29,20 +29,35 @@ theme_override_constants/separation = 10
 
 [node name="SinglePlayerButton" type="Button" parent="VBoxContainer" unique_id=1762923138]
 layout_mode = 2
-text = "Single Player"
+text = "SINGLE_PLAYER"
 
 [node name="MultiplayerButton" type="Button" parent="VBoxContainer" unique_id=241655883]
 layout_mode = 2
-text = "Multiplayer"
+text = "LOCAL_MULTIPLAYER"
 
 [node name="OnlineGameButton" type="Button" parent="VBoxContainer" unique_id=589764435]
 layout_mode = 2
-text = "Online Game"
+text = "ONLINE_MULTIPLAYER"
 
 [node name="OptionsButton" type="Button" parent="VBoxContainer" unique_id=737084998]
 layout_mode = 2
-text = "Options"
+text = "OPTIONS"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=140838343]
 layout_mode = 2
-text = "Quit"
+text = "QUIT"
+
+[node name="LanguageButton" type="Button" parent="." unique_id=451890392]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -122.0
+offset_top = -54.0
+offset_right = -30.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "LANGUAGE"

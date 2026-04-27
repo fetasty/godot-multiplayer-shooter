@@ -18,7 +18,7 @@ offset_left = 30.0
 offset_top = 20.0
 offset_right = 82.0
 offset_bottom = 54.0
-text = "Back"
+text = "BACK"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=531434639]
 layout_mode = 1
@@ -43,14 +43,14 @@ size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.90576947, 0.90576947, 0.90576947, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
-text = "Player Name"
+text = "PLAYER_NAME"
 
 [node name="PlayerNameTextEdit" type="TextEdit" parent="VBoxContainer/HBoxContainer" unique_id=462055313]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Player"
+text = "DEFAULT_PLAYER_NAME"
 placeholder_text = "Display Name"
 scroll_fit_content_height = true
 scroll_fit_content_width = true
@@ -76,7 +76,7 @@ size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.90576947, 0.90576947, 0.90576947, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
-text = "Host IP"
+text = "HOST_IP"
 
 [node name="HostIPTextEdit" type="TextEdit" parent="VBoxContainer/GridContainer/VBoxContainer/GridContainer" unique_id=1376791851]
 unique_name_in_owner = true
@@ -95,7 +95,7 @@ size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.90576947, 0.90576947, 0.90576947, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
-text = "Host Port"
+text = "HOST_PORT"
 
 [node name="HostPortTextEdit" type="TextEdit" parent="VBoxContainer/GridContainer/VBoxContainer/GridContainer" unique_id=1262920406]
 unique_name_in_owner = true
@@ -109,7 +109,7 @@ scroll_fit_content_width = true
 [node name="HostButton" type="Button" parent="VBoxContainer/GridContainer/VBoxContainer" unique_id=1667495893]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Host"
+text = "HOST"
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/GridContainer" unique_id=1233432961]
 layout_mode = 2
@@ -126,7 +126,7 @@ size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.90576947, 0.90576947, 0.90576947, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
-text = "Join IP"
+text = "JOIN_IP"
 
 [node name="JoinIPTextEdit" type="TextEdit" parent="VBoxContainer/GridContainer/VBoxContainer3/GridContainer" unique_id=791110007]
 unique_name_in_owner = true
@@ -145,7 +145,7 @@ size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.90576947, 0.90576947, 0.90576947, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
-text = "Join Port"
+text = "JOIN_PORT"
 
 [node name="JoinPortTextEdit" type="TextEdit" parent="VBoxContainer/GridContainer/VBoxContainer3/GridContainer" unique_id=2096319040]
 unique_name_in_owner = true
@@ -159,4 +159,4 @@ scroll_fit_content_width = true
 [node name="JoinButton" type="Button" parent="VBoxContainer/GridContainer/VBoxContainer3" unique_id=1478778493]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Join"
+text = "JOIN"

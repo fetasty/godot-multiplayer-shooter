@@ -46,7 +46,7 @@ theme_override_constants/separation = 10
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
-text = "PRESS R TO READY"
+text = "PRESS_R_TO_START"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -58,13 +58,13 @@ text = "READY"
 [node name="SkinButton" type="Button" parent="VBoxContainer/NotReadyContainer" unique_id=1682689440]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Skin"
+text = "SKIN"
 
 [node name="ReadyStatusLabel" type="Label" parent="VBoxContainer" unique_id=2125501983]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
-text = "1/4 READY"
+text = "DEFAULT_READY_COUNT_TIP"
 horizontal_alignment = 1
 vertical_alignment = 1

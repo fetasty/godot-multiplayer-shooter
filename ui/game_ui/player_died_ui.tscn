@@ -45,6 +45,6 @@ theme_override_constants/shadow_offset_y = 3
 theme_override_constants/outline_size = 5
 theme_override_constants/shadow_outline_size = 10
 theme_override_font_sizes/font_size = 40
-text = "Returning to the stars."
+text = "DEFAULT_PLAYER_DIED_TIP"
 horizontal_alignment = 1
 vertical_alignment = 1

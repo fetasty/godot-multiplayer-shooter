@@ -2,6 +2,7 @@ extends Node
 
 
 func _ready() -> void:
+	MultiplayerConfig.display_name = tr("DEFAULT_PLAYER_NAME")
 	if is_headless_server():
 		print("This is a headless server running!!!")
 

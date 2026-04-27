@@ -42,7 +42,7 @@ theme_override_constants/separation = 60
 layout_mode = 2
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 30
-text = "Choose Your Look"
+text = "PLAYER_LOOK_MENU_TITLE"
 
 [node name="ItemsContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1751880008]
 unique_name_in_owner = true
@@ -50,5 +50,7 @@ layout_mode = 2
 
 [node name="ConfirmButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=491081034]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-text = "OK"
+size_flags_horizontal = 4
+text = "CONFIRM"

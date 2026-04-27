@@ -34,7 +34,7 @@ theme_override_constants/separation = 30
 layout_mode = 2
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 30
-text = "Game Options"
+text = "GAME_OPTIONS_TITLE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -47,7 +47,7 @@ theme_override_constants/separation = 20
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/SFXHBoxContainer" unique_id=1655349540]
 layout_mode = 2
 theme_override_constants/outline_size = 5
-text = "SFX Volume"
+text = "SFX_VOLUME"
 horizontal_alignment = 2
 vertical_alignment = 1
 
@@ -89,7 +89,7 @@ theme_override_constants/separation = 20
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MusicHBoxContainer" unique_id=2027941425]
 layout_mode = 2
 theme_override_constants/outline_size = 5
-text = "SFX Volume"
+text = "MUSIC_VOLUME"
 horizontal_alignment = 2
 vertical_alignment = 1
 
@@ -128,4 +128,4 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-text = "Close"
+text = "CLOSE"

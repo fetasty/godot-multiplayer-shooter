@@ -34,7 +34,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.8600001, 0.3, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 30
-text = "Congratulations!"
+text = "GAME_WIN_TITLE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -42,11 +42,11 @@ vertical_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/outline_size = 5
-text = "Game Win!"
+text = "GAME_WIN_MESSAGE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="BackButton" type="Button" parent="VBoxContainer" unique_id=1285261297]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Back to Main"
+text = "BACK_TO_MAIN"

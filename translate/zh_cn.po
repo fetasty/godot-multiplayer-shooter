@@ -1,0 +1,360 @@
+# LANGUAGE translation for 01-multi-player for the following files:
+# res://autoload/background.tscn
+# res://autoload/game_cursor.gd
+# res://autoload/game_cursor.tscn
+# res://autoload/game_events.gd
+# res://autoload/game_state.gd
+# res://autoload/game_state.tscn
+# res://autoload/sound_manager.gd
+# res://autoload/sound_manager.tscn
+# res://autoload/tools.gd
+# res://autoload/tools.tscn
+# res://components/enemy_spawn_component.gd
+# res://components/enemy_spawn_component.tscn
+# res://components/flash_sprite_component.gd
+# res://components/flash_sprite_component.tscn
+# res://components/health_component.gd
+# res://components/health_component.tscn
+# res://components/hitbox_component.gd
+# res://components/hitbox_component.tscn
+# res://components/hurtbox_component.gd
+# res://components/hurtbox_component.tscn
+# res://components/lobby_component.gd
+# res://components/lobby_component.tscn
+# res://components/player_input_multiplayer_synchronizer_component.gd
+# res://components/player_input_multiplayer_synchronizer_component.tscn
+# res://components/upgrade_component.gd
+# res://components/upgrade_component.tscn
+# res://editor/generate_pot_files.gd
+# res://effects/enemy_died_effect.tscn
+# res://effects/healing_effect.gd
+# res://effects/healing_effect.tscn
+# res://effects/hit_effect.tscn
+# res://effects/muzzle_flash_effect.tscn
+# res://entities/bullet/bullet.gd
+# res://entities/bullet/bullet.tscn
+# res://entities/enemy/enemy.gd
+# res://entities/enemy/enemy.tscn
+# res://entities/enemy/state_attack.gd
+# res://entities/enemy/state_charge.gd
+# res://entities/enemy/state_died.gd
+# res://entities/enemy/state_normal.gd
+# res://entities/enemy/state_spawn.gd
+# res://entities/player/player.gd
+# res://entities/player/player.tscn
+# res://game_camera.gd
+# res://game_camera.tscn
+# res://main.gd
+# res://main.tscn
+# res://resources/upgrade_resource/upgrade_resource.gd
+# res://scripts/multiplayer_config.gd
+# res://scripts/random_username_generator.gd
+# res://scripts/state.gd
+# res://scripts/state_machine.gd
+# res://scripts/state_machine.tscn
+# res://ui/confirm_dialog.gd
+# res://ui/confirm_dialog.tscn
+# res://ui/game_end/game_end_menu.gd
+# res://ui/game_end/game_end_menu.tscn
+# res://ui/game_ui/game_win_ui.gd
+# res://ui/game_ui/game_win_ui.tscn
+# res://ui/game_ui/hurt_notify_ui.gd
+# res://ui/game_ui/hurt_notify_ui.tscn
+# res://ui/game_ui/player_died_ui.gd
+# res://ui/game_ui/player_died_ui.tscn
+# res://ui/game_ui/player_health_ui.gd
+# res://ui/game_ui/player_health_ui.tscn
+# res://ui/game_ui/ready_state_ui.gd
+# res://ui/game_ui/ready_state_ui.tscn
+# res://ui/game_ui/round_timer_ui.gd
+# res://ui/game_ui/round_timer_ui.tscn
+# res://ui/game_ui/round_win_ui.gd
+# res://ui/game_ui/round_win_ui.tscn
+# res://ui/game_ui/upgrade_options_ui.gd
+# res://ui/game_ui/upgrade_options_ui.tscn
+# res://ui/game_ui/upgrade_option_item.gd
+# res://ui/game_ui/upgrade_option_item.tscn
+# res://ui/menu/main_menu.gd
+# res://ui/menu/main_menu.tscn
+# res://ui/multiplayer_menu/multiplayer_menu.gd
+# res://ui/multiplayer_menu/multiplayer_menu.tscn
+# res://ui/onlinegame_menu/online_game_menu.gd
+# res://ui/onlinegame_menu/online_game_menu.tscn
+# res://ui/option_menu/option_menu.gd
+# res://ui/option_menu/option_menu.tscn
+# res://ui/pause_menu/pause_menu.gd
+# res://ui/pause_menu/pause_menu.tscn
+# res://ui/player_look_select_ui/player_look_item.gd
+# res://ui/player_look_select_ui/player_look_item.tscn
+# res://ui/player_look_select_ui/player_look_select_ui.gd
+# res://ui/player_look_select_ui/player_look_select_ui.tscn
+#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 01-multi-player\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.9\n"
+
+#: autoload/tools.gd:5 ui/game_ui/player_health_ui.gd:13
+#: ui/game_ui/player_health_ui.tscn
+msgid "DEFAULT_PLAYER_NAME"
+msgstr "玩家"
+
+#: entities/player/player.tscn
+msgid "Player 1"
+msgstr ""
+
+#: ui/confirm_dialog.gd:7 ui/confirm_dialog.tscn
+msgid "DEFAULT_CONFIRM_DIALOG_TITLE"
+msgstr "提示"
+
+#: ui/confirm_dialog.gd:8 ui/confirm_dialog.tscn
+msgid "DEFAULT_CONFIRM_DIALOG_MESSAGE"
+msgstr "这是一条提示"
+
+#: ui/confirm_dialog.tscn ui/player_look_select_ui/player_look_select_ui.tscn
+msgid "CONFIRM"
+msgstr "确认"
+
+#: ui/game_end/game_end_menu.gd:14
+msgid "DEFAULT_GAME_WIN_TITLE"
+msgstr "游戏胜利!"
+
+#: ui/game_end/game_end_menu.gd:14
+msgid "DEFAULT_GAME_FAILED_TITLE"
+msgstr "游戏失败!"
+
+#: ui/game_end/game_end_menu.gd:15
+msgid "DEFAULT_GAME_WIN_MESSAGE"
+msgstr "恭喜通关!"
+
+#: ui/game_end/game_end_menu.gd:15
+msgid "DEFAULT_GAME_FAILED_MESSAGE"
+msgstr "再接再励!"
+
+#: ui/game_end/game_end_menu.tscn
+msgid "GAME_WIN_TITLE"
+msgstr "游戏胜利!"
+
+#: ui/game_end/game_end_menu.tscn
+msgid "GAME_WIN_MESSAGE"
+msgstr "恭喜通关!"
+
+#: ui/game_end/game_end_menu.tscn ui/pause_menu/pause_menu.tscn
+msgid "BACK_TO_MAIN"
+msgstr "返回主菜单"
+
+#: ui/game_ui/game_win_ui.tscn
+msgid "DEFAULT_GAME_WIN_TIP"
+msgstr "舞台是你的了!"
+
+#: ui/game_ui/player_died_ui.tscn
+msgid "DEFAULT_PLAYER_DIED_TIP"
+msgstr "归于星辰"
+
+#: ui/game_ui/ready_state_ui.gd:41
+msgid "READY_COUNT_INFO"
+msgstr "%s/%s 已准备"
+
+#: ui/game_ui/ready_state_ui.tscn
+msgid "READY"
+msgstr "准备"
+
+#: ui/game_ui/ready_state_ui.tscn
+msgid "PRESS_R_TO_START"
+msgstr "按下R准备"
+
+#: ui/game_ui/ready_state_ui.tscn
+msgid "SKIN"
+msgstr "皮肤"
+
+#: ui/game_ui/ready_state_ui.tscn
+msgid "DEFAULT_READY_COUNT_TIP"
+msgstr "1/4 已准备"
+
+#: ui/game_ui/round_timer_ui.gd:18
+msgid "ROUND_COUNT_INFO"
+msgstr "回合 %s"
+
+#: ui/game_ui/round_timer_ui.tscn
+msgid "DEFAULT_ROUND_NUMBER_TIP"
+msgstr "回合 10"
+
+#: ui/game_ui/round_timer_ui.tscn
+msgid "DEFAULT_ROUND_TIMER_TIP"
+msgstr "15"
+
+#: ui/game_ui/round_win_ui.tscn
+msgid "DEFAULT_ROUND_COMPLETED_TIP"
+msgstr "回合完成!"
+
+#: ui/game_ui/upgrade_options_ui.tscn
+msgid "ROUND_REWARD_SELECTION_TIP"
+msgstr "选择你的奖励"
+
+#: ui/game_ui/upgrade_option_item.tscn
+msgid "DEFAULT_REWARD_TITLE"
+msgstr "一个奖励"
+
+#: ui/game_ui/upgrade_option_item.tscn
+msgid "DEFAULT_REWARD_INFO"
+msgstr "这是一个有用的奖励"
+
+#: ui/menu/main_menu.tscn
+msgid "SINGLE_PLAYER"
+msgstr "单人游戏"
+
+#: ui/menu/main_menu.tscn
+msgid "LOCAL_MULTIPLAYER"
+msgstr "本地多人"
+
+#: ui/menu/main_menu.tscn
+msgid "ONLINE_MULTIPLAYER"
+msgstr "在线多人"
+
+#: ui/menu/main_menu.tscn ui/pause_menu/pause_menu.tscn
+msgid "OPTIONS"
+msgstr "选项"
+
+#: ui/menu/main_menu.tscn
+msgid "QUIT"
+msgstr "退出"
+
+#: ui/menu/main_menu.tscn
+msgid "LANGUAGE"
+msgstr "English"
+
+#: ui/multiplayer_menu/multiplayer_menu.gd:85
+#: ui/multiplayer_menu/multiplayer_menu.gd:96
+#: ui/multiplayer_menu/multiplayer_menu.gd:114
+#: ui/onlinegame_menu/online_game_menu.gd:69
+#: ui/onlinegame_menu/online_game_menu.gd:87
+msgid "ERROR_DIALOG_TITLE"
+msgstr "错误"
+
+#: ui/multiplayer_menu/multiplayer_menu.gd:86
+msgid "CREATE_SERVER_ERROR_MESSAGE"
+msgstr "创建服务器失败: %s"
+
+#: ui/multiplayer_menu/multiplayer_menu.gd:97
+#: ui/onlinegame_menu/online_game_menu.gd:70
+msgid "CREATE_CLIENT_ERROR_MESSAGE"
+msgstr "创建客户端失败: %s"
+
+#: ui/multiplayer_menu/multiplayer_menu.gd:114
+#: ui/onlinegame_menu/online_game_menu.gd:87
+msgid "CONNECTION_TO_SERVER_FAILED_MESSAGE"
+msgstr "连接到服务器失败!"
+
+#: ui/multiplayer_menu/multiplayer_menu.tscn
+#: ui/onlinegame_menu/online_game_menu.tscn
+msgid "BACK"
+msgstr "返回"
+
+#: ui/multiplayer_menu/multiplayer_menu.tscn
+#: ui/onlinegame_menu/online_game_menu.tscn
+msgid "PLAYER_NAME"
+msgstr "玩家名称"
+
+#: ui/multiplayer_menu/multiplayer_menu.tscn
+msgid "Display Name"
+msgstr ""
+
+#: ui/multiplayer_menu/multiplayer_menu.tscn
+msgid "HOST_IP"
+msgstr "主机 IP"
+
+#: ui/multiplayer_menu/multiplayer_menu.tscn
+#: ui/onlinegame_menu/online_game_menu.tscn
+msgid "Host IP"
+msgstr ""
+
+#: ui/multiplayer_menu/multiplayer_menu.tscn
+msgid "HOST_PORT"
+msgstr "主机 Port"
+
+#: ui/multiplayer_menu/multiplayer_menu.tscn
+#: ui/onlinegame_menu/online_game_menu.tscn
+msgid "Host Port"
+msgstr ""
+
+#: ui/multiplayer_menu/multiplayer_menu.tscn
+msgid "HOST"
+msgstr "创建主机"
+
+#: ui/multiplayer_menu/multiplayer_menu.tscn
+msgid "JOIN_IP"
+msgstr "加入 IP"
+
+#: ui/multiplayer_menu/multiplayer_menu.tscn
+msgid "JOIN_PORT"
+msgstr "加入 Port"
+
+#: ui/multiplayer_menu/multiplayer_menu.tscn
+msgid "JOIN"
+msgstr "加入游戏"
+
+#: ui/onlinegame_menu/online_game_menu.tscn
+msgid "PLAYER_NAME_PLACEHOLDER"
+msgstr "输入名称"
+
+#: ui/onlinegame_menu/online_game_menu.tscn
+msgid "SERVER_IP"
+msgstr "服务器 IP"
+
+#: ui/onlinegame_menu/online_game_menu.tscn
+msgid "SERVER_PORT"
+msgstr "服务器 Port"
+
+#: ui/onlinegame_menu/online_game_menu.tscn
+msgid "LET_US_GO"
+msgstr "开始吧!"
+
+#: ui/option_menu/option_menu.tscn
+msgid "GAME_OPTIONS_TITLE"
+msgstr "游戏选项"
+
+#: ui/option_menu/option_menu.tscn
+msgid "SFX_VOLUME"
+msgstr "特效音量"
+
+#: ui/option_menu/option_menu.tscn
+msgid "-"
+msgstr ""
+
+#: ui/option_menu/option_menu.tscn
+msgid "+"
+msgstr ""
+
+#: ui/option_menu/option_menu.tscn
+msgid "MUSIC_VOLUME"
+msgstr "音乐音量"
+
+#: ui/option_menu/option_menu.tscn
+msgid "CLOSE"
+msgstr "关闭"
+
+#: ui/pause_menu/pause_menu.tscn
+msgid "PAUSE_MENU_TITLE"
+msgstr "游戏已暂停"
+
+#: ui/pause_menu/pause_menu.tscn
+msgid "RESUME"
+msgstr "恢复游戏"
+
+#: ui/player_look_select_ui/player_look_select_ui.tscn
+msgid "PLAYER_LOOK_MENU_TITLE"
+msgstr "选择你的皮肤"
+
+msgid "01-multi-player"
+msgstr "戈多枪手"

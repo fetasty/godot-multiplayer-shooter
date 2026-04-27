@@ -43,4 +43,4 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.92, 0.67160004, 0.1748, 1)
 theme_override_constants/outline_size = 5
-text = "Select an upgrade"
+text = "ROUND_REWARD_SELECTION_TIP"

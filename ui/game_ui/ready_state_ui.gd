@@ -38,7 +38,7 @@ func _on_skin_button_pressed() -> void:
 
 
 func _on_ready_peers_changed(ready_count: int, total_count: int) -> void:
-	ready_status_label.text = "%s/%s READY" % [ready_count, total_count]
+	ready_status_label.text = tr("READY_COUNT_INFO") % [ready_count, total_count]
 
 
 func _on_self_ready_state_changed(peer_ready: bool) -> void:

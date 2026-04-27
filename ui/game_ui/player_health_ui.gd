@@ -10,7 +10,7 @@ func _ready() -> void:
 	GameEvents.local_player_health_changed.connect(_on_local_player_health_changed)
 	GameEvents.player_look_changed.connect(_on_player_look_changed)
 	if multiplayer.multiplayer_peer is OfflineMultiplayerPeer:
-		player_name_label.text = "Player"
+		player_name_label.text = tr("DEFAULT_PLAYER_NAME")
 	else:
 		player_name_label.text = MultiplayerConfig.display_name
 	health_bar.value = 1.0
