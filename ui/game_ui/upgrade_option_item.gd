@@ -23,8 +23,8 @@ func _ready() -> void:
 
 
 func _init_with_resource() -> void:
-	title_label.text = resource.display_name
-	description_label.text = resource.description
+	title_label.text = tr(resource.name_key)
+	description_label.text = tr(resource.description_key)
 
 
 func _on_select_button_pressed() -> void:

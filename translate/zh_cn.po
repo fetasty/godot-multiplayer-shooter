@@ -114,6 +114,30 @@ msgstr "玩家"
 msgid "Player 1"
 msgstr ""
 
+#: resources/upgrade_resource/damage.tres
+msgid "UPGRADE_DAMAGE_NAME"
+msgstr "伤害提升"
+
+#: resources/upgrade_resource/damage.tres
+msgid "UPGRADE_DAMAGE_DESCRIPTION"
+msgstr "子弹伤害增加1"
+
+#: resources/upgrade_resource/fire_rate.tres
+msgid "UPGRADE_FIRE_RATE_NAME"
+msgstr "攻速提升"
+
+#: resources/upgrade_resource/fire_rate.tres
+msgid "UPGRADE_FIRE_RATE_DESCTIPTION"
+msgstr "攻击速度提升8%"
+
+#: resources/upgrade_resource/move_speed.tres
+msgid "UPGRADE_MOVE_SPEED_NAME"
+msgstr "移速提升"
+
+#: resources/upgrade_resource/move_speed.tres
+msgid "UPGRADE_MOVE_SPEED_DESCRIPTION"
+msgstr "移动速度提升10%"
+
 #: ui/confirm_dialog.gd:7 ui/confirm_dialog.tscn
 msgid "DEFAULT_CONFIRM_DIALOG_TITLE"
 msgstr "提示"

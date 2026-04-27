@@ -114,6 +114,30 @@ msgstr "Player"
 msgid "Player 1"
 msgstr ""
 
+#: resources/upgrade_resource/damage.tres
+msgid "UPGRADE_DAMAGE_NAME"
+msgstr "Increased Damage"
+
+#: resources/upgrade_resource/damage.tres
+msgid "UPGRADE_DAMAGE_DESCRIPTION"
+msgstr "Bullet damage increased by 1."
+
+#: resources/upgrade_resource/fire_rate.tres
+msgid "UPGRADE_FIRE_RATE_NAME"
+msgstr "Increased Fire Rate"
+
+#: resources/upgrade_resource/fire_rate.tres
+msgid "UPGRADE_FIRE_RATE_DESCTIPTION"
+msgstr "Attack speed increased by 8%."
+
+#: resources/upgrade_resource/move_speed.tres
+msgid "UPGRADE_MOVE_SPEED_NAME"
+msgstr "Increased Move Speed"
+
+#: resources/upgrade_resource/move_speed.tres
+msgid "UPGRADE_MOVE_SPEED_DESCRIPTION"
+msgstr "Movement speed increased by 10%"
+
 #: ui/confirm_dialog.gd:7 ui/confirm_dialog.tscn
 msgid "DEFAULT_CONFIRM_DIALOG_TITLE"
 msgstr "Info"

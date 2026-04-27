@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_fnpx4")
 id = "damage"
-display_name = "Incresed Damage"
-description = "Bullet damage +1"
+name_key = "UPGRADE_DAMAGE_NAME"
+description_key = "UPGRADE_DAMAGE_DESCRIPTION"
 metadata/_custom_type_script = "uid://dxyttex512alu"

@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_vfk17")
 id = "move_speed"
-display_name = "Incresed Move Speed"
-description = "Movement speed increased by 10%"
+name_key = "UPGRADE_MOVE_SPEED_NAME"
+description_key = "UPGRADE_MOVE_SPEED_DESCRIPTION"
 metadata/_custom_type_script = "uid://dxyttex512alu"

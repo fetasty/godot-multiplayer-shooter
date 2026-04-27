@@ -1,4 +1,12 @@
 # LANGUAGE translation for 01-multi-player for the following files:
+# res://addons/custom_resource_translation/generate_pot_files.gd
+# res://addons/custom_resource_translation/main_plugin.gd
+# res://addons/custom_resource_translation/resource_translation_parser.gd
+# res://addons/custom_resource_translation/translation_plugin_setup.gd
+# res://assets/cursor.tres
+# res://assets/healing.tres
+# res://assets/health_bar_progress.tres
+# res://assets/health_bar_under.tres
 # res://autoload/background.tscn
 # res://autoload/game_cursor.gd
 # res://autoload/game_cursor.tscn
@@ -25,7 +33,7 @@
 # res://components/player_input_multiplayer_synchronizer_component.tscn
 # res://components/upgrade_component.gd
 # res://components/upgrade_component.tscn
-# res://editor/generate_pot_files.gd
+# res://default_bus_layout.tres
 # res://effects/enemy_died_effect.tscn
 # res://effects/healing_effect.gd
 # res://effects/healing_effect.tscn
@@ -46,6 +54,10 @@
 # res://game_camera.tscn
 # res://main.gd
 # res://main.tscn
+# res://resources/default.tres
+# res://resources/upgrade_resource/damage.tres
+# res://resources/upgrade_resource/fire_rate.tres
+# res://resources/upgrade_resource/move_speed.tres
 # res://resources/upgrade_resource/upgrade_resource.gd
 # res://scripts/multiplayer_config.gd
 # res://scripts/random_username_generator.gd
@@ -84,6 +96,10 @@
 # res://ui/option_menu/option_menu.tscn
 # res://ui/pause_menu/pause_menu.gd
 # res://ui/pause_menu/pause_menu.tscn
+# res://ui/player_look_select_ui/player1.tres
+# res://ui/player_look_select_ui/player2.tres
+# res://ui/player_look_select_ui/player3.tres
+# res://ui/player_look_select_ui/player4.tres
 # res://ui/player_look_select_ui/player_look_item.gd
 # res://ui/player_look_select_ui/player_look_item.tscn
 # res://ui/player_look_select_ui/player_look_select_ui.gd
@@ -107,6 +123,30 @@ msgstr ""
 
 #: entities/player/player.tscn
 msgid "Player 1"
+msgstr ""
+
+#: resources/upgrade_resource/damage.tres
+msgid "UPGRADE_DAMAGE_NAME"
+msgstr ""
+
+#: resources/upgrade_resource/damage.tres
+msgid "UPGRADE_DAMAGE_DESCRIPTION"
+msgstr ""
+
+#: resources/upgrade_resource/fire_rate.tres
+msgid "UPGRADE_FIRE_RATE_NAME"
+msgstr ""
+
+#: resources/upgrade_resource/fire_rate.tres
+msgid "UPGRADE_FIRE_RATE_DESCTIPTION"
+msgstr ""
+
+#: resources/upgrade_resource/move_speed.tres
+msgid "UPGRADE_MOVE_SPEED_NAME"
+msgstr ""
+
+#: resources/upgrade_resource/move_speed.tres
+msgid "UPGRADE_MOVE_SPEED_DESCRIPTION"
 msgstr ""
 
 #: ui/confirm_dialog.gd:7
