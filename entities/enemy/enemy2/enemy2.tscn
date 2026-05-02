@@ -1,0 +1,184 @@
+[gd_scene format=3 uid="uid://c5v88ha30yaov"]
+
+[ext_resource type="Script" uid="uid://xtneaoiuk6iy" path="res://entities/enemy/enemy2/enemy2.gd" id="1_o2p6f"]
+[ext_resource type="PackedScene" uid="uid://d4dbjbld66ye3" path="res://components/health_component.tscn" id="2_fbvq2"]
+[ext_resource type="Script" uid="uid://byvkenn7q7gsb" path="res://scripts/state_machine.gd" id="3_43ats"]
+[ext_resource type="Script" uid="uid://cf15f14bif42j" path="res://entities/enemy/enemy2/state_spawn.gd" id="4_o2p6f"]
+[ext_resource type="Script" uid="uid://lka2oxjrluwo" path="res://entities/enemy/enemy2/state_normal.gd" id="5_ayxag"]
+[ext_resource type="Script" uid="uid://bls24s7ii15nb" path="res://entities/enemy/enemy2/state_charge.gd" id="6_wdf2d"]
+[ext_resource type="Script" uid="uid://bps77iicfodex" path="res://entities/enemy/enemy2/state_attack.gd" id="7_4tdij"]
+[ext_resource type="Script" uid="uid://jwgd4kqo1rk4" path="res://entities/enemy/enemy2/state_died.gd" id="8_mg246"]
+[ext_resource type="Texture2D" uid="uid://cbqlwutkg8y67" path="res://assets/shadow.png" id="9_mauft"]
+[ext_resource type="PackedScene" uid="uid://bckrnncvijtky" path="res://components/flash_sprite_component.tscn" id="10_35dx2"]
+[ext_resource type="Shader" uid="uid://cmi5pwj65438r" path="res://resources/shader/flash_sprite_component.gdshader" id="11_mitcp"]
+[ext_resource type="Texture2D" uid="uid://cej3og1ry3m4b" path="res://assets/enemy2.png" id="12_o2p6f"]
+[ext_resource type="Texture2D" uid="uid://dlib4ff7bbyjk" path="res://entities/enemy/enemy_attack_tip.png" id="13_prtck"]
+[ext_resource type="PackedScene" uid="uid://cjdfv3bck20to" path="res://components/hurtbox_component.tscn" id="14_dmot2"]
+[ext_resource type="AudioStream" uid="uid://dh2v8bmefu03k" path="res://assets/audio/hit1.mp3" id="16_klc3p"]
+[ext_resource type="PackedScene" uid="uid://ruvmx6t6a33" path="res://components/player_detect_component.tscn" id="17_o2p6f"]
+[ext_resource type="AudioStream" uid="uid://cci0tqh2hi3gw" path="res://assets/audio/hit2.mp3" id="17_r0ay0"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_im2q6"]
+properties/0/path = NodePath(".:global_position")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+properties/1/path = NodePath(".:track_target")
+properties/1/spawn = true
+properties/1/replication_mode = 2
+properties/2/path = NodePath("StateMachine:current_state")
+properties/2/spawn = true
+properties/2/replication_mode = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o2p6f"]
+resource_local_to_scene = true
+shader = ExtResource("11_mitcp")
+shader_parameter/input_color = Color(1, 1, 1, 1)
+shader_parameter/percent = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dt443"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4wwj3"]
+radius = 12.0
+
+[sub_resource type="Animation" id="Animation_jfjhj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/FlashSpriteComponent:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ogeq8"]
+resource_name = "move"
+length = 0.3
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/FlashSpriteComponent:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1), Vector2(1, 1.2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jfjhj"]
+_data = {
+&"RESET": SubResource("Animation_jfjhj"),
+&"move": SubResource("Animation_ogeq8")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kh7fx"]
+random_pitch = 1.0656005
+random_volume_offset_db = 2.0
+streams_count = 2
+stream_0/stream = ExtResource("16_klc3p")
+stream_1/stream = ExtResource("17_r0ay0")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ayxag"]
+radius = 50.0
+
+[node name="Enemy2" type="CharacterBody2D" unique_id=1435173822 groups=["enemy"]]
+collision_layer = 2
+collision_mask = 3
+motion_mode = 1
+script = ExtResource("1_o2p6f")
+
+[node name="HealthComponent" parent="." unique_id=390402674 instance=ExtResource("2_fbvq2")]
+
+[node name="TrackTimer" type="Timer" parent="." unique_id=1052182996]
+wait_time = 0.2
+autostart = true
+
+[node name="ChargeTimer" type="Timer" parent="." unique_id=264336437]
+wait_time = 2.0
+one_shot = true
+
+[node name="AttackCoolDownTimer" type="Timer" parent="." unique_id=12511665]
+wait_time = 5.0
+one_shot = true
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=2049813085]
+replication_config = SubResource("SceneReplicationConfig_im2q6")
+
+[node name="StateMachine" type="Node" parent="." unique_id=1650562235]
+script = ExtResource("3_43ats")
+metadata/_custom_type_script = "uid://byvkenn7q7gsb"
+
+[node name="Spawn" type="Node" parent="StateMachine" unique_id=996450131]
+script = ExtResource("4_o2p6f")
+
+[node name="Normal" type="Node" parent="StateMachine" unique_id=264150396]
+script = ExtResource("5_ayxag")
+
+[node name="Charge" type="Node" parent="StateMachine" unique_id=1634144453]
+script = ExtResource("6_wdf2d")
+
+[node name="Attack" type="Node" parent="StateMachine" unique_id=61959648]
+script = ExtResource("7_4tdij")
+
+[node name="Died" type="Node" parent="StateMachine" unique_id=795905095]
+script = ExtResource("8_mg246")
+
+[node name="Visual" type="Node2D" parent="." unique_id=1724392480]
+
+[node name="Shadow" type="Sprite2D" parent="Visual" unique_id=1448696140]
+position = Vector2(0, -1)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("9_mauft")
+
+[node name="FlashSpriteComponent" parent="Visual" unique_id=1374404885 instance=ExtResource("10_35dx2")]
+material = SubResource("ShaderMaterial_o2p6f")
+texture = ExtResource("12_o2p6f")
+centered = false
+offset = Vector2(-16, -24)
+
+[node name="WarningIcon" type="Sprite2D" parent="." unique_id=1574163786]
+position = Vector2(0, -27)
+texture = ExtResource("13_prtck")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=520045919]
+position = Vector2(0, -9)
+shape = SubResource("CircleShape2D_dt443")
+
+[node name="HurtboxComponent" parent="." unique_id=981055533 node_paths=PackedStringArray("health_component") instance=ExtResource("14_dmot2")]
+position = Vector2(0, -9)
+collision_mask = 256
+health_component = NodePath("../HealthComponent")
+
+[node name="HurtCollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=866805600]
+shape = SubResource("CircleShape2D_4wwj3")
+disabled = true
+debug_color = Color(0.65105337, 0.41757444, 0.8009966, 0.41960785)
+
+[node name="MoveAnimationPlayer" type="AnimationPlayer" parent="." unique_id=1639335037]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_jfjhj")
+speed_scale = 0.5
+
+[node name="HitAudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1379173009]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_kh7fx")
+volume_db = -2.0
+max_polyphony = 3
+bus = &"sfx"
+
+[node name="PlayerDetectComponent" parent="." unique_id=352004314 instance=ExtResource("17_o2p6f")]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectComponent" unique_id=2060106232]
+position = Vector2(0, -9)
+shape = SubResource("CircleShape2D_ayxag")
+debug_color = Color(0.27811116, 0.6086514, 0.48601764, 0.41960785)

@@ -1,22 +1,22 @@
 [gd_scene format=3 uid="uid://pu2c45uixpy0"]
 
-[ext_resource type="Script" uid="uid://c7lobg8xpka2u" path="res://entities/enemy/enemy.gd" id="1_im2q6"]
-[ext_resource type="Texture2D" uid="uid://cpl7g0kbq3wh4" path="res://entities/enemy/enemy.png" id="2_3fvr7"]
-[ext_resource type="PackedScene" uid="uid://d4dbjbld66ye3" path="res://components/health_component.tscn" id="3_3fvr7"]
-[ext_resource type="Script" uid="uid://byvkenn7q7gsb" path="res://scripts/state_machine.gd" id="3_61ikd"]
-[ext_resource type="Script" uid="uid://icryny88jaym" path="res://entities/enemy/state_spawn.gd" id="4_721x4"]
-[ext_resource type="PackedScene" uid="uid://cjdfv3bck20to" path="res://components/hurtbox_component.tscn" id="4_dt443"]
-[ext_resource type="PackedScene" uid="uid://c8mojkcl4ky3a" path="res://components/hitbox_component.tscn" id="5_4wwj3"]
-[ext_resource type="Script" uid="uid://h7n3g0imvjex" path="res://entities/enemy/state_normal.gd" id="5_a8fs5"]
-[ext_resource type="Script" uid="uid://bm3ikskgp1jv8" path="res://entities/enemy/state_charge.gd" id="6_7vrfk"]
-[ext_resource type="Script" uid="uid://cye7nu53lap8o" path="res://entities/enemy/state_attack.gd" id="7_4ohlc"]
-[ext_resource type="Script" uid="uid://bi7p04bjs17sk" path="res://entities/enemy/state_died.gd" id="8_4ohlc"]
-[ext_resource type="Texture2D" uid="uid://cbqlwutkg8y67" path="res://assets/shadow.png" id="9_0mv3s"]
-[ext_resource type="Texture2D" uid="uid://dlib4ff7bbyjk" path="res://entities/enemy/Sprite-0008.png" id="9_7vrfk"]
-[ext_resource type="Shader" uid="uid://cmi5pwj65438r" path="res://resources/shader/flash_sprite_component.gdshader" id="10_jfjhj"]
-[ext_resource type="PackedScene" uid="uid://bckrnncvijtky" path="res://components/flash_sprite_component.tscn" id="10_ogeq8"]
-[ext_resource type="AudioStream" uid="uid://dh2v8bmefu03k" path="res://assets/audio/hit1.mp3" id="15_t1g2p"]
-[ext_resource type="AudioStream" uid="uid://cci0tqh2hi3gw" path="res://assets/audio/hit2.mp3" id="16_0mv3s"]
+[ext_resource type="Script" uid="uid://c7lobg8xpka2u" path="res://entities/enemy/enemy1/enemy1.gd" id="1_26grt"]
+[ext_resource type="PackedScene" uid="uid://d4dbjbld66ye3" path="res://components/health_component.tscn" id="2_5iats"]
+[ext_resource type="Script" uid="uid://byvkenn7q7gsb" path="res://scripts/state_machine.gd" id="3_u4jjd"]
+[ext_resource type="Script" uid="uid://icryny88jaym" path="res://entities/enemy/enemy1/state_spawn.gd" id="4_fn6rl"]
+[ext_resource type="Script" uid="uid://h7n3g0imvjex" path="res://entities/enemy/enemy1/state_normal.gd" id="5_1xqrm"]
+[ext_resource type="Script" uid="uid://bm3ikskgp1jv8" path="res://entities/enemy/enemy1/state_charge.gd" id="6_b4kbg"]
+[ext_resource type="Script" uid="uid://cye7nu53lap8o" path="res://entities/enemy/enemy1/state_attack.gd" id="7_4syqy"]
+[ext_resource type="Script" uid="uid://bi7p04bjs17sk" path="res://entities/enemy/enemy1/state_died.gd" id="8_in4ve"]
+[ext_resource type="Texture2D" uid="uid://cbqlwutkg8y67" path="res://assets/shadow.png" id="9_2civ7"]
+[ext_resource type="PackedScene" uid="uid://bckrnncvijtky" path="res://components/flash_sprite_component.tscn" id="10_c5rd6"]
+[ext_resource type="Shader" uid="uid://cmi5pwj65438r" path="res://resources/shader/flash_sprite_component.gdshader" id="11_oq8xh"]
+[ext_resource type="Texture2D" uid="uid://cpl7g0kbq3wh4" path="res://assets/enemy_normal.png" id="12_2ftq3"]
+[ext_resource type="Texture2D" uid="uid://dlib4ff7bbyjk" path="res://entities/enemy/enemy_attack_tip.png" id="13_s4y0h"]
+[ext_resource type="PackedScene" uid="uid://cjdfv3bck20to" path="res://components/hurtbox_component.tscn" id="14_ngbdd"]
+[ext_resource type="PackedScene" uid="uid://c8mojkcl4ky3a" path="res://components/hitbox_component.tscn" id="15_ovg2t"]
+[ext_resource type="AudioStream" uid="uid://dh2v8bmefu03k" path="res://assets/audio/hit1.mp3" id="16_mg7t0"]
+[ext_resource type="AudioStream" uid="uid://cci0tqh2hi3gw" path="res://assets/audio/hit2.mp3" id="17_b73pi"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_im2q6"]
 properties/0/path = NodePath(".:global_position")
@@ -29,9 +29,9 @@ properties/2/path = NodePath("StateMachine:current_state")
 properties/2/spawn = true
 properties/2/replication_mode = 2
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0mv3s"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7qcy3"]
 resource_local_to_scene = true
-shader = ExtResource("10_jfjhj")
+shader = ExtResource("11_oq8xh")
 shader_parameter/input_color = Color(1, 1, 1, 1)
 shader_parameter/percent = 0.0
 
@@ -87,16 +87,16 @@ _data = {
 random_pitch = 1.0656005
 random_volume_offset_db = 2.0
 streams_count = 2
-stream_0/stream = ExtResource("15_t1g2p")
-stream_1/stream = ExtResource("16_0mv3s")
+stream_0/stream = ExtResource("16_mg7t0")
+stream_1/stream = ExtResource("17_b73pi")
 
-[node name="Enemy" type="CharacterBody2D" unique_id=1435173822 groups=["enemy"]]
+[node name="Enemy1" type="CharacterBody2D" unique_id=1435173822 groups=["enemy"]]
 collision_layer = 2
 collision_mask = 3
 motion_mode = 1
-script = ExtResource("1_im2q6")
+script = ExtResource("1_26grt")
 
-[node name="HealthComponent" parent="." unique_id=390402674 instance=ExtResource("3_3fvr7")]
+[node name="HealthComponent" parent="." unique_id=390402674 instance=ExtResource("2_5iats")]
 
 [node name="TrackTimer" type="Timer" parent="." unique_id=1052182996]
 wait_time = 0.2
@@ -114,44 +114,44 @@ one_shot = true
 replication_config = SubResource("SceneReplicationConfig_im2q6")
 
 [node name="StateMachine" type="Node" parent="." unique_id=1650562235]
-script = ExtResource("3_61ikd")
+script = ExtResource("3_u4jjd")
 metadata/_custom_type_script = "uid://byvkenn7q7gsb"
 
 [node name="Spawn" type="Node" parent="StateMachine" unique_id=996450131]
-script = ExtResource("4_721x4")
+script = ExtResource("4_fn6rl")
 
 [node name="Normal" type="Node" parent="StateMachine" unique_id=264150396]
-script = ExtResource("5_a8fs5")
+script = ExtResource("5_1xqrm")
 
 [node name="Charge" type="Node" parent="StateMachine" unique_id=1634144453]
-script = ExtResource("6_7vrfk")
+script = ExtResource("6_b4kbg")
 
 [node name="Attack" type="Node" parent="StateMachine" unique_id=61959648]
-script = ExtResource("7_4ohlc")
+script = ExtResource("7_4syqy")
 
 [node name="Died" type="Node" parent="StateMachine" unique_id=795905095]
-script = ExtResource("8_4ohlc")
+script = ExtResource("8_in4ve")
 
 [node name="Visual" type="Node2D" parent="." unique_id=1724392480]
 
 [node name="Shadow" type="Sprite2D" parent="Visual" unique_id=1448696140]
-texture = ExtResource("9_0mv3s")
+texture = ExtResource("9_2civ7")
 
-[node name="FlashSpriteComponent" parent="Visual" unique_id=1374404885 instance=ExtResource("10_ogeq8")]
-material = SubResource("ShaderMaterial_0mv3s")
-texture = ExtResource("2_3fvr7")
+[node name="FlashSpriteComponent" parent="Visual" unique_id=1374404885 instance=ExtResource("10_c5rd6")]
+material = SubResource("ShaderMaterial_7qcy3")
+texture = ExtResource("12_2ftq3")
 centered = false
 offset = Vector2(-16, -28)
 
 [node name="WarningIcon" type="Sprite2D" parent="." unique_id=1574163786]
 position = Vector2(0, -27)
-texture = ExtResource("9_7vrfk")
+texture = ExtResource("13_s4y0h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=520045919]
 position = Vector2(0, -9)
 shape = SubResource("CircleShape2D_dt443")
 
-[node name="HurtboxComponent" parent="." unique_id=981055533 node_paths=PackedStringArray("health_component") instance=ExtResource("4_dt443")]
+[node name="HurtboxComponent" parent="." unique_id=981055533 node_paths=PackedStringArray("health_component") instance=ExtResource("14_ngbdd")]
 position = Vector2(0, -9)
 collision_mask = 256
 health_component = NodePath("../HealthComponent")
@@ -161,7 +161,7 @@ shape = SubResource("CircleShape2D_4wwj3")
 disabled = true
 debug_color = Color(0.65105337, 0.41757444, 0.8009966, 0.41960785)
 
-[node name="HitboxComponent" parent="." unique_id=206202765 instance=ExtResource("5_4wwj3")]
+[node name="HitboxComponent" parent="." unique_id=206202765 instance=ExtResource("15_ovg2t")]
 position = Vector2(0, -9)
 collision_layer = 4
 

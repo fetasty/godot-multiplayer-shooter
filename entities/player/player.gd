@@ -5,7 +5,7 @@ signal died
 signal player_hurt
 
 const BULLET = preload("uid://clvtit5mibwed")
-const MUZZLE_FLASH_EFFECT = preload("uid://ckgdgjh2c5e2s")
+const MUZZLE_FLASH_EFFECT = preload("uid://bv4fjogy2b1sq")
 const HEALING_EFFECT = preload("uid://di1t1xvv6tgy7")
 
 
@@ -21,6 +21,7 @@ var player_look_index: int = 0
 
 var move_vector: Vector2 = Vector2.ZERO
 var is_dead: bool = false
+var is_immnue: bool = false
 
 var phantom_camera: PhantomCamera2D
 
@@ -81,6 +82,15 @@ func _process(delta: float) -> void:
 		move_and_slide()
 		if player_input_multiplayer_synchronizer_component.is_attack_pressing:
 			_try_to_attack()
+
+
+func take_damage(damage: int) -> void:
+	if not is_multiplayer_authority():
+		return
+	if is_immnue:
+		return
+	health_component.take_damage(damage)
+	try_play_hurt_effect()
 
 
 func _update_aim_direction() -> void:
@@ -190,15 +200,23 @@ func set_player_health_bar(rate: float) -> void:
 func play_hit_effects() -> void:
 	flash_sprite_component.play_flash_animation()
 	if is_multiplayer_authority():
+		is_immnue = true
 		collision_shape_2d.disabled = true
 	var tween := create_tween()
-	tween.set_loops(10)
+	tween.set_loops(5)
 	tween.tween_property(flash_sprite_component, "visible", false, 0.1)
 	tween.tween_property(flash_sprite_component, "visible", true, 0.1)
 	if is_multiplayer_authority():
 		tween.finished.connect(func():
+			is_immnue = false
 			collision_shape_2d.disabled = false
 		)
+
+
+func try_play_hurt_effect() -> void:
+	if not is_dead:
+		play_hit_effects.rpc()
+		player_hurt.emit()
 
 
 func _on_health_depleted() -> void:
@@ -215,9 +233,7 @@ func _on_health_changed(max_value: int, current_value: int) -> void:
 
 
 func _on_hit() -> void:
-	if not is_dead:
-		play_hit_effects.rpc()
-		player_hurt.emit()
+	try_play_hurt_effect()
 
 
 func _on_player_look_changed(peer_id: int, index: int) -> void:

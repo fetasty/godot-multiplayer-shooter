@@ -17,6 +17,7 @@ const GAME_WIN_MUSIC = preload("uid://3uxgm2vppewk")
 @onready var game_end_audio_stream_player: AudioStreamPlayer = $GameEndAudioStreamPlayer
 @onready var round_audio_stream_player: AudioStreamPlayer = $RoundAudioStreamPlayer
 @onready var healing_audio_stream_player: AudioStreamPlayer = $HealingAudioStreamPlayer
+@onready var enemy_died_audio_stream_player: AudioStreamPlayer = %EnemyDiedAudioStreamPlayer
 
 
 func register_hover(btns: Array[Button]) -> void:
@@ -50,7 +51,7 @@ func play_hurt() -> void:
 	hurt_audio_stream_player.play()
 
 
-func play_died() -> void:
+func play_player_died() -> void:
 	died_audio_stream_player.play()
 
 
@@ -70,6 +71,10 @@ func play_game_end(win: bool) -> void:
 
 func play_healing() -> void:
 	healing_audio_stream_player.play()
+
+
+func play_enemy_died() -> void:
+	enemy_died_audio_stream_player.play()
 
 
 func _on_play_hover_sfx() -> void:

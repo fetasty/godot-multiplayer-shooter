@@ -1,4 +1,4 @@
-class_name Enemy
+class_name Enemy1
 extends CharacterBody2D
 
 const HIT_EFFECT = preload("uid://da0onk1mh08tv")
@@ -114,6 +114,7 @@ func _play_hit_effect() -> void:
 
 @rpc("authority", "call_local")
 func _play_died_effect() -> void:
+	SoundManager.play_enemy_died()
 	var effect := ENEMY_DIED_EFFECT.instantiate() as Node2D
 	Main.background_effect_clip.add_child(effect)
 	effect.global_position = global_position
@@ -124,8 +125,8 @@ func _on_track_timer_timeout() -> void:
 
 
 func _on_health_depleted() -> void:
-	state_machine.current_state = "died"
 	_play_died_effect.rpc()
+	state_machine.current_state = "died"
 
 
 func _on_hit() -> void:

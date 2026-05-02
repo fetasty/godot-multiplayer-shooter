@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://dv1y8ri1kqvnf"]
+[gd_scene format=3 uid="uid://bojiofob0nfl"]
 
-[ext_resource type="Texture2D" uid="uid://bar74ipwo7sqk" path="res://assets/muzzle_flash.png" id="1_6mhap"]
+[ext_resource type="Texture2D" uid="uid://bar74ipwo7sqk" path="res://assets/muzzle_flash.png" id="1_xu6sh"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6mhap"]
 particles_animation = true
@@ -11,7 +11,7 @@ particles_anim_loop = false
 [sub_resource type="Gradient" id="Gradient_dv6nc"]
 interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.8533605)
-colors = PackedColorArray(0.63640004, 0.7109334, 0.86, 1, 0.8509804, 0.627451, 0.4, 1)
+colors = PackedColorArray(0.4509804, 0.09019608, 0.1764706, 1, 0.7058824, 0.1254902, 0.16470589, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_7ghr1"]
 gradient = SubResource("Gradient_dv6nc")
@@ -91,7 +91,7 @@ _data = {
 [node name="EnemyDiedEffect" type="GPUParticles2D" unique_id=827588458]
 material = SubResource("CanvasItemMaterial_6mhap")
 emitting = false
-texture = ExtResource("1_6mhap")
+texture = ExtResource("1_xu6sh")
 lifetime = 7.0
 one_shot = true
 explosiveness = 0.98

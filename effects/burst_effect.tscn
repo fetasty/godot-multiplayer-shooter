@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://bv4fjogy2b1sq"]
+[gd_scene format=3 uid="uid://ckgdgjh2c5e2s"]
 
-[ext_resource type="Texture2D" uid="uid://bar74ipwo7sqk" path="res://assets/muzzle_flash.png" id="1_l2b3n"]
+[ext_resource type="Texture2D" uid="uid://bar74ipwo7sqk" path="res://assets/muzzle_flash.png" id="1_cj8ka"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_l2b3n"]
 particles_animation = true
@@ -10,14 +10,15 @@ particles_anim_loop = false
 
 [sub_resource type="Gradient" id="Gradient_l2b3n"]
 interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.3447099, 0.668942, 1)
-colors = PackedColorArray(0.92156863, 0.6901961, 0.08627451, 1, 0.9026023, 0.46408343, 0.13280767, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0, 0.3447099, 0.668942)
+colors = PackedColorArray(1, 0.58150005, 0.19, 1, 0.75, 0.20999998, 0.24599996, 1, 1, 0.739, 0.71000004, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_b0f4r"]
 gradient = SubResource("Gradient_l2b3n")
 
 [sub_resource type="Curve" id="Curve_l2b3n"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1640625, 1), 0.0, 0.0, 0, 0, Vector2(0.5859375, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.32002634), 0.0, 0.0, 0, 0]
+_limits = [0.0, 1.2, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.124434404, 1.2), 0.0, 0.0, 0, 0, Vector2(0.67873305, 1.1042578), 0.0, 0.0, 0, 0, Vector2(1, 0.32002634), 0.0, 0.0, 0, 0]
 point_count = 4
 
 [sub_resource type="CurveTexture" id="CurveTexture_b0f4r"]
@@ -27,12 +28,12 @@ curve = SubResource("Curve_l2b3n")
 particle_flag_disable_z = true
 angle_min = 1.0728835e-05
 angle_max = 360.00003
-spread = 10.0
+spread = 180.0
 initial_velocity_min = 150.0
-initial_velocity_max = 300.0
+initial_velocity_max = 350.0
 gravity = Vector3(0, 0, 0)
-damping_min = 700.00006
-damping_max = 900.00006
+damping_min = 600.0
+damping_max = 800.00006
 scale_curve = SubResource("CurveTexture_b0f4r")
 color_initial_ramp = SubResource("GradientTexture1D_b0f4r")
 anim_offset_max = 1.0
@@ -87,12 +88,12 @@ _data = {
 &"default": SubResource("Animation_b0f4r")
 }
 
-[node name="MuzzleFlashEffect" type="GPUParticles2D" unique_id=2123514730]
+[node name="BurstEffect" type="GPUParticles2D" unique_id=2123514730]
 material = SubResource("CanvasItemMaterial_l2b3n")
 emitting = false
-amount = 5
-texture = ExtResource("1_l2b3n")
-lifetime = 0.2
+amount = 15
+texture = ExtResource("1_cj8ka")
+lifetime = 0.3
 one_shot = true
 explosiveness = 0.8
 process_material = SubResource("ParticleProcessMaterial_b0f4r")

@@ -22,7 +22,6 @@ var is_game_over: bool = false
 @onready var round_timer_ui: MarginContainer = %RoundTimerUI
 @onready var ready_state_ui: ReadyStateUI = %ReadyStateUI
 @onready var lobby_component: LobbyComponent = %LobbyComponent
-@onready var enemy_died_audio_stream_player: AudioStreamPlayer = %EnemyDiedAudioStreamPlayer
 @onready var player_look_select_ui: PlayerLookSelectUI = %PlayerLookSelectUI
 @onready var hurt_notify_ui: HurtNotifyUI = %HurtNotifyUI
 @onready var player_died_ui: PlayerDiedUI = %PlayerDiedUI
@@ -56,7 +55,6 @@ func _ready() -> void:
 		enemy_spawn_component.round_completed.connect(_on_round_completed)
 		enemy_spawn_component.max_round_end.connect(_on_max_round_end)
 		multiplayer.peer_disconnected.connect(_on_peer_disconnected)
-		GameEvents.enemy_died.connect(_on_enemy_died)
 		upgrade_component.upgrade_finished.connect(_on_upgrade_finished)
 	else:
 		multiplayer.server_disconnected.connect(_on_server_disconnected)
@@ -115,11 +113,6 @@ func _check_game_over() -> void:
 		_game_completed.rpc(false)
 
 
-@rpc("authority", "call_local")
-func _play_enemy_died_effects() -> void:
-	enemy_died_audio_stream_player.play()
-
-
 @rpc("any_peer", "call_local", "reliable")
 func _peer_select_look_request(index: int) -> void:
 	if not is_multiplayer_authority():
@@ -144,7 +137,7 @@ func _play_player_hurt_effect() -> void:
 @rpc("authority", "call_local")
 func _play_player_died_effect() -> void:
 	player_died_ui.show_died_tip()
-	SoundManager.play_died()
+	SoundManager.play_player_died()
 
 
 @rpc("authority", "call_local", "reliable")
@@ -174,6 +167,9 @@ func _on_player_died(peer_id: int) -> void:
 
 
 func _on_round_completed() -> void:
+	# 先检查是否游戏已经失败
+	if is_game_over:
+		return
 	var all_peers := Tools.get_game_peers()
 	for peer_id in all_peers:
 		var player := player_dict[peer_id]
@@ -217,10 +213,6 @@ func _on_all_peers_ready_checked() -> void:
 	if is_multiplayer_authority():
 		lobby_component.close_lobby()
 		enemy_spawn_component.start()
-
-
-func _on_enemy_died() -> void:
-	_play_enemy_died_effects.rpc()
 
 
 func _on_player_look_selected(index: int) -> void:

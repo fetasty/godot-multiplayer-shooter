@@ -2,7 +2,7 @@ extends State
 
 ## Enemy进入充能攻击状态
 
-var enemy: Enemy
+var enemy: Enemy1
 
 func enter() -> void:
 	enemy = owner

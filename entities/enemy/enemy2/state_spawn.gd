@@ -2,7 +2,7 @@ extends State
 
 ## Enemy的生成状态,播放生成动画,不进行追踪和攻击
 
-var enemy: Enemy
+var enemy: Enemy2
 
 func enter() -> void:
 	enemy = owner

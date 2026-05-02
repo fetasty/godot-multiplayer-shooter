@@ -2,7 +2,7 @@ extends State
 
 ## Enemy的死亡状态
 
-var enemy: Enemy
+var enemy: Enemy2
 
 func enter() -> void:
 	enemy = owner

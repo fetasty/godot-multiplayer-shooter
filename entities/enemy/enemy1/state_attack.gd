@@ -6,7 +6,7 @@ extends State
 const ATTACK_SPEED: float = 600
 const STOP_ATTACK_SPEED_SQUARED: float = 100
 
-var enemy: Enemy
+var enemy: Enemy1
 var origin_collision_layer: int
 var origin_collision_mask: int
 

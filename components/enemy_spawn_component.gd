@@ -5,7 +5,10 @@ signal round_changed(round_count: int)
 signal round_completed
 signal max_round_end
 
-const ENEMY = preload("uid://pu2c45uixpy0")
+const ENEMYS = [
+	[preload("uid://c5v88ha30yaov"), 0.5],
+	[preload("uid://pu2c45uixpy0"), 0.5],
+]
 
 const BASE_ROUND_TIME: float = 10
 const ROUND_TIME_GROWTH: float = 5
@@ -17,6 +20,7 @@ const MAX_ROUND: int = 10
 @export var spawn_root: Node2D
 @export var spawn_rect: ReferenceRect
 @export var uprade_component: UpgradeComponent
+@export var multiplayer_spawner: MultiplayerSpawner
 
 var round_count: int = 0:
 	get:
@@ -32,6 +36,9 @@ var enemy_count: int = 0
 @onready var round_timer: Timer = $RoundTimer
 
 func _ready() -> void:
+	for config in ENEMYS:
+		var packed_scene: PackedScene = config[0]
+		multiplayer_spawner.add_spawnable_scene(packed_scene.resource_path)
 	if is_multiplayer_authority():
 		spawn_timer.timeout.connect(_on_spawn_timer_timeout)
 		round_timer.timeout.connect(_on_round_timer_timeout)
@@ -106,18 +113,38 @@ func _synchronize(data: Dictionary) -> void:
 		round_timer.start()
 
 
-func _on_spawn_timer_timeout() -> void:
+func _spawn_one_enemy() -> void:
+	# 随机概率
+	var rand := randf()
+	var config_rate := 0.0
+	var enemy_scene: PackedScene = null
+	for config in ENEMYS:
+		config_rate += config[1]
+		if rand <= config_rate:
+			enemy_scene = config[0]
+			break
+	if enemy_scene == null:
+		enemy_scene = ENEMYS.back()[0]
+	var enemy := enemy_scene.instantiate() as Node2D
+	#print("[peer %s] enemy spawn pos: %s" % [multiplayer.get_unique_id(), enemy.global_position])
+	spawn_root.add_child(enemy, true)
+	enemy.global_position = _get_random_position()
+	enemy_count += 1
+
+
+func _spawn_enemy() -> void:
 	var peers := Tools.get_game_peers_count()
 	var multi_enemy_rate := randf_range(0.0, 0.1 * peers + 0.05 * round_count)
 	var is_multi_enemy_spawn := randf() < multi_enemy_rate
-	var spawn_count := randi_range(1, int((peers + round_count))) if is_multi_enemy_spawn else 1
+	var spawn_count := randi_range(peers, int((peers + round_count * peers))) if is_multi_enemy_spawn else 1
+	#var max_enemy_count := round_count * peers * 3
 	for i in spawn_count:
-		var enemy := ENEMY.instantiate() as Node2D
-		enemy.global_position = _get_random_position()
-		#print("[peer %s] enemy spawn pos: %s" % [multiplayer.get_unique_id(), enemy.global_position])
-		spawn_root.add_child(enemy, true)
-		enemy_count += 1
+		_spawn_one_enemy()
 	spawn_timer.start(randf_range(round_min_spawn_interval, round_max_spawn_interval))
+
+
+func _on_spawn_timer_timeout() -> void:
+	_spawn_enemy()
 
 
 func _on_round_timer_timeout() -> void:

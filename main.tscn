@@ -17,7 +17,6 @@
 [ext_resource type="PackedScene" uid="uid://chf5vb2mbhvnt" path="res://ui/game_ui/round_win_ui.tscn" id="12_074og"]
 [ext_resource type="PackedScene" uid="uid://cmdyhkfjb0l2u" path="res://ui/game_ui/hurt_notify_ui.tscn" id="12_vivmo"]
 [ext_resource type="PackedScene" uid="uid://pcedff52r0lm" path="res://ui/game_ui/game_win_ui.tscn" id="12_yaehf"]
-[ext_resource type="AudioStream" uid="uid://tchnd21la6eh" path="res://assets/audio/burst.mp3" id="13_ycdy4"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="18_cegan"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
@@ -26,24 +25,19 @@ size = Vector2(32, 500)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
 size = Vector2(900, 32)
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_w48qg"]
-random_pitch = 1.0656005
-random_volume_offset_db = 2.0
-streams_count = 1
-stream_0/stream = ExtResource("13_ycdy4")
-
 [node name="Main" type="Node" unique_id=1056906370]
 script = ExtResource("1_0xm2m")
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=147750579]
 unique_name_in_owner = true
-_spawnable_scenes = PackedStringArray("uid://clvtit5mibwed", "uid://pu2c45uixpy0")
+_spawnable_scenes = PackedStringArray("uid://clvtit5mibwed")
 spawn_path = NodePath("../YSortRoot")
 
-[node name="EnemySpawnComponent" parent="." unique_id=1168245383 node_paths=PackedStringArray("spawn_root", "spawn_rect", "uprade_component") instance=ExtResource("3_h2yge")]
+[node name="EnemySpawnComponent" parent="." unique_id=1168245383 node_paths=PackedStringArray("spawn_root", "spawn_rect", "uprade_component", "multiplayer_spawner") instance=ExtResource("3_h2yge")]
 spawn_root = NodePath("../YSortRoot")
 spawn_rect = NodePath("../ReferenceRect")
 uprade_component = NodePath("../UpgradeComponent")
+multiplayer_spawner = NodePath("../MultiplayerSpawner")
 
 [node name="LobbyComponent" parent="." unique_id=2002126853 instance=ExtResource("8_4c57u")]
 unique_name_in_owner = true
@@ -152,10 +146,3 @@ process_priority = 300
 process_physics_priority = 300
 script = ExtResource("18_cegan")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
-
-[node name="EnemyDiedAudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1512230142]
-unique_name_in_owner = true
-stream = SubResource("AudioStreamRandomizer_w48qg")
-volume_db = -2.0
-max_polyphony = 3
-bus = &"sfx"
