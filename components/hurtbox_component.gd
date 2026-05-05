@@ -13,7 +13,7 @@ func _ready() -> void:
 		process_mode = Node.PROCESS_MODE_DISABLED
 
 
-func take_damage(damage: int) -> void:
+func take_damage(damage: float) -> void:
 	health_component.take_damage(damage)
 
 

@@ -3,7 +3,7 @@ extends Area2D
 
 signal hit(hurtbox: HurtboxComponent)
 
-var damage: int = 1
+var damage: float = 1
 var is_single_hit: bool = false
 var hit_count: int = 0
 

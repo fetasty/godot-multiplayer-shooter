@@ -219,11 +219,11 @@ func _on_health_depleted() -> void:
 		_player_died.call_deferred()
 
 
-func _on_health_changed(max_value: int, current_value: int) -> void:
+func _on_health_changed(max_value: float, current_value: float) -> void:
 	print("[peer %s] Player %s health change: %s / %s" % [
 		multiplayer.get_unique_id(), input_peer_id, current_value, max_value
 	])
-	set_player_health_bar.rpc(current_value * 1.0 / max_value)
+	set_player_health_bar.rpc(current_value / max_value)
 
 
 func _on_hit() -> void:

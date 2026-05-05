@@ -1,16 +1,16 @@
 class_name HealthComponent
 extends Node
 
-signal health_changed(max_value: int, current_value: int)
+signal health_changed(max_value: float, current_value: float)
 signal health_depleted
 
-@export var max_health: int = 5
+@export var max_health: float = 5
 
-var current_health: int = max_health:
+var current_health: float = max_health:
 	get:
 		return current_health
 	set(value):
-		if value != current_health:
+		if not is_equal_approx(value, current_health):
 			current_health = value
 			health_changed.emit(max_health, current_health)
 
@@ -20,18 +20,18 @@ func _ready() -> void:
 		current_health = max_health
 
 
-func take_damage(damage: int) -> void:
+func take_damage(damage: float) -> void:
 	current_health = clamp(current_health - damage, 0, max_health)
-	if current_health == 0:
+	if is_zero_approx(current_health):
 		health_depleted.emit()
 
 
-func healing(value: int) -> void:
+func healing(value: float) -> void:
 	current_health = clamp(current_health + value, 0, max_health)
 
 
-func reset(health: int = -1) -> void:
+func reset(health: float = -1) -> void:
 	if health < 0:
 		current_health = max_health
 	else:
-		current_health = clamp(health, 1, max_health)
+		current_health = clamp(health, 1.0, max_health)
