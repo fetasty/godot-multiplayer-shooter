@@ -1,0 +1,7 @@
+comment_description,id,icon,name_key,description_key,effect_type,effect_params,comment_effect,valid_count,valid_duration
+子弹基础伤害增加,basic_damage_up,res://assets/basic_damage_up.tres,PASSIVE_ITEM_BASIC_DAMAGE_UP_NAME,PASSIVE_ITEM_BASIC_DAMAGE_UP_DESCRIPTION,,1.0,,0,0.0
+血量上限提升,health_limit_up,res://assets/health_limit_up.tres,PASSIVE_ITEM_HEALTH_LIMIT_UP_NAME,PASSIVE_ITEM_HEALTH_LIMIT_UP_DESCRIPTION,,1.0,,0,0.0
+"子弹分裂,增加弹道",bullet_split,res://assets/bullet_split.tres,PASSIVE_ITEM_BULLET_SPLIT_NAME,PASSIVE_ITEM_BULLET_SPLIT_DESCRIPTION,,2;0.7,新增弹道数量;基础伤害变化比例,0,0.0
+攻速提升,attack_speed_up,res://assets/attack_speed_up.tres,PASSIVE_ITEM_ATTACK_SPEED_UP_NAME,PASSIVE_ITEM_ATTACK_SPEED_UP_DESCRIPTION,,0.1,攻速提升比例,0,0.0
+移速提升,move_speed_up,res://assets/move_speed_up.tres,PASSIVE_ITEM_MOVE_SPEED_UP_NAME,PASSIVE_ITEM_MOVE_SPEED_UP_DESCRIPTION,,0.1,移速提升比例,0,0.0
+防御提升,defence_up,res://assets/defence_up.tres,PASSIVE_ITEM_DEFENCE_UP_NAME,PASSIVE_ITEM_DEFENCE_UP_DESCRIPTION,,0.9,实际承受伤害比例,0,0.0

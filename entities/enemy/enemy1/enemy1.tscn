@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cbqlwutkg8y67" path="res://assets/shadow.png" id="9_2civ7"]
 [ext_resource type="PackedScene" uid="uid://bckrnncvijtky" path="res://components/flash_sprite_component.tscn" id="10_c5rd6"]
 [ext_resource type="Shader" uid="uid://cmi5pwj65438r" path="res://resources/shader/flash_sprite_component.gdshader" id="11_oq8xh"]
-[ext_resource type="Texture2D" uid="uid://cpl7g0kbq3wh4" path="res://assets/enemy_normal.png" id="12_2ftq3"]
+[ext_resource type="Texture2D" uid="uid://cpl7g0kbq3wh4" path="res://assets/enemy_slime.png" id="12_2ftq3"]
 [ext_resource type="Texture2D" uid="uid://dlib4ff7bbyjk" path="res://entities/enemy/enemy_attack_tip.png" id="13_s4y0h"]
 [ext_resource type="PackedScene" uid="uid://cjdfv3bck20to" path="res://components/hurtbox_component.tscn" id="14_ngbdd"]
 [ext_resource type="PackedScene" uid="uid://c8mojkcl4ky3a" path="res://components/hitbox_component.tscn" id="15_ovg2t"]
@@ -29,7 +29,7 @@ properties/2/path = NodePath("StateMachine:current_state")
 properties/2/spawn = true
 properties/2/replication_mode = 2
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7qcy3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_26grt"]
 resource_local_to_scene = true
 shader = ExtResource("11_oq8xh")
 shader_parameter/input_color = Color(1, 1, 1, 1)
@@ -138,7 +138,7 @@ script = ExtResource("8_in4ve")
 texture = ExtResource("9_2civ7")
 
 [node name="FlashSpriteComponent" parent="Visual" unique_id=1374404885 instance=ExtResource("10_c5rd6")]
-material = SubResource("ShaderMaterial_7qcy3")
+material = SubResource("ShaderMaterial_26grt")
 texture = ExtResource("12_2ftq3")
 centered = false
 offset = Vector2(-16, -28)

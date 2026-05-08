@@ -1,0 +1,4 @@
+comment_description,id,name_key,health_range,damage_range,description_key,custom_params,custom_description
+"普通怪物:史莱姆,冲撞攻击",slime,ENEMY_SLIME_NAME,3.0;7.0,1.0;2.0,ENEMY_SLIME_DESCRIPTION,,
+"爆炸怪物:脆皮气球,靠近玩家爆炸",poppy,ENEMY_POPPY_NAME,3.0;7.0,2.0;3.0,ENEMY_POPPY_DESCRIPTION,,
+"肉盾怪物:石刺,高血量,近距离高伤害",stone_poke,ENEMY_STONE_POKE_NAME,12.0;18.0,3.0;4.0,ENEMY_STONE_POKE_DESCRIPTION,,

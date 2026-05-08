@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cbqlwutkg8y67" path="res://assets/shadow.png" id="9_mauft"]
 [ext_resource type="PackedScene" uid="uid://bckrnncvijtky" path="res://components/flash_sprite_component.tscn" id="10_35dx2"]
 [ext_resource type="Shader" uid="uid://cmi5pwj65438r" path="res://resources/shader/flash_sprite_component.gdshader" id="11_mitcp"]
-[ext_resource type="Texture2D" uid="uid://cej3og1ry3m4b" path="res://assets/enemy2.png" id="12_o2p6f"]
+[ext_resource type="Texture2D" uid="uid://cej3og1ry3m4b" path="res://assets/enemy_poppy.png" id="12_o2p6f"]
 [ext_resource type="Texture2D" uid="uid://dlib4ff7bbyjk" path="res://entities/enemy/enemy_attack_tip.png" id="13_prtck"]
 [ext_resource type="PackedScene" uid="uid://cjdfv3bck20to" path="res://components/hurtbox_component.tscn" id="14_dmot2"]
 [ext_resource type="AudioStream" uid="uid://dh2v8bmefu03k" path="res://assets/audio/hit1.mp3" id="16_klc3p"]

@@ -1,0 +1,3 @@
+comment_description,id,icon,name_key,description_key,effect_type,effect_params
+"小血瓶, 回复固定血量",healing_potion,res://assets/healing_potion.tres,PICKUP_ITEM_HEALING_POTION_NAME,PICKUP_ITEM_HEALING_POTION_DESCRIPTION,,1.0
+"医疗包, 回复全部血量",medkit,res://assets/medkit.tres,PICKUP_ITEM_MEDKIT_NAME,PICKUP_ITEM_MEDKIT_DESCRIPTION,,
