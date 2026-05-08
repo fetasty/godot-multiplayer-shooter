@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://di1t1xvv6tgy7"]
 
-[ext_resource type="Texture2D" uid="uid://b8h4wsh21aatv" path="res://assets/healing.tres" id="1_iw0jj"]
+[ext_resource type="Texture2D" uid="uid://415d4wfkomsl" path="res://assets/healing.png" id="1_f4di7"]
 [ext_resource type="Script" uid="uid://ci027yf0mlyhg" path="res://effects/healing_effect.gd" id="2_f4di7"]
 
 [sub_resource type="Gradient" id="Gradient_iw0jj"]
 offsets = PackedFloat32Array(0)
-colors = PackedColorArray(1, 1, 1, 0.5882353)
+colors = PackedColorArray(1, 1, 1, 0.78431374)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_f4di7"]
 gradient = SubResource("Gradient_iw0jj")
@@ -22,12 +22,13 @@ gravity = Vector3(0, 0, 0)
 damping_min = 10.0
 damping_max = 30.000002
 scale_min = 0.29999998
+scale_max = 1.1999999
 color_initial_ramp = SubResource("GradientTexture1D_f4di7")
 
 [node name="HealingEffect" type="GPUParticles2D" unique_id=1320950043]
 emitting = false
 amount = 12
-texture = ExtResource("1_iw0jj")
+texture = ExtResource("1_f4di7")
 one_shot = true
 explosiveness = 0.5
 local_coords = true
