@@ -2,6 +2,7 @@
 extends EditorPlugin
 
 var res_parser: ResourceTranslationParser
+var csv_parser: CSVConfigTranslationParser
 #var json_parser: JsonTranslationParser
 
 func _enter_tree():
@@ -9,8 +10,10 @@ func _enter_tree():
 	add_tool_menu_item("国际化：全量更新 POT 列表", _run_full_scan)
 	# 2. 注册自定义解析器
 	res_parser = preload("resource_translation_parser.gd").new()
+	csv_parser = preload("csv_config_translation_parser.gd").new()
 	#json_parser = preload("json_parser.gd").new()
 	add_translation_parser_plugin(res_parser)
+	add_translation_parser_plugin(csv_parser)
 	#add_translation_parser_plugin(json_parser)
 
 
@@ -18,11 +21,12 @@ func _exit_tree():
 	# 清理
 	remove_tool_menu_item("国际化：全量更新 POT 列表")
 	remove_translation_parser_plugin(res_parser)
+	remove_translation_parser_plugin(csv_parser)
 	#remove_translation_parser_plugin(json_parser)
 
 
 func _run_full_scan():
-	var extensions = ["gd", "tscn", "tres"]
+	var extensions = ["gd", "tscn", "tres", "csv"]
 	var files: PackedStringArray = []
 	_scan_dir("res://", extensions, files)
 	
