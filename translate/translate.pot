@@ -1,12 +1,32 @@
 # LANGUAGE translation for 01-multi-player for the following files:
-# res://addons/custom_resource_translation/generate_pot_files.gd
+# res://addons/custom_resource_translation/csv_config_translation_parser.gd
 # res://addons/custom_resource_translation/main_plugin.gd
 # res://addons/custom_resource_translation/resource_translation_parser.gd
 # res://addons/custom_resource_translation/translation_plugin_setup.gd
+# res://addons/godot-logger-master/logger.gd
+# res://addons/godot-logger-master/plugin.gd
+# res://addons/godot_mcp_enhanced/debugger_integration.gd
+# res://addons/godot_mcp_enhanced/file_operations.gd
+# res://addons/godot_mcp_enhanced/http_server.gd
+# res://addons/godot_mcp_enhanced/plugin.gd
+# res://addons/godot_mcp_enhanced/runtime_operations.gd
+# res://addons/godot_mcp_enhanced/scene_operations.gd
+# res://addons/godot_mcp_enhanced/screenshot_manager.gd
+# res://addons/godot_mcp_enhanced/script_operations.gd
+# res://addons/godot_mcp_enhanced/ui/bottom_panel.gd
+# res://addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+# res://assets/attack_speed_up.tres
+# res://assets/basic_damage_up.tres
+# res://assets/bubble.tres
+# res://assets/bullet_split.tres
 # res://assets/cursor.tres
-# res://assets/healing.tres
+# res://assets/defence_up.tres
+# res://assets/healing_potion.tres
 # res://assets/health_bar_progress.tres
 # res://assets/health_bar_under.tres
+# res://assets/health_limit_up.tres
+# res://assets/medkit.tres
+# res://assets/move_speed_up.tres
 # res://autoload/background.tscn
 # res://autoload/game_cursor.gd
 # res://autoload/game_cursor.tscn
@@ -17,6 +37,7 @@
 # res://autoload/sound_manager.tscn
 # res://autoload/tools.gd
 # res://autoload/tools.tscn
+# res://components/detectable_component.tscn
 # res://components/enemy_spawn_component.gd
 # res://components/enemy_spawn_component.tscn
 # res://components/flash_sprite_component.gd
@@ -29,25 +50,39 @@
 # res://components/hurtbox_component.tscn
 # res://components/lobby_component.gd
 # res://components/lobby_component.tscn
+# res://components/player_detect_component.gd
+# res://components/player_detect_component.tscn
 # res://components/player_input_multiplayer_synchronizer_component.gd
 # res://components/player_input_multiplayer_synchronizer_component.tscn
 # res://components/upgrade_component.gd
 # res://components/upgrade_component.tscn
+# res://config/enemy_config.csv
+# res://config/passive_item_config.csv
+# res://config/pickup_item_config.csv
 # res://default_bus_layout.tres
-# res://effects/enemy_died_effect.tscn
+# res://effects/burst_effect.tscn
+# res://effects/enemy1_died_effect.tscn
+# res://effects/enemy2_died_effect.tscn
 # res://effects/healing_effect.gd
 # res://effects/healing_effect.tscn
 # res://effects/hit_effect.tscn
 # res://effects/muzzle_flash_effect.tscn
 # res://entities/bullet/bullet.gd
 # res://entities/bullet/bullet.tscn
-# res://entities/enemy/enemy.gd
-# res://entities/enemy/enemy.tscn
-# res://entities/enemy/state_attack.gd
-# res://entities/enemy/state_charge.gd
-# res://entities/enemy/state_died.gd
-# res://entities/enemy/state_normal.gd
-# res://entities/enemy/state_spawn.gd
+# res://entities/enemy/enemy1/enemy1.gd
+# res://entities/enemy/enemy1/enemy1.tscn
+# res://entities/enemy/enemy1/state_attack.gd
+# res://entities/enemy/enemy1/state_charge.gd
+# res://entities/enemy/enemy1/state_died.gd
+# res://entities/enemy/enemy1/state_normal.gd
+# res://entities/enemy/enemy1/state_spawn.gd
+# res://entities/enemy/enemy2/enemy2.gd
+# res://entities/enemy/enemy2/enemy2.tscn
+# res://entities/enemy/enemy2/state_attack.gd
+# res://entities/enemy/enemy2/state_charge.gd
+# res://entities/enemy/enemy2/state_died.gd
+# res://entities/enemy/enemy2/state_normal.gd
+# res://entities/enemy/enemy2/state_spawn.gd
 # res://entities/player/player.gd
 # res://entities/player/player.tscn
 # res://game_camera.gd
@@ -114,6 +149,87 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8-bit\n"
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.gd:71
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "● Server Running"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.gd:77
+msgid "● Server Stopped"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "🔄 Restart Server"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "🧪 Test Connection"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "Connection"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "Port: 3571"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "Statistics"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "Requests: 0"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "Uptime: 00:00:00"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "📋 MCP Configuration"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "📋 Copy for Kiro"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "📋 Copy for Windsurf"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "📋 Copy for Cursor"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "✏️ Edit Config"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "📚 Quick Links:"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "Documentation"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "GitHub"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "Kiro Setup"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "Windsurf Setup"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "AI Instructions"
+msgstr ""
 
 #: autoload/tools.gd:5
 #: ui/game_ui/player_health_ui.gd:13
