@@ -41,7 +41,7 @@ window/stretch/aspect="keep_width"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/custom_resource_translation/plugin.cfg", "res://addons/godot-logger-master/plugin.cfg")
+enabled=PackedStringArray("res://addons/custom_resource_translation/plugin.cfg", "res://addons/godot-logger-master/plugin.cfg", "res://addons/godot_mcp_enhanced/plugin.cfg")
 
 [gui]
 
