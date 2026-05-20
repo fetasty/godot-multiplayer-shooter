@@ -36,6 +36,7 @@ func _load_enemy_csv() -> void:
 			continue
 		var res := ENEMY_RES.new()
 		res.id = _col(row, header_map.get("id", -1))
+		res.scene = _load_res(_col(row, header_map.get("scene", -1))) as PackedScene
 		res.name_key = _col(row, header_map.get("name_key", -1))
 		res.health_range = _to_vec2(_col(row, header_map.get("health_range", -1)))
 		res.damage_range = _to_vec2(_col(row, header_map.get("damage_range", -1)))

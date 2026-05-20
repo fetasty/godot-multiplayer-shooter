@@ -78,7 +78,7 @@ func _process(delta: float) -> void:
 			_try_to_attack()
 
 
-func take_damage(damage: int) -> void:
+func take_damage(damage: float) -> void:
 	if not is_multiplayer_authority():
 		return
 	if is_immnue:

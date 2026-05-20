@@ -6,7 +6,6 @@ const ENEMY_DIED_EFFECT = preload("uid://bojiofob0nfl")
 const BURST_EFFECT = preload("uid://ckgdgjh2c5e2s")
 const MOVE_SPEED = 35.0
 const BURST_RADIUS = 50.0
-const BURST_DAMAGE = 2
 
 @onready var track_timer: Timer = $TrackTimer
 @onready var health_component: HealthComponent = $HealthComponent
@@ -25,6 +24,7 @@ const BURST_DAMAGE = 2
 var track_target: Vector2
 var has_track_target: bool = false
 var charge_tip_tween: Tween
+var burst_damage: float = 2.0
 
 
 func _ready() -> void:
@@ -42,6 +42,19 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if is_multiplayer_authority():
 		move_and_slide()
+
+
+func apply_enemy_config(config: EnemyResource) -> void:
+	var health := _random_value_from_range(config.health_range)
+	health_component.max_health = health
+	health_component.reset(health)
+	burst_damage = _random_value_from_range(config.damage_range)
+
+
+func _random_value_from_range(value_range: Vector2) -> float:
+	var min_value := minf(value_range.x, value_range.y)
+	var max_value := maxf(value_range.x, value_range.y)
+	return randf_range(min_value, max_value)
 
 
 ## 播放生成动画
@@ -118,7 +131,7 @@ func burst() -> void:
 		player_detect_component.detected_players.size()
 	])
 	for player in player_detect_component.detected_players:
-		player.take_damage(BURST_DAMAGE)
+		player.take_damage(burst_damage)
 	# 下一帧消失
 	state_machine.current_state = "died"
 

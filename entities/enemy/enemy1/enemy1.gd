@@ -17,6 +17,7 @@ const ENEMY_DIED_EFFECT = preload("uid://dv1y8ri1kqvnf")
 @onready var move_animation_player: AnimationPlayer = %MoveAnimationPlayer
 @onready var hit_audio_stream_player: AudioStreamPlayer = %HitAudioStreamPlayer
 @onready var hurt_collision_shape_2d: CollisionShape2D = $HurtboxComponent/HurtCollisionShape2D
+@onready var hitbox_component: HitboxComponent = $HitboxComponent
 
 var track_target: Vector2
 var has_track_target: bool = false
@@ -38,6 +39,19 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if is_multiplayer_authority():
 		move_and_slide()
+
+
+func apply_enemy_config(config: EnemyResource) -> void:
+	var health := _random_value_from_range(config.health_range)
+	health_component.max_health = health
+	health_component.reset(health)
+	hitbox_component.damage = _random_value_from_range(config.damage_range)
+
+
+func _random_value_from_range(value_range: Vector2) -> float:
+	var min_value := minf(value_range.x, value_range.y)
+	var max_value := maxf(value_range.x, value_range.y)
+	return randf_range(min_value, max_value)
 
 
 ## 播放生成动画

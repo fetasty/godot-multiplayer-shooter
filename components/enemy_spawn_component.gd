@@ -5,11 +5,6 @@ signal round_changed(round_count: int)
 signal round_completed
 signal max_round_end
 
-const ENEMYS = [
-	[preload("uid://c5v88ha30yaov"), 0.5],
-	[preload("uid://pu2c45uixpy0"), 0.5],
-]
-
 const BASE_ROUND_TIME: float = 10
 const ROUND_TIME_GROWTH: float = 5
 const BASE_MIN_SPAWN_INTERVAL: float = 2.0
@@ -31,14 +26,14 @@ var round_count: int = 0:
 var round_min_spawn_interval: float = BASE_MIN_SPAWN_INTERVAL
 var round_max_spawn_interval: float = BASE_MAX_SPAWN_INTERVAL
 var enemy_count: int = 0
+var enemy_configs: Array[EnemyResource] = []
 
 @onready var spawn_timer: Timer = $SpawnTimer
 @onready var round_timer: Timer = $RoundTimer
 
 func _ready() -> void:
-	for config in ENEMYS:
-		var packed_scene: PackedScene = config[0]
-		multiplayer_spawner.add_spawnable_scene(packed_scene.resource_path)
+	_load_enemy_configs()
+	_register_spawnable_scenes()
 	if is_multiplayer_authority():
 		spawn_timer.timeout.connect(_on_spawn_timer_timeout)
 		round_timer.timeout.connect(_on_round_timer_timeout)
@@ -85,6 +80,31 @@ func _get_random_position() -> Vector2:
 	return pos
 
 
+func _load_enemy_configs() -> void:
+	enemy_configs.clear()
+	for res: EnemyResource in CSVResourceCache.get_all_enemies():
+		if res.scene == null:
+			push_warning("[EnemySpawn] Enemy config %s has no scene" % res.id)
+			continue
+		enemy_configs.append(res)
+
+
+func _register_spawnable_scenes() -> void:
+	var registered_scenes: Dictionary[String, bool] = {}
+	for config: EnemyResource in enemy_configs:
+		var scene_path := config.scene.resource_path
+		if scene_path.is_empty() or registered_scenes.has(scene_path):
+			continue
+		multiplayer_spawner.add_spawnable_scene(scene_path)
+		registered_scenes[scene_path] = true
+
+
+func _select_enemy_config() -> EnemyResource:
+	if enemy_configs.is_empty():
+		return null
+	return enemy_configs.pick_random()
+
+
 func get_round_time_left() -> float:
 	return round_timer.time_left
 
@@ -114,26 +134,21 @@ func _synchronize(data: Dictionary) -> void:
 
 
 func _spawn_one_enemy() -> void:
-	# 随机概率
-	var rand := randf()
-	var config_rate := 0.0
-	var enemy_scene: PackedScene = null
-	for config in ENEMYS:
-		config_rate += config[1]
-		if rand <= config_rate:
-			enemy_scene = config[0]
-			break
-	if enemy_scene == null:
-		enemy_scene = ENEMYS.back()[0]
-	var enemy := enemy_scene.instantiate() as Node2D
+	var config := _select_enemy_config()
+	if config == null:
+		push_error("[EnemySpawn] No enemy configs available")
+		return
+	var enemy := config.scene.instantiate() as Node2D
 	#print("[peer %s] enemy spawn pos: %s" % [multiplayer.get_unique_id(), enemy.global_position])
 	spawn_root.add_child(enemy, true)
+	if enemy.has_method("apply_enemy_config"):
+		enemy.apply_enemy_config(config)
 	enemy.global_position = _get_random_position()
 	enemy_count += 1
 
 
 func _spawn_enemy() -> void:
-	var peers := Tools.get_game_peers_count()
+	var peers: int = Tools.get_game_peers_count()
 	var multi_enemy_rate := randf_range(0.0, 0.1 * peers + 0.05 * round_count)
 	var is_multi_enemy_spawn := randf() < multi_enemy_rate
 	var spawn_count := randi_range(peers, int((peers + round_count * peers))) if is_multi_enemy_spawn else 1

@@ -2,6 +2,7 @@
 extends Resource
 
 @export var id: String
+@export var scene: PackedScene
 @export var name_key: String
 @export var health_range: Vector2
 @export var damage_range: Vector2

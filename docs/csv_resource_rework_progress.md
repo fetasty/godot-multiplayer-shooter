@@ -21,7 +21,7 @@
 | --- | --- | --- | --- |
 | Task 0 | 建立任务进度文档 | 已验收 | 用户已验收 |
 | Task 1 | CSV 到运行时 Resource 缓存 | 已验收 | 用户已验收 |
-| Task 2 | 敌人生成接入 `enemy_config.csv` | 未开始 | - |
+| Task 2 | 敌人生成接入 `enemy_config.csv` | 待验收 | 2026-05-20 |
 | Task 3 | 被动物品替代旧升级奖励 | 未开始 | - |
 | Task 4 | 实现 6 个被动物品效果 | 未开始 | - |
 | Task 5 | 敌人死亡掉落拾取物 | 未开始 | - |
@@ -104,7 +104,11 @@
 
 ### 改动范围
 
-- 待执行时记录。
+- 修改 `config/enemy_config.csv`，新增 `scene` 列并为每个 enemy id 配置可加载场景。
+- 修改 `resources/enemy_resource.gd` 和 `autoload/csv_resource_cache.gd`，让敌人配置加载 `PackedScene`。
+- 修改 `components/enemy_spawn_component.gd`，从 `CSVResourceCache` 的敌人配置池随机选择并注册场景到 `MultiplayerSpawner`。
+- 修改 `entities/enemy/enemy1/enemy1.gd`、`entities/enemy/enemy2/enemy2.gd`，生成后应用配置血量和伤害区间。
+- 修改 `entities/player/player.gd`，允许敌人配置伤害以 `float` 传入玩家受伤逻辑。
 
 ### 测试方式
 
@@ -114,15 +118,18 @@
 
 ### 测试结果
 
-- 未开始。
+- `C:\Users\fetasty\bin\godot.exe --headless --path . --check-only --quit` 退出码为 0。
+- 输出包含：`[CSV] Loaded 3 enemy configs`、`[CSV] Loaded 6 passive item configs`、`[CSV] Loaded 2 pickup item configs`。
+- `stone_poke` 当前没有独立场景资源，暂复用 `enemy1.tscn`，但已满足每个 enemy id 都能加载 scene。
+- Godot 退出时仍有资源泄漏警告：`ObjectDB instances leaked at exit` / `1 resources still in use at exit`，未出现脚本解析错误。
 
 ### 当前状态
 
-- 未开始。
+- 待验收。
 
 ### 验收结论
 
-- 未开始。
+- 待用户验收。
 
 ## Task 3: 被动物品替代旧升级奖励
 
@@ -256,3 +263,4 @@
 | Task 0 | 2026-05-18 21:30:40 +08:00 | `Test-Path` 返回 `True`；`rg` 命中 Task 0-6、验收门禁、测试方式、验收记录 | 已验收 |
 | Task 0 审核补充 | 2026-05-18 21:36:15 +08:00 | 已记录 `comment_xxx` 忽略规则、`xxx_key` + `tr()` 国际化规则，并同步到 `AGENTS.md` | 已验收 |
 | Task 1 | 2026-05-19 21:36:59 +08:00 | `--check-only` 0 errors; 3 enemy + 6 passive + 2 pickup loaded | 已验收 |
+| Task 2 | 2026-05-20 22:30:04 +08:00 | `--check-only --quit` exit 0; 3 enemy configs loaded; enemy scenes registered from CSV | 待验收 |
