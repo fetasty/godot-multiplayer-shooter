@@ -237,6 +237,94 @@ msgstr ""
 msgid "DEFAULT_PLAYER_NAME"
 msgstr ""
 
+#: config/enemy_config.csv
+msgid "ENEMY_SLIME_NAME"
+msgstr ""
+
+#: config/enemy_config.csv
+msgid "ENEMY_SLIME_DESCRIPTION"
+msgstr ""
+
+#: config/enemy_config.csv
+msgid "ENEMY_POPPY_NAME"
+msgstr ""
+
+#: config/enemy_config.csv
+msgid "ENEMY_POPPY_DESCRIPTION"
+msgstr ""
+
+#: config/enemy_config.csv
+msgid "ENEMY_STONE_POKE_NAME"
+msgstr ""
+
+#: config/enemy_config.csv
+msgid "ENEMY_STONE_POKE_DESCRIPTION"
+msgstr ""
+
+#: config/passive_item_config.csv
+msgid "PASSIVE_ITEM_BASIC_DAMAGE_UP_NAME"
+msgstr ""
+
+#: config/passive_item_config.csv
+msgid "PASSIVE_ITEM_BASIC_DAMAGE_UP_DESCRIPTION"
+msgstr ""
+
+#: config/passive_item_config.csv
+msgid "PASSIVE_ITEM_HEALTH_LIMIT_UP_NAME"
+msgstr ""
+
+#: config/passive_item_config.csv
+msgid "PASSIVE_ITEM_HEALTH_LIMIT_UP_DESCRIPTION"
+msgstr ""
+
+#: config/passive_item_config.csv
+msgid "PASSIVE_ITEM_BULLET_SPLIT_NAME"
+msgstr ""
+
+#: config/passive_item_config.csv
+msgid "PASSIVE_ITEM_BULLET_SPLIT_DESCRIPTION"
+msgstr ""
+
+#: config/passive_item_config.csv
+msgid "PASSIVE_ITEM_ATTACK_SPEED_UP_NAME"
+msgstr ""
+
+#: config/passive_item_config.csv
+msgid "PASSIVE_ITEM_ATTACK_SPEED_UP_DESCRIPTION"
+msgstr ""
+
+#: config/passive_item_config.csv
+msgid "PASSIVE_ITEM_MOVE_SPEED_UP_NAME"
+msgstr ""
+
+#: config/passive_item_config.csv
+msgid "PASSIVE_ITEM_MOVE_SPEED_UP_DESCRIPTION"
+msgstr ""
+
+#: config/passive_item_config.csv
+msgid "PASSIVE_ITEM_DEFENCE_UP_NAME"
+msgstr ""
+
+#: config/passive_item_config.csv
+msgid "PASSIVE_ITEM_DEFENCE_UP_DESCRIPTION"
+msgstr ""
+
+#: config/pickup_item_config.csv
+msgid "PICKUP_ITEM_HEALING_POTION_NAME"
+msgstr ""
+
+#: config/pickup_item_config.csv
+msgid "PICKUP_ITEM_HEALING_POTION_DESCRIPTION"
+msgstr ""
+
+#: config/pickup_item_config.csv
+msgid "PICKUP_ITEM_MEDKIT_NAME"
+msgstr ""
+
+#: config/pickup_item_config.csv
+msgid "PICKUP_ITEM_MEDKIT_DESCRIPTION"
+msgstr ""
+
 #: entities/player/player.tscn
 msgid "Player 1"
 msgstr ""

@@ -105,10 +105,179 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.9\n"
 
+#: addons/godot_mcp_enhanced/ui/bottom_panel.gd:71
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "● Server Running"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.gd:77
+msgid "● Server Stopped"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "🔄 Restart Server"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "🧪 Test Connection"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "Connection"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "Port: 3571"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "Statistics"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "Requests: 0"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "Uptime: 00:00:00"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "📋 MCP Configuration"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "📋 Copy for Kiro"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "📋 Copy for Windsurf"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "📋 Copy for Cursor"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "✏️ Edit Config"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "📚 Quick Links:"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "Documentation"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "GitHub"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "Kiro Setup"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "Windsurf Setup"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "AI Instructions"
+msgstr ""
+
 #: autoload/tools.gd:5 ui/game_ui/player_health_ui.gd:13
 #: ui/game_ui/player_health_ui.tscn
 msgid "DEFAULT_PLAYER_NAME"
 msgstr "Player"
+
+#: config/enemy_config.csv
+msgid "ENEMY_SLIME_NAME"
+msgstr "Slime"
+
+#: config/enemy_config.csv
+msgid "ENEMY_SLIME_DESCRIPTION"
+msgstr "Normal slimes, will hit approaching players."
+
+#: config/enemy_config.csv
+msgid "ENEMY_POPPY_NAME"
+msgstr "Poppy"
+
+#: config/enemy_config.csv
+msgid "ENEMY_POPPY_DESCRIPTION"
+msgstr "The dangerous Poppy will explode when close to the player, causing a lot of damage."
+
+#: config/enemy_config.csv
+msgid "ENEMY_STONE_POKE_NAME"
+msgstr "Stone Poke"
+
+#: config/enemy_config.csv
+msgid "ENEMY_STONE_POKE_DESCRIPTION"
+msgstr "The hard Stone Poke will stab the player when it is close to it, causing extremely high damage."
+
+#: config/passive_item_config.csv
+msgid "PASSIVE_ITEM_BASIC_DAMAGE_UP_NAME"
+msgstr "Basic Damage Up"
+
+#: config/passive_item_config.csv
+msgid "PASSIVE_ITEM_BASIC_DAMAGE_UP_DESCRIPTION"
+msgstr "Basic bullet damage increased by 1."
+
+#: config/passive_item_config.csv
+msgid "PASSIVE_ITEM_HEALTH_LIMIT_UP_NAME"
+msgstr "Health Limit Up"
+
+#: config/passive_item_config.csv
+msgid "PASSIVE_ITEM_HEALTH_LIMIT_UP_DESCRIPTION"
+msgstr "Increase health limit"
+
+#: config/passive_item_config.csv
+msgid "PASSIVE_ITEM_BULLET_SPLIT_NAME"
+msgstr "Bullet Split"
+
+#: config/passive_item_config.csv
+msgid "PASSIVE_ITEM_BULLET_SPLIT_DESCRIPTION"
+msgstr "Two new projectiles are added, but the basic damage is reduced by 20%"
+
+#: config/passive_item_config.csv
+msgid "PASSIVE_ITEM_ATTACK_SPEED_UP_NAME"
+msgstr "Attack Speed Up"
+
+#: config/passive_item_config.csv
+msgid "PASSIVE_ITEM_ATTACK_SPEED_UP_DESCRIPTION"
+msgstr "Attack speed increased by 10%"
+
+#: config/passive_item_config.csv
+msgid "PASSIVE_ITEM_MOVE_SPEED_UP_NAME"
+msgstr "Move Speed Up"
+
+#: config/passive_item_config.csv
+msgid "PASSIVE_ITEM_MOVE_SPEED_UP_DESCRIPTION"
+msgstr "Movement speed increased by 10%"
+
+#: config/passive_item_config.csv
+msgid "PASSIVE_ITEM_DEFENCE_UP_NAME"
+msgstr "Shield Defence"
+
+#: config/passive_item_config.csv
+msgid "PASSIVE_ITEM_DEFENCE_UP_DESCRIPTION"
+msgstr "Damage taken is reduced by 15%, up to 60%"
+
+#: config/pickup_item_config.csv
+msgid "PICKUP_ITEM_HEALING_POTION_NAME"
+msgstr "Healing Potion"
+
+#: config/pickup_item_config.csv
+msgid "PICKUP_ITEM_HEALING_POTION_DESCRIPTION"
+msgstr "Heals 20% of HP"
+
+#: config/pickup_item_config.csv
+msgid "PICKUP_ITEM_MEDKIT_NAME"
+msgstr "Medkit"
+
+#: config/pickup_item_config.csv
+msgid "PICKUP_ITEM_MEDKIT_DESCRIPTION"
+msgstr "Heal 100% HP"
 
 #: entities/player/player.tscn
 msgid "Player 1"

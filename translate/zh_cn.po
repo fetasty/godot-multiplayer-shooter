@@ -105,10 +105,179 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.9\n"
 
+#: addons/godot_mcp_enhanced/ui/bottom_panel.gd:71
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "● Server Running"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.gd:77
+msgid "● Server Stopped"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "🔄 Restart Server"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "🧪 Test Connection"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "Connection"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "Port: 3571"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "Statistics"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "Requests: 0"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "Uptime: 00:00:00"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "📋 MCP Configuration"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "📋 Copy for Kiro"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "📋 Copy for Windsurf"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "📋 Copy for Cursor"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "✏️ Edit Config"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "📚 Quick Links:"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "Documentation"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "GitHub"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "Kiro Setup"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "Windsurf Setup"
+msgstr ""
+
+#: addons/godot_mcp_enhanced/ui/bottom_panel.tscn
+msgid "AI Instructions"
+msgstr ""
+
 #: autoload/tools.gd:5 ui/game_ui/player_health_ui.gd:13
 #: ui/game_ui/player_health_ui.tscn
 msgid "DEFAULT_PLAYER_NAME"
 msgstr "玩家"
+
+#: config/enemy_config.csv
+msgid "ENEMY_SLIME_NAME"
+msgstr "史莱姆"
+
+#: config/enemy_config.csv
+msgid "ENEMY_SLIME_DESCRIPTION"
+msgstr "普通史莱姆,撞击靠近的玩家"
+
+#: config/enemy_config.csv
+msgid "ENEMY_POPPY_NAME"
+msgstr "脆皮气球"
+
+#: config/enemy_config.csv
+msgid "ENEMY_POPPY_DESCRIPTION"
+msgstr "危险的脆皮,靠近玩家会爆炸,造成大量伤害"
+
+#: config/enemy_config.csv
+msgid "ENEMY_STONE_POKE_NAME"
+msgstr "石刺"
+
+#: config/enemy_config.csv
+msgid "ENEMY_STONE_POKE_DESCRIPTION"
+msgstr "它的皮很厚很硬,扎得很疼,对靠近的玩家造成高伤害"
+
+#: config/passive_item_config.csv
+msgid "PASSIVE_ITEM_BASIC_DAMAGE_UP_NAME"
+msgstr "伤害提升"
+
+#: config/passive_item_config.csv
+msgid "PASSIVE_ITEM_BASIC_DAMAGE_UP_DESCRIPTION"
+msgstr "子弹基础伤害增加1"
+
+#: config/passive_item_config.csv
+msgid "PASSIVE_ITEM_HEALTH_LIMIT_UP_NAME"
+msgstr "血上限提升"
+
+#: config/passive_item_config.csv
+msgid "PASSIVE_ITEM_HEALTH_LIMIT_UP_DESCRIPTION"
+msgstr "血量上限增加"
+
+#: config/passive_item_config.csv
+msgid "PASSIVE_ITEM_BULLET_SPLIT_NAME"
+msgstr "子弹分裂"
+
+#: config/passive_item_config.csv
+msgid "PASSIVE_ITEM_BULLET_SPLIT_DESCRIPTION"
+msgstr "弹道增加2,但基础伤害总体降低20%"
+
+#: config/passive_item_config.csv
+msgid "PASSIVE_ITEM_ATTACK_SPEED_UP_NAME"
+msgstr "攻速提升"
+
+#: config/passive_item_config.csv
+msgid "PASSIVE_ITEM_ATTACK_SPEED_UP_DESCRIPTION"
+msgstr "攻速提升10%"
+
+#: config/passive_item_config.csv
+msgid "PASSIVE_ITEM_MOVE_SPEED_UP_NAME"
+msgstr "移速提升"
+
+#: config/passive_item_config.csv
+msgid "PASSIVE_ITEM_MOVE_SPEED_UP_DESCRIPTION"
+msgstr "移动速度提升10%"
+
+#: config/passive_item_config.csv
+msgid "PASSIVE_ITEM_DEFENCE_UP_NAME"
+msgstr "护甲提升"
+
+#: config/passive_item_config.csv
+msgid "PASSIVE_ITEM_DEFENCE_UP_DESCRIPTION"
+msgstr "承受的伤害降低15%,伤害降低上限为60%"
+
+#: config/pickup_item_config.csv
+msgid "PICKUP_ITEM_HEALING_POTION_NAME"
+msgstr "治疗药瓶"
+
+#: config/pickup_item_config.csv
+msgid "PICKUP_ITEM_HEALING_POTION_DESCRIPTION"
+msgstr "血量恢复20%"
+
+#: config/pickup_item_config.csv
+msgid "PICKUP_ITEM_MEDKIT_NAME"
+msgstr "医疗箱"
+
+#: config/pickup_item_config.csv
+msgid "PICKUP_ITEM_MEDKIT_DESCRIPTION"
+msgstr "血量恢复100%"
 
 #: entities/player/player.tscn
 msgid "Player 1"
