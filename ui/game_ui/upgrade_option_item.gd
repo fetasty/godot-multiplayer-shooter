@@ -6,11 +6,12 @@ extends PanelContainer
 signal upgrade_selected(index: int)
 
 var index: int
-var resource: UpgradeResource
+var resource: PassiveItemResource
 
 @onready var select_button: Button = %SelectButton
 @onready var title_label: Label = %TitleLabel
 @onready var description_label: Label = %DescriptionLabel
+@onready var icon_texture: TextureRect = %IconTexture
 
 func _ready() -> void:
 	select_button.pressed.connect(_on_select_button_pressed)
@@ -25,6 +26,7 @@ func _ready() -> void:
 func _init_with_resource() -> void:
 	title_label.text = tr(resource.name_key)
 	description_label.text = tr(resource.description_key)
+	icon_texture.texture = resource.icon
 
 
 func _on_select_button_pressed() -> void:

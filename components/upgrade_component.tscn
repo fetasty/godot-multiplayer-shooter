@@ -1,11 +1,6 @@
 [gd_scene format=3 uid="uid://pj5pj8ibjhgi"]
 
 [ext_resource type="Script" uid="uid://b5kw7vy6i1ub5" path="res://components/upgrade_component.gd" id="1_oeqv7"]
-[ext_resource type="Script" uid="uid://dxyttex512alu" path="res://resources/upgrade_resource/upgrade_resource.gd" id="2_e0fnk"]
-[ext_resource type="Resource" uid="uid://5owbwm45ykr8" path="res://resources/upgrade_resource/fire_rate.tres" id="3_4i2h5"]
-[ext_resource type="Resource" uid="uid://c3d8w8qvl63v0" path="res://resources/upgrade_resource/damage.tres" id="4_7kx5a"]
-[ext_resource type="Resource" uid="uid://dalcopiwd54fq" path="res://resources/upgrade_resource/move_speed.tres" id="5_jwr7g"]
 
 [node name="UpgradeComponent" type="Node" unique_id=1374266706]
 script = ExtResource("1_oeqv7")
-available_upgrade_resources = Array[ExtResource("2_e0fnk")]([ExtResource("5_jwr7g"), ExtResource("4_7kx5a"), ExtResource("3_4i2h5")])

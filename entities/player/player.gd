@@ -96,7 +96,7 @@ func _update_aim_direction() -> void:
 func _get_move_speed() -> float:
 	var upgrade_count := UpgradeComponent.get_peer_upgrade_count(
 		input_peer_id,
-		"move_speed"
+		"move_speed_up"
 	)
 	return BASE_MOVE_SPEED * (1.0 + 0.1 * upgrade_count)
 
@@ -104,7 +104,7 @@ func _get_move_speed() -> float:
 func _get_fire_rate() -> float:
 	var upgrade_count := UpgradeComponent.get_peer_upgrade_count(
 		input_peer_id,
-		"fire_rate"
+		"attack_speed_up"
 	)
 	return BASE_FIRE_RATE * clamp(1.0 - 0.08 * upgrade_count, 0, 100)
 
@@ -113,7 +113,7 @@ func _get_fire_rate() -> float:
 func _get_bullet_damage() -> int:
 	var upgrade_count := UpgradeComponent.get_peer_upgrade_count(
 		input_peer_id,
-		"damage"
+		"basic_damage_up"
 	)
 	return BASE_BULLET_DAMAGE + upgrade_count
 

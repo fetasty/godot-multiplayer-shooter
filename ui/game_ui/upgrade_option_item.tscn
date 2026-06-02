@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bokjg66q10lcd"]
 
 [ext_resource type="Script" uid="uid://bjxhyl5apxtcf" path="res://ui/game_ui/upgrade_option_item.gd" id="1_lp0tm"]
+[ext_resource type="Texture2D" uid="uid://bbincf4rs7gn6" path="res://assets/basic_damage_up.tres" id="2_yj2os"]
 
 [node name="UpgradeOptionItem" type="PanelContainer" unique_id=303070691]
 pivot_offset_ratio = Vector2(0.5, 0.5)
@@ -40,6 +41,15 @@ text_overrun_behavior = 3
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer" unique_id=2129674756]
 layout_mode = 2
 mouse_filter = 2
+
+[node name="IconTexture" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=759873524]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_yj2os")
+stretch_mode = 5
 
 [node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=617370968]
 unique_name_in_owner = true

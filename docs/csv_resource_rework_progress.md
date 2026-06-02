@@ -21,8 +21,8 @@
 | --- | --- | --- | --- |
 | Task 0 | 建立任务进度文档 | 已验收 | 用户已验收 |
 | Task 1 | CSV 到运行时 Resource 缓存 | 已验收 | 用户已验收 |
-| Task 2 | 敌人生成接入 `enemy_config.csv` | 待验收 | 2026-05-20 |
-| Task 3 | 被动物品替代旧升级奖励 | 未开始 | - |
+| Task 2 | 敌人生成接入 `enemy_config.csv` | 已验收 | 用户已验收 |
+| Task 3 | 被动物品替代旧升级奖励 | 待验收 | 2026-05-26 完成，待用户验收 |
 | Task 4 | 实现 6 个被动物品效果 | 未开始 | - |
 | Task 5 | 敌人死亡掉落拾取物 | 未开始 | - |
 | Task 6 | 清理与回归 | 未开始 | - |
@@ -127,14 +127,15 @@
 - 2026-05-22 追加修正：enemy3 攻击状态改为维持 2 秒、期间不可移动；攻击碰撞在整个攻击窗口内开启；Hitbox 增加按 Hurtbox 记录命中的能力，enemy3 每次攻击对同一 Hurtbox 只造成一次伤害。
 - 2026-05-22 追加验证：`C:\Users\fetasty\bin\godot.exe --headless --path . --check-only --quit` 退出码为 0；MCP 成功读取更新后的 `enemy3.gd`、`state_attack.gd`、`hitbox_component.gd`、`hurtbox_component.gd`。
 - Godot 退出时仍有资源泄漏警告：`ObjectDB instances leaked at exit` / `1 resources still in use at exit`，未出现脚本解析错误。
+- 2026-05-25 复核验证：再次执行 `C:\Users\fetasty\bin\godot.exe --headless --path . --check-only --quit`，退出码为 0，项目级检查仍可正常加载 3 个 enemy 配置，说明当前 Task2 链路仍然有效。
 
 ### 当前状态
 
-- 待验收。
+- 已验收。
 
 ### 验收结论
 
-- 待用户验收。
+- 用户于 2026-05-26 明确说明 Task2 已经验收，同意继续 Task3。
 
 ## Task 3: 被动物品替代旧升级奖励
 
@@ -147,7 +148,10 @@
 
 ### 改动范围
 
-- 待执行时记录。
+- 修改 `components/upgrade_component.gd`，移除旧导出奖励池，改为每轮从 `CSVResourceCache.get_all_passives()` 读取被动物品池并随机抽取最多 3 个选项。
+- 修改 `components/upgrade_component.tscn`，移除 `resources/upgrade_resource/*.tres` 和 `UpgradeResource` 脚本的场景引用。
+- 修改 `ui/game_ui/upgrade_option_item.gd`，让现有奖励选项 UI 绑定 `PassiveItemResource` 并继续通过 `tr(resource.name_key)` / `tr(resource.description_key)` 展示。
+- 保留 `UpgradeComponent` / `UpgradeOptionsUI` 旧类名作为现阶段兼容壳；运行时奖励数据源已切换为 `passive_item_config.csv`。
 
 ### 测试方式
 
@@ -157,15 +161,21 @@
 
 ### 测试结果
 
-- 未开始。
+- `C:\Users\fetasty\bin\godot.exe --headless --path . --check-only --quit` 退出码为 0。
+- 输出包含：`[CSV] Loaded 3 enemy configs`、`[CSV] Loaded 6 passive item configs`、`[CSV] Loaded 2 pickup item configs`。
+- 临时验证脚本直接复用 `autoload/csv_resource_cache.gd`，确认 6 个 passive id 都能从 CSV 加载并查询：`basic_damage_up`、`health_limit_up`、`bullet_split`、`attack_speed_up`、`move_speed_up`、`defence_up`。
+- 搜索 `components/`、`ui/`、`main.tscn`、`entities/`，未再发现 `available_upgrade_resources`、`resources/upgrade_resource`、`UpgradeResource` 的运行时引用。
+- Godot MCP 成功打开 `components/upgrade_component.tscn`，场景树仅保留 `UpgradeComponent` 根节点和 `res://components/upgrade_component.gd` 脚本引用。
+- 本次未启动完整多人手动流程；多人选择独立性目前通过 `peer_selected_passives: Dictionary[int, Dictionary]` 的代码路径和项目级编译检查确认，待用户验收时可做实机回合流验证。
+- Godot 退出时仍有资源泄漏警告：`ObjectDB instances leaked at exit` / `1 resources still in use at exit`，与 Task2 验证时一致，未出现脚本解析错误。
 
 ### 当前状态
 
-- 未开始。
+- 待验收。
 
 ### 验收结论
 
-- 未开始。
+- 待用户验收；验收后才能继续 Task4。
 
 ## Task 4: 实现 6 个被动物品效果
 
@@ -268,5 +278,7 @@
 | Task 0 | 2026-05-18 21:30:40 +08:00 | `Test-Path` 返回 `True`；`rg` 命中 Task 0-6、验收门禁、测试方式、验收记录 | 已验收 |
 | Task 0 审核补充 | 2026-05-18 21:36:15 +08:00 | 已记录 `comment_xxx` 忽略规则、`xxx_key` + `tr()` 国际化规则，并同步到 `AGENTS.md` | 已验收 |
 | Task 1 | 2026-05-19 21:36:59 +08:00 | `--check-only` 0 errors; 3 enemy + 6 passive + 2 pickup loaded | 已验收 |
-| Task 2 | 2026-05-20 22:30:04 +08:00 | `--check-only --quit` exit 0; 3 enemy configs loaded; enemy scenes registered from CSV | 待验收 |
-| Task 2 追加 enemy3 | 2026-05-22 | 新增 `enemy3.tscn`；`stone_poke` 指向 enemy3；攻击改为 2 秒定身窗口且同一 Hurtbox 每次攻击只受伤一次；`--check-only --quit` exit 0; MCP 打开场景并读取更新后脚本成功 | 待验收 |
+| Task 2 | 2026-05-20 22:30:04 +08:00 | `--check-only --quit` exit 0; 3 enemy configs loaded; enemy scenes registered from CSV | 已验收 |
+| Task 2 追加 enemy3 | 2026-05-22 | 新增 `enemy3.tscn`；`stone_poke` 指向 enemy3；攻击改为 2 秒定身窗口且同一 Hurtbox 每次攻击只受伤一次；`--check-only --quit` exit 0; MCP 打开场景并读取更新后脚本成功 | 已验收 |
+| Task 2 复核 | 2026-05-25 | `--check-only --quit` exit 0; 3 enemy + 6 passive + 2 pickup configs loaded | 已验收 |
+| Task 3 | 2026-05-26 10:22:11 +08:00 | `--check-only --quit` exit 0; passive CSV 临时验证通过 6 个 id；旧 `.tres` 奖励池运行时引用清理完成；MCP 打开组件场景成功 | 待验收 |

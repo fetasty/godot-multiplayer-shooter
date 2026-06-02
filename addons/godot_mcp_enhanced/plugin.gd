@@ -46,7 +46,7 @@ func _enter_tree() -> void:
 	script_operations.name = "MCPScriptOperations"
 	script_operations.editor_interface = get_editor_interface()
 	add_child(script_operations)
-	
+
 	debugger_integration = DebuggerIntegration.new()
 	debugger_integration.name = "MCPDebuggerIntegration"
 	debugger_integration.editor_interface = get_editor_interface()
@@ -70,7 +70,7 @@ func _enter_tree() -> void:
 	# Start HTTP server
 	var port = int(config.get("GDAI_MCP_SERVER_PORT", 3571))
 	print("[Godot MCP Enhanced] Attempting to start HTTP server on port %d..." % port)
-	
+
 	var success = http_server.start_server(port)
 	
 	if success:
