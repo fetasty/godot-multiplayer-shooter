@@ -110,7 +110,7 @@ func _get_bullet_count() -> int:
 	return UpgradeComponent.calc_bullet_count(input_peer_id)
 
 
-# TODO 生效
+# TODO 生效, 监听数量变化, 实时生效
 func _get_health_limit() -> float:
 	return UpgradeComponent.calc_health_limit(input_peer_id, health_component.max_health)
 
@@ -125,6 +125,7 @@ func _try_to_attack() -> void:
 		return
 	attack_timer.wait_time = _get_fire_rate()
 	attack_timer.start()
+	# TODO 多颗子弹
 	var bullet := BULLET.instantiate() as Bullet
 	bullet.global_position = attack_point.global_position
 	bullet.direction = player_input_multiplayer_synchronizer_component.aim_vector
